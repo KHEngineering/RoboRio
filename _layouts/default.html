@@ -15,7 +15,9 @@
     <![endif]-->
 
     
-    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/bootstrap.min.css" />
+    <script src="{{ site.baseurl }}/js/jquery.min.js"></script>
+    <script src="{{ site.baseurl }}/js/bootstrap.min.js"></script>
+    <link href="{{ site.baseurl }}/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
 
@@ -46,10 +48,8 @@
 		        <div class="col-md-3 hidden-xs">
 		            {% include sidebar.html %}
 		        </div>
-		        </div>
-		        
 		        <div class="col-md-9">
-		          {{content}}
+		            {{ content }}
 		        </div>
 		    </div>
 		</div>
