@@ -16,6 +16,7 @@ Cad models can be found here:
 [CTRE](http://www.crosstheroadelectronics.com/control_system.html)
 
 ---
+permalink: /RoboRio/
 ---
 
 #RoboRio
@@ -356,6 +357,9 @@ Yes, however remember the Link between the driverstation and the Robot is capped
 
 FIRST also released a FMS light program so teams can practice at home, with a similar FMS in the loop. However, FMS Lite is not FMS and there is no guarantee that your performance during tests will be mirrored during a competition. 
 
+---
+---
+
 #Programming Java
 
 Joysticks different
@@ -363,6 +367,8 @@ Joysticks different
 Java 8 Language Support
 Eclipse-IDE with WPI plugins
 
+---
+---
 
 #Programming C++
 
