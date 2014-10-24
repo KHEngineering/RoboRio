@@ -39,13 +39,24 @@
       </div>
     </div>
 
-    <div id="main" role="main" class="container">
-      {{ content }}
+    <div class="container container-left">
+      <div class="row">
+          <div class="col-md-3 hidden-xs">
+              {% include sidebar.html %}
+          </div>
+          
+          <div class="col-md-9">
+              <div id="main" role="main" class="container">
+                  {{ content }}
+              </div>
+          </div>
+      </div>
+      
     </div>
+
+
     
-    <div class="col-md-3 hidden-xs">
-      {% include sidebar.html %}
-    </div>
+
 
     <div class="wrapper-footer">
       <div class="container">
