@@ -10,8 +10,8 @@ What wire should I use for the new wieldmuler connectors?
 
 
 ##CAD
-Cad models can be found here: (https://decibel.ni.com/content/servlet/JiveServlet/download/30419-53-80491/roboRIO+CAD.zip)
-(http://www.crosstheroadelectronics.com/control_system.html)
+Cad models can be found here: [](https://decibel.ni.com/content/servlet/JiveServlet/download/30419-53-80491/roboRIO+CAD.zip)
+[](http://www.crosstheroadelectronics.com/control_system.html)
 ##RoboRio
 
 Specs: 
