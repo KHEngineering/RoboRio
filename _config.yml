@@ -3,10 +3,10 @@
 #
 
 # Name of your site (displayed in the header)
-name: FRC 2168 - Intro to Java Course
+name: FRC 2168 - RoboRio Beta Test
 
 # Short bio or description (displayed in the header)
-description: This is the main course website for Team 2168's Intro to Java classes. This website will contain course information and annoucments to help students learn how to program our Robot's using the Awesome Java programming language.
+description: This is the main website for Team 2168 2015-2020 FRC Control System Documentation This website will contain information Team 2168 has learned through Alpha and Beta testing in order to serve as a learning resource for future members of Team 2168 and the general FRC community.
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: https://KHEngineering.github.io/FRCJavaCourse2015/Images/teamlogo.jpg
