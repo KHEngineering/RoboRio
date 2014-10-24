@@ -16,7 +16,6 @@ Cad models can be found here:
 [CTRE](http://www.crosstheroadelectronics.com/control_system.html)
 
 ---
-permalink: /RoboRio/
 ---
 
 #RoboRio
