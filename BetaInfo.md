@@ -10,8 +10,8 @@ What wire should I use for the new wieldmuler connectors?
 
 
 ##CAD
-Cad models can be found here: https://decibel.ni.com/content/servlet/JiveServlet/download/30419-53-80491/roboRIO+CAD.zip
-http://www.crosstheroadelectronics.com/control_system.html
+Cad models can be found here: (https://decibel.ni.com/content/servlet/JiveServlet/download/30419-53-80491/roboRIO+CAD.zip)
+(http://www.crosstheroadelectronics.com/control_system.html)
 ##RoboRio
 
 Specs: 
@@ -36,7 +36,7 @@ The RoboRio offers the addition to program over the USB host port. The drivers f
 Ethernet port is always static, and can be used to program or modify the roborio. It put the RIo on the network 172.22.11.2. Since the Rio uses mDNS, you can
 use your driverstation via USB, without chaning any Ethernet settings.
 
---
+---
 
 ###How do I set my team number?
 Your team number IP address will be set when you image the Rio for the first time. However, you can always check all of your network interface settings, and modify them through the web interface of the Rio. Simply navigate to any of the RoboRios IP address from any computer on the same network. 
@@ -114,6 +114,7 @@ connector for DIO9. See attached photo for details. When no jumper is installed 
 The jumper only affects the DIO power pins on the built-in DIO connectors. The MXP has both power supply rails included, so the board may use either one as needed. The I/O itself in both MXP and built-in DIO is not affected by the jumper. All DIO is 3.3 V drive and 5 V tolerant.
  
 --
+
 ###My big question is whether or not we will lose encoder counts while that happens (encoder brownout). The digital side car would brown the encoders out below 5.5 volts, which caused us to destroy a gear once. We'll have to add that to our list of things to test.
 Unfortunately the topology of the power supplies that feed external user devices like the encoders is part of the system that does not "survive". Based on alpha team feedback, we are making some small adjustments to make it last longer, but the topology doesn't help with that case. The structure looks like this:
 
@@ -133,6 +134,7 @@ The change we made was to not disable the 3.3 V or 5 V supplies when we detect a
 
 
 ###Explainations
+
 Luckily the system is capable of managing current draw at many levels.
  1. The roboRIO monitors its input voltage level and coordinates brownout staging in order to prevent blackout of critical elements. This is the approach that is currently being tweaked.
 
