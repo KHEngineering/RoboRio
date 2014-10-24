@@ -15,6 +15,7 @@
     <![endif]-->
 
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/bootstrap.min.css" />
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
 
     <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
@@ -39,27 +40,18 @@
       </div>
     </div>
 
-    <div class="container container-left">
-      <div class="row">
-          <div class="col-md-3 hidden-xs">
-              {% include sidebar.html %}
-          </div>
-          
-          <div class="col-md-9">
-              <div id="main" role="main" class="container">
-                  {{ content }}
-              </div>
-          </div>
-      </div>
-      
-    </div>
-
-
-    
-
-
-    <div class="wrapper-footer">
-      <div class="container">
+		<div class="container container-left">
+		    <div class="row">
+		        <div class="col-md-3 hidden-xs">
+		            {% include sidebar.html %}
+		        </div>
+		        <div class="col-md-9">
+		            {{ content }}
+		        </div>
+		    </div>
+		</div>
+		
+		
         <footer class="footer">
           {% include svg-icons.html %}
         </footer>
