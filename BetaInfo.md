@@ -1,3 +1,10 @@
+---
+layout: page
+title: Beta Info
+permalink: /BetaInfo/
+---
+
+
 ##Electrical
 What wire should I use for the new wieldmuler connectors?
 
@@ -291,11 +298,11 @@ Unfortunately there are not many options when it comes to this type of fuse hold
 
 ###Would someone be able to confirm whether or not the VRM/PCM/RoboRIO ports have current monitoring? ie Do the three ports along the bottom of the PDP have current monitoring like the rest of the panel?
 The PDP does not monitor those dedicated power outputs directly.
- The PDP does monitor:•The current outputs of each (16) of the high power draw wago connectors
-•Short circuits detected on each of the (16) wago connectors
-•The incoming battery voltage
-•The internal PDP temperature
-•Any over-temperature fault
+ The PDP does monitor:Â•The current outputs of each (16) of the high power draw wago connectors
+Â•Short circuits detected on each of the (16) wago connectors
+Â•The incoming battery voltage
+Â•The internal PDP temperature
+Â•Any over-temperature fault
 The PCM monitors compressor current, and faults for shorts and compressor over-current.
 
 ---
