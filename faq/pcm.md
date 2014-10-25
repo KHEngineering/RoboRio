@@ -7,6 +7,8 @@ permalink: /faq/pcm/
 ##Can I drive 24V solenoids and 12V solenoid using a single PCM?
 Not Exactly. Each PCM supplies either 12V or 24V. There is a jumper setting in the center of the PCM which controls what the voltage output will be. There is a jumper setting for both 12 and 24V. What ever the setting is, is global for all channels on the PCM. If the terminal is completely removed, the default voltage is 24V. But you should always have a jumper in place so that is it clear what mode the PCM is in. If you require many 12V and 24V solenoids use 2 PCMs with jumpers set respectively. Depending on 2015 rules, you may also use the answer to the next question to run 12 and 24V solenoids off of a single PCM. 
 
+---
+
 ##Driving non 12V/24V solenoids possible?
 It is possible, but refer to the rules for legality. The PCM switces the low side not the high side, so in theory if you wanted to power 5V solenoids for instance, you could make all of your 5v common, provide power to it externally, and connect the ground to the PCM channels. This will allow you to switch the channels using the PCM even though you are not using the 12V or 24V supply from the PCM channels themselves.
 
@@ -20,6 +22,8 @@ robot code in libWPI and Labview.
 
 ##How do I wire the compressor? 
 The compressor and digital pressure switch are directly wired to a single PCM. The PCM has a built in controller which will automatically start and stop the compressor depending on the readings of the pressure switch. This frees up a relay and DIO port on the RoboRio when compared to the cRIO system. The user can take manual control of the compressor start/stop routine if they so desire using the libraries provided. 
+
+---
 
 ##Being that the PCM and the VRM share a common 20amp fuse on the PDP and at the moment teams are using the VRM to 
 power the D-Link for Robot comms. Is there ever a possibility that the compressor starting and stopping, or a shorted 
@@ -49,7 +53,7 @@ Make sure you don't have any shorts on the PCM solenoid channels, or compressor 
 
 You can use the RoboRio webpage to see all CAN devices and any faults on the device. 
 
---3
+---
 
 ##For teams wishing to add more PCM modules or VRM modules, is there any recommendation on how they can power the 
 additional modules? Do they use 30amp channels for every new module, can the modules be joined to share a single channel

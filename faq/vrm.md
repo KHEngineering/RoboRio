@@ -4,9 +4,6 @@ title: Voltage Regulator Module (VRM) FAQ
 permalink: /faq/vrm/
 ---
 
----
----
-
 ##Specs: 
 5V Rail and 12V Rail
 Input power: 4-12V

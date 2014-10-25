@@ -4,10 +4,6 @@ title: Field Management System (FMS) FAQ
 permalink: /faq/fms/
 ---
 
----
----
-
-
 ##What's new with FMS for 2015?
 As far as we know as Alpha/Beta testers nothing besides usual first upgrades to make the network more reliable.
 

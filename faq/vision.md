@@ -4,9 +4,6 @@ title: Vision FAQ
 permalink: /faq/vision/
 ---
 
----
----
-
 ##Can I use a USB Camera plugged into the RoboRio?
 Yes, FIRST is providing official support for the HD3000 camera. Most other cameras should work out of the box if they work on *nix systems. 
 
