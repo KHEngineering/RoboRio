@@ -1,9 +1,11 @@
 ---
 layout: page
 title: Power Distribution Panel (PDP) FAQ
-permalink: /pdp/
+permalink: /faq//pdp/
 ---
 
+---
+---
 
 ##What is sample rate of current monitoring?
 The currents are put out on CANbus once every 25ms.

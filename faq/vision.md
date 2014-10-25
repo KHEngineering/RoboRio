@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Vision FAQ
-permalink: /vision/
+permalink: /faq/vision/
 ---
 
 ---

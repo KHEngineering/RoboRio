@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Computer Aided Design (CAD) FAQ
-permalink: /cad/
+permalink: /faq/cad/
 ---
 
 Cad models can be found here: 

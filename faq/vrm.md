@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Voltage Regulator Module (VRM) FAQ
-permalink: /vrm/
+permalink: /faq/vrm/
 ---
 
 ---

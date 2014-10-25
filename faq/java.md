@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Java Programming FAQ
-permalink: /java/
+permalink: /faq/java/
 ---
 
 ---

@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Pneumatic Control Module (PCM) FAQ
-permalink: /pcm/
+permalink: /faq/pcm/
 ---
 
 ##Can I drive 24V solenoids and 12V solenoid using a single PCM?

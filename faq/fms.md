@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Field Management System (FMS) FAQ
-permalink: /fms/
+permalink: /faq/fms/
 ---
 
 ---

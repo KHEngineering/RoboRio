@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Motor Controller FAQ
-permalink: /motor/
+permalink: /faq/motor/
 ---
 
 ##Can I still use the Black and Tan Jaguars?
