@@ -10,6 +10,16 @@ great for testing purposes.
 
 ---
 
+##I Accidently supplied power to the Motor Controller with reversed polarity, did I break it?
+Possibly. The Talon,Talon SR, Victor 884, Victor 888, Black Jaguar or Tan Jaguars models DO NOT have reverse polarity protection. It may not fail immediately, but can fail over time. One should always be cautious when wiring a motor controller, the labels for each terminal are clearly marked. Review all wiring before powering any motor controller to ensure that they are wired correctly, and that power is being supplied to the proper terminals, in the proper polarity. 
+
+---
+
+##I Accidently supplied 12V power to the output side of the Motor Controller, did I break it?
+Possibly, supplying unregulated power to the output of the Talon, Talon SR, Victor 884, Victor 888, Black Jaguar, or Tan Jaguar models may permenantly damage the H-bridge inside of the device. The device may not fail immediately, but can fail over time.
+
+---
+
 ##Do Talons and Victors still have limited resolution compared to Jaguars?
 The overall PWM resolution has been increased (from ~8 bits to ~11) but Jaguars still, by default, use a wider input 
 range than Victors or Talons and thus will have a finer resolution. 
@@ -20,17 +30,15 @@ updates.
 
 ---
 
+##Do I need to set the internal jumper on the RoboRio to drive Servos?
 The 3.3v/5v internal jumper only affects the DIO power output.
- The PWM signals are always 5v max.
- The PWM power is always 6v. The motor controllers have this line disconnected, so power on it doesn't affect them.
+The PWM signals are always 5v max. The PWM power is always 6v. The motor controllers have this line disconnected, so power on it doesn't affect them. This means you can use the same PWM pins to power 6V servos, or FRC legal motor controllers without changing any hardware settings.
 
 ---
 
-Right....I would like to see the 6V signal when the servos is trying to move a high inertia mass. I am guessing the 6V signal will drop from 5.7 to below 5.0  when there is a load on the servo. Can some of you RoboRIO owners try that ? We are designing a PWM extender (for servos and motors) that needs the 6V supply to stay above 5.3V.
+##I am concerned about the voltage drop of the 6V servo supply on the PWM line of the RoboRio when trying to rotate a large inertia on a servo. I measured the 6V rail, and it is actually 5.7V. I am guessing the 6V signal will drop from 5.7 to below 5.0  when there is a load on the servo. 
 
- Thanks,
- 
-Fear not. This is an artifact of the back-drive protection on this supply. The current path passes through a diode when the load is low. When the current is detected to be enough greater than 0, a FET is switched on and the diode is bypassed. This means that at no load the output looks low, but as soon as there is a load, the voltage climbs to 6V.
+Fear not. This is an artifact of the back-drive protection on this supply. The current path passes through a diode when the load is low. When the current is detected to be greater than 0, a FET is switched on and the diode is bypassed. This means that at no load the output looks low (5.7V), but as soon as there is a load, the voltage climbs to 6V.
 
  Please see the attached image. This is a graph created using the new Power palette in WPILib (that's right, you can monitor this directly in the controller without external connections). I plugged in a servo, enabled, and then twisted the output shaft with my hand, forcing it to fight me and increase load on the power supply. You can see that under load the voltage increases, not decreases.
  
