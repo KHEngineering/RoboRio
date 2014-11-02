@@ -2,7 +2,8 @@
 
 
 
-##
+##Set Static IP
+Edit files /etc/network/interfaces
 
 
 
