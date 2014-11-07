@@ -4,27 +4,23 @@ title: Class Syllabus and Schedule
 ---
 
 
-##Welcome to the FRC 2168 Intro to Java Course Website
+##Welcome to the FRC 2168 Controls System Website
 
-The class is scheduled from Oct, 2014 - Dec 2014. The class will meet from 6pm - 8:30pm with a 5 minute break. Schedule changes will be posted here and on the team facebook group.
+This website was developed by Team 2168 during Alpha and Beta testing (Oct 2013 - Jan 2015) of the next generation control system used by the First Robotics Community. This control system is commonly reffered to as the "2015 Control System".
 
+<br><br>
 
-###Course Schedule and Syllabus
+The theme for this website, is to not be a blog, but to instead provide quick answers to some of the most frequently asked questions teams may have regarding the Control System and be a one-stop-spot for anything control related to FRC. Some of these answers are provided by our own direct testing, leveraging the results of other alpha/beta tests, or directly from the developers of the control system.
 
-| **Date**       | **Class**  | **topic**                   | **slides**                                 | **code**                                                                 |  **video**          |
-| Sept. 29, 2014 | class 0    | Meet & Greet                |                                            |                                                                          |                     |
-| Oct. 7, 2014   | class 1    | Basic Java Intro            | [class 1]({{site.baseurl}}/class1.html)    | [class 1](https://gist.github.com/NotInControl/aa40ea79e4a5a78663a8)     |                     | 
-| Oct. 14, 2014  | class 2    | Java Lang Syntax            | [class 2]({{site.baseurl}}/class2.html)    | [class 2](https://gist.github.com/NotInControl/6fd7e789dfdb9bffbdde)     |                     |
-| Oct. 21, 2014  | class 3    | Methods & Objects           |
-| Oct. 28, 2014  | class 4    | Hardware Overview (Lab)     |
-| Nov. 4, 2014   | class 5    | WPILib Drivetrain (Lab)     |
-| Nov. 11, 2014  | class 6    | Commands & Subsystems (Lab) |
-| Nov. 18, 2014  | class 7    | Encoders & Gyros (Lab)      |
-| Nov. 25, 2014  |            | No Class                    |
-| Dec. 2, 2014   | class 8    | Pneumatics (Lab)            |
-| DEc. 9, 2014   | class 9    | Sensors & Buttons (Lab)     |
-| Dec. 16, 2014  | class 10   | Wrap up & Discussions       |
+<br><br>
 
+Just so it is clear:
+* We are not developers of the Control System, we are simply testing/destroying it to make sure it is suitable for FRC use
+* We have no input to FRC rules or game design
+* We are not an athority or representative of FRC/WPI/NI/CTRE or any other control system developer
+* We will release almost everything we have developed for the control system prior to kick-off, but can not release any documentation/code/screen shots of FIRST provided software or material until after kickoff.
 
-
+<br><br>
+###Disclaimer:
+We do our very best to make sure every answer on this website is vetted, and this website will be constantly maintained to ensure accuracy, however, none of these answers superseed any 2015 or future game rules, or other official postings by FIRST/NI/CTRE/WPI and any other official channel for the FIRST Robotics Competitions. These answers reflect only what was learned through the beta testing hardward. The actual production hardware may differ. If you find any conflicting answers, or have a question of your own, please shoot an email via the link below.
 
