@@ -21,6 +21,8 @@ Just so it is clear:
 * We will release almost everything we have developed for the control system prior to kick-off, but can not release any documentation/code/screen shots of FIRST provided software or material until after kickoff.
 
 <br><br>
+
 ###Disclaimer:
+
 We do our very best to make sure every answer on this website is vetted, and this website will be constantly maintained to ensure accuracy, however, none of these answers superseed any 2015 or future game rules, or other official postings by FIRST/NI/CTRE/WPI and any other official channel for the FIRST Robotics Competitions. These answers reflect only what was learned through the beta testing hardward. The actual production hardware may differ. If you find any conflicting answers, or have a question of your own, please shoot an email via the link below.
 
