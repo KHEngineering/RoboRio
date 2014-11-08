@@ -10,6 +10,6 @@ Yes, FIRST is providing official support for the HD3000 camera. Most other camer
 ---
 
 ##Does OpenCV Run on the RoboRio?
-Yes. Instructions to get this running can be found here: XXXXXXXXXXXXXXX
+Yes. The RoboRio is very similar to a beaglebone in terms of processor architecture. Instructions to get this running can be found here: XXXXXXXXXXXXXXX
 
 ---

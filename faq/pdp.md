@@ -4,34 +4,70 @@ title: Power Distribution Panel (PDP) FAQ
 permalink: /faq//pdp/
 ---
 
+
+##Specs
+
+
+---
+
 ##What is sample rate of current monitoring?
-The currents are put out on CANbus once every 25ms.
+The PDP sensor readings are put out on CANbus once every 25ms.
 
 ---
 
 ##What does the PDP monitor over CAN?
-Correct. Only the main 16 power channels have current monitoring. 
+The PDP provides instantaneous current on each individual channel, voltage on each channel, and temperature of the PDP. Each value is updated at the rate specified above.
+
+---
+
+##Do I need to plug in the CAN connection for the PDP to work?
+No. Using the CAN bus is not required for the PDP board to distribute power. It is only required if you wish to access the current/voltage sensor readings on each channel of the PDP.
 
 ---
 
 ##When we remove a 40A circuit breaker from the Power Distribution Board, we are having some difficulty. 
-These are the exact same fuse holders used on the existing PD.  I noticed that the first time the breaker is inserted it
- is a bit more difficult than subsequent insertions.  This has always been my experience even with the current design.  
-
-
-Unfortunately there are not many options when it comes to this type of fuse holder. 
+These are the exact same 30A and 40A fuse holders used on the existing PDB.  I noticed that the first time the breaker is inserted it
+is a bit more difficult than subsequent insertions.  Allow for some break-in time. Insertions/Removals should get easier over time. 
 
 ---
 
-##Would someone be able to confirm whether or not the VRM/PCM/RoboRIO ports have current monitoring? ie Do the three ports along the bottom of the PDP have current monitoring like the rest of the panel?
+##Do the three ports along the bottom of the PDP have current monitoring like the rest of the panel?
 
-The PDP does not monitor those dedicated power outputs directly.
- The PDP does monitor:The current outputs of each (16) of the high power draw wago connectors
-Short circuits detected on each of the (16) wago connectors
-The incoming battery voltage
-The internal PDP temperature
-Any over-temperature fault
+No. The PDP does not monitor those dedicated power outputs directly.
+The PDP only monitors the current outputs of each (16) of the high power channels
+* Short circuits detected on each of the (16) wago connectors
+* The incoming battery voltage
+* The internal PDP temperature
+* Any over-temperature fault
+
 The PCM monitors compressor current, and faults for shorts and compressor over-current.
 
 ---
 
+##I have nothing connected to a channel, but the current reading is XXA?
+
+
+---
+
+
+##What is fault monitoring?
+
+
+---
+
+##How can I access the PDP via the web interface?
+
+If the PDP is plugged into the RoboRio via CAN, you can view the status of the PDP through the RoboRio's web interface.
+
+Simply use any browser with the silverlight plugin to navigate to the RoboRio's IP address. From there you can see all CAN devices connected to the RoboRio, and view their available data.
+You can use this web interface to read the current sensor readings of the PDP, review any faults, and even upgrade it's firmware.
+
+---
+
+##I have heard some connectors no longer fit on the PDP battery terminals?
+
+The PDP include a protective cover over the battery input cables. This solves having to use electrical tape to cover exposed terminals on the main input cables to the PDP. We use 6 awg cable from our battery to the PDP. 
+
+The connector we use on the PDP terminals are here:[]()
+The crimp tool we use is here: [swedge tool]()
+The cable we use is bought here: [battery cable]()

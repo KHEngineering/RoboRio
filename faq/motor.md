@@ -5,8 +5,7 @@ permalink: /faq/motor/
 ---
 
 ##Can I still use the Black and Tan Jaguars?
-The system should support either jag with the latest firmware (v107 for black, v101 for grey). Using a mix would be 
-great for testing purposes.
+The system should support either jag with the latest firmware (v107 for black, v101 for grey).
 
 ---
 
@@ -36,7 +35,7 @@ The PWM signals are always 5v max. The PWM power is always 6v. The motor control
 
 ---
 
-##I am concerned about the voltage drop of the 6V servo supply on the PWM line of the RoboRio when trying to rotate a large inertia on a servo. I measured the 6V rail, and it is actually 5.7V. I am guessing the 6V signal will drop from 5.7 to below 5.0  when there is a load on the servo. 
+##I measured the 6V rail, and it is actually 5.7V. I am guessing the 6V signal will drop from 5.7 to below 5.0  when there is a load on the servo. 
 
 Fear not. This is an artifact of the back-drive protection on this supply. The current path passes through a diode when the load is low. When the current is detected to be greater than 0, a FET is switched on and the diode is bypassed. This means that at no load the output looks low (5.7V), but as soon as there is a load, the voltage climbs to 6V.
 
