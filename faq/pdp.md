@@ -25,9 +25,9 @@ CAN Bus for Sensor Monitoring
 ---
 
 ##Can I Use the old PDP Board with the new Control System?
-Refer to legal FRC rules for the official answer to this question. I don't imagine this will be legal for competition. The RoboRio requires a 7-16V input while the PDP board provides regulated 24V DC out of the cRIO terminal (This is because the old cRIO was a 24V device while the new RoboRio is a 12V nominal device).
+Refer to legal FRC rules for the official answer to this question. I don't imagine this will be legal for competition. The RoboRio requires a 6.8-16VDV input voltage for normal operation while the old PDP board provides regulated 24VDC out of the dedicated cRIO terminal (This is because the old cRIO was a 24V device while the new RoboRio is a 12V nominal device).
 
-Now if you want to run some tests, or use this on a practice bot, you can safely power the RoboRio from one of the unregulated 30A wago power channels on the old PDB. The RoboRio takes in unregulated 12V battery voltage, so plugging it directly into a 12V channel on the old PDB will work. - BUT This should only be done for testing/practicing purposes and only if you do not have a new 2015 CTRE Power Distribution Board Available. 
+Now if you want to run some tests, or use this on a practice bot, you can safely power the RoboRio from one of the unregulated 30A wago power channels on the old PDB. The RoboRio takes in unregulated 12V battery voltage, so plugging it directly into a 12V channel on the old PDB will work and will not damage the RoboRio. - BUT This should only be done for testing/practicing purposes and only if you do not have a new 2015 CTRE Power Distribution Board Available. 
 
 Do not plug the RoboRio into the old PDB cRIO power port. See the [RoboRio Faq](/RoboRio/faq/roborio/) for more info
 
@@ -44,12 +44,15 @@ The PDP provides instantaneous current on each individual channel, voltage on ea
 ---
 
 ##Do I need to plug in the CAN connection for the PDP to work?
-No. Using the CAN bus is not required for the PDP board to distribute power. It is only required if you wish to access the current/voltage sensor readings on each channel of the PDP.
+No. Using the CAN bus is not required for the PDP board to distribute power. It is only required if you wish to access the current/voltage sensor readings on each channel of the PDP. In order to access the can information two things must happen:
+
+1. You properly connect the PDP to the RoboRio via CAN
+2. You use the appropriate Labview or WPILib PDP CAN libraries to read the sensor values in your robot code.
 
 ---
 
 ##When we remove a 40A circuit breaker from the Power Distribution Board, we are having some difficulty. 
-These are the exact same 30A and 40A fuse holders used on the existing PDB.  I noticed that the first time the breaker is inserted it is a bit more difficult than subsequent insertions.  Allow for some break-in time. Insertions/Removals should get easier over time. 
+These are the exact same 30A and 40A fuse holders used on the old PDB.  I noticed that the first time the breaker is inserted it is a bit more difficult than subsequent insertions.  Allow for some break-in time. Insertions/Removals should get easier over time. 
 
 ---
 
@@ -57,12 +60,19 @@ These are the exact same 30A and 40A fuse holders used on the existing PDB.  I n
 
 No. The PDP does not monitor those dedicated power outputs directly.
 The PDP only monitors the current outputs of each (16) of the high power channels
+
 * Short circuits detected on each of the (16) wago connectors
 * The incoming battery voltage
 * The internal PDP temperature
 * Any over-temperature fault
+ 
+There is no current/voltage monitoring of the PCM, VRM, or RoboRio dedicated ports.
 
-The PCM monitors compressor current, and faults for shorts and compressor over-current.
+Here are some work arounds to measure the PCM, VRM, RoboRio:
+
+* The PCM monitors compressor current, and faults for shorts and compressor over-current and can be accessed over can
+* The DriveStation Battery Voltage Reading is directly from the RoboRio input voltage.
+* There is no way to read any information from the VRM unless external voltage/current sensors are added by the team
 
 ---
 
