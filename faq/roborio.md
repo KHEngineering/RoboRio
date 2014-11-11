@@ -84,14 +84,6 @@ Using SSH, you will hever terminal access to the RoboRio Linux filesystem
 
 ---
 
-##How do I connect to the Internet using the RoboRio
-Assuming you are connected to a network that has an internet connection, you need to set the default gateway and DNS server on the RoboRio. Use your browser to connect to the RoboRio webserver and click on login using `admin` as the user name, and leave the password blank. Select the Network interfaces Icon, and under eth0 select `advanced` to modify the default gateway and provide a DNS server. Here is a pic of what our setting look like:
-
-<img src="http://khengineering.github.io/RoboRio/Images/internetsettings.png">
-
-
----
-
 ##Why are the IO pins spaced so far apart, I like the way it was on the old DSC?
 Well, in all honesty I don't know. But I would speculate it is to make it a lot easier for teams to plug/un-plug 3-pin header connectors. Especially rookies. With the old DSC you could plug in a connector in pin 10, but acutally think you were plugged in pin 9 because of how close the pins were, and causing a debugging mess. The space avoids this debackle.
 
@@ -114,11 +106,12 @@ RSL = solid means powered.  Blinking means enabled.
 ##How do I upgrade the Image or Install new Firmware?
 So far for Beta testing the RoboRio software has been delivered in two parts, a Firmware, and an Image. The Firmware is for the FPGA, and the Image is to load the operating system and default settings.
 The user can upgrade the firmware over Ethernet Tether/WIFI or USB, Although the USB method is preferred, we have had no problems updating the system over Wifi. To upgrade the firmware login to the RoboRio webpage using your internet browser (You will need to have silverlight plugin). 
-httP://10.xx.xx.2 when using ethernet or http://172.22.11.2 when using USB. Login using "admin" as the user name and leave the password field empty. Click on the RoboRio icon and select upgrade firmware. 
+
+http://10.xx.xx.2 when using ethernet or http://172.22.11.2 when using USB. Login using "admin" as the user name and leave the password field empty. Click on the RoboRio icon and select upgrade firmware. 
 
 Browse to the location of the firmware you wish to use, and apply. The RoboRio will update the firmware, and if successful the new firmware version will be showed on the webpage. If not, just try again.
 
-Once the firmware is updates, you can use the RoboRio Imaging tool (installed when the NI software is installed) to update the image. Open the tool, enter your team number, select "format controller" and select "ok". This will image the RoboRio. Confirm that your network settings are still correct after the image, and your done.
+Once the firmware is updated, you **must** use the RoboRio Imaging tool (installed on Windows when the NI software is installed) to update the image. Open the tool, enter your team number, select "format controller" and select "ok". This will image the RoboRio. Confirm that your network settings are still correct after the image, and your done.
 
 Note: Each Image is only compatible with a certain firmware. If you are trying to load an image on an incompatible firmware, we noticed that this will just cause the RoboRio to crash. If this happens, you can recover the RoboRio by following the steps in the next question.  
 
@@ -127,20 +120,18 @@ Note: Each Image is only compatible with a certain firmware. If you are trying t
 ##I Imaged the RoboRio before Flashing it, and now I can not communicate with it. HELP? Is it Bricked?
 No. Its nearly impossible to brick this thing. Follow these steps to regain communication.
 
-When we tried to image the RoboRio prior to installing a compatible firmware we noticed his caused a state where we lost complete communication with the Rio. Upon start up, the power light was green and the status led was solid for the first 3 seconds and then flashed about 2 times a second for the remainder of the time. Power cycling or hitting the reset button alone during this time, did not change the outcome. The Rio would start up and the status led would start to blink at this constant rate.
+When we tried to image the RoboRio prior to installing a compatible firmware we noticed this caused a state where we lost complete communication with the Rio. Upon start up, the power light was green and the status led was solid for the first 3 seconds and then flashed about 2 times a second for the remainder of the time. Power cycling or hitting the reset button alone during this time, did not change the outcome. The Rio would start up and the status led would start to blink at this constant rate.
 
-During this time, all power to the peripherals seems to have been off. The USB port and Ethernet ports didn't seem to be
- powered anymore so the Imaging tool could not find the device and the ethernet link was down. We were unable to 
-establish any link or comms to the rio.
+During this time, all power to the peripherals seems to have been off. The USB port and Ethernet ports didn't seem to be powered anymore so the Imaging tool could not find the device and the ethernet link was down. We were unable to 
+establish any link or comms to the RoboRio.
 
-If you experience the above symptoms, hold down the reset button for 10 seconds, I held it down for about 30 seconds and after release the RoboRio should start back up. This puts the RoboRio in safemode and loads a default/clean filesystem from the factory.  The Status LED schanged. We noticed it started to pulse, about 3 blinks then pause, then 3 blinks and pause, and continue this way.
+If you experience the above symptoms, hold down the reset button for 10 seconds, I held it down for about 30 seconds and after release the RoboRio should start back up. This puts the RoboRio in safemode and loads a default/clean filesystem from the factory.  The Status LED should change. We noticed it started to pulse, about 3 blinks then pause, then 3 blinks and pause, and continue this way.
 
-However, I did notice, all the peripheral ports were back up and we were able to http back into the RIO using the 
-initial static IP setup. 10.TE.AM.2. The status of the RIO was SafeMode, no software. If you did not have a static IP set, you can use the USB port to have ethernet access to the RoboRio.
+After putting the Rio in safemode, I notice all the peripheral ports were back up and we were able to http back into the RIO using the initial static IP setup. 10.TE.AM.2. The status of the RIO was SafeMode, no software, as shown by the webserver. If you did not have a static IP set, you can use the USB port to have ethernet access to the RoboRio.
 
 You can now login to the RoboRio webpage, and update the firmware. Once I updated the firmware through the Web interface, the RIO was back to normal operations.
 
-You can then re-image the RoboRio and ensue normal operations. 
+You can then re-image the RoboRio using the RoboRio Imaginge tool and ensue normal operations. 
  
 --- 
 
@@ -149,8 +140,10 @@ CAN is a 2 wire serial bus mostly used in cars. Its an interface with a specific
 
 ---
 
-##How do I connect the RoboRio to the Internet
+##How do I connect to the Internet using the RoboRio
+Assuming you are connected to a network that has an internet connection, you need to set the default gateway and DNS server on the RoboRio. Use your browser to connect to the RoboRio webserver and click on login using `admin` as the user name, and leave the password blank. Select the Network interfaces Icon, and under eth0 select `advanced` to modify the default gateway and provide a DNS server. Here is a pic of what our setting look like:
 
+<img src="http://khengineering.github.io/RoboRio/Images/internetsettings.png">
 
 ---
 
