@@ -122,8 +122,7 @@ No. Its nearly impossible to brick this thing. Follow these steps to regain comm
 
 When we tried to image the RoboRio prior to installing a compatible firmware we noticed this caused a state where we lost complete communication with the Rio. Upon start up, the power light was green and the status led was solid for the first 3 seconds and then flashed about 2 times a second for the remainder of the time. Power cycling or hitting the reset button alone during this time, did not change the outcome. The Rio would start up and the status led would start to blink at this constant rate.
 
-During this time, all power to the peripherals seems to have been off. The USB port and Ethernet ports didn't seem to be powered anymore so the Imaging tool could not find the device and the ethernet link was down. We were unable to 
-establish any link or comms to the RoboRio.
+During this time, all power to the peripherals seems to have been off. The USB port and Ethernet ports didn't seem to be powered anymore so the Imaging tool could not find the device and the ethernet link was down. We were unable to establish any link or comms to the RoboRio.
 
 If you experience the above symptoms, hold down the reset button for 10 seconds, I held it down for about 30 seconds and after release the RoboRio should start back up. This puts the RoboRio in safemode and loads a default/clean filesystem from the factory.  The Status LED should change. We noticed it started to pulse, about 3 blinks then pause, then 3 blinks and pause, and continue this way.
 
