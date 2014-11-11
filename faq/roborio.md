@@ -105,6 +105,7 @@ RSL = solid means powered.  Blinking means enabled.
 
 ##How do I upgrade the Image or Install new Firmware?
 So far for Beta testing the RoboRio software has been delivered in two parts, a Firmware, and an Image. The Firmware is for the FPGA, and the Image is to load the operating system and default settings.
+
 The user can upgrade the firmware over Ethernet Tether/WIFI or USB, Although the USB method is preferred, we have had no problems updating the system over Wifi. To upgrade the firmware login to the RoboRio webpage using your internet browser (You will need to have silverlight plugin). 
 
 http://10.xx.xx.2 when using ethernet or http://172.22.11.2 when using USB. Login using "admin" as the user name and leave the password field empty. Click on the RoboRio icon and select upgrade firmware. 
