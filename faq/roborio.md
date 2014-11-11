@@ -8,7 +8,7 @@ permalink: /faq/roborio/
 
 ##Specs: 
 
-Dual-Core Arm Coretex A9 @ 667 MHz
+Dual-Core Arm Cortex A9 @ 667 MHz
 256MB RAM for System Memory
 256 MB NAND for NonVolitile Memory
 Runs Linux Kernel patched with pre_emtRT
@@ -17,6 +17,10 @@ Input Power: 6.8 to 16V (brownout from 4.5 to 6.8VDC)
 PWM:20 (10 dedicated on PWM Rail, 10 shared on MXP)
 DIO:26 (10 dedicated on DIO Rail, 16 shared on MXP)
 Relay:4 Dual-output channels (FWD/REV)
+Analog: 8 Analog Inputs, 0v-5V, 12-bit 500 thousand samples per second
+Analog: 2 Analog Outputs, 0v-5V, 12-bit 340 thousand samples per seconds  
+Serial: i2c, RS-232, TTL, SPI
+USB 2.0
 
 ---
 
@@ -46,6 +50,24 @@ Assuming you are connected to a network that has an internet connection, you nee
 <img src="http://khengineering.github.io/RoboRio/Images/internetsettings.png">
 
 
+---
+
+##How do I access the Linux Operating System on the RoboRio?
+
+The RoboRio is a headless device, meaning it is designed to run without using a display. If you would like to access the underlying linux filesystem you will need to use another device to do so.
+
+Using another computer you can use the secure shell protocol to access the RoboRio. You will need to connect to the RoboRio via ethernet tether, WIFI, or USB and know the IP address of the RoboRio.
+
+From Linux or Mac: Open Terminal and type `ssh -l admin <IP of RoboRio>
+From Windows install [putty](http://www.putty.org) and configure it to SSH to the roborio.
+
+The Login information for the RoboRio from the factory is:
+```
+username: admin
+password: <leave blank> there is no password
+```
+
+Using SSH, you will hever terminal access to the RoboRio Linux filesystem
 
 ---
 
@@ -189,4 +211,6 @@ Luckily the system is capable of managing current draw at many levels.
  Greg McKaskle
  
  The bus switch that adjusts the signals passed to the FPGA is powered by a supply that is sourced by the buck-boost that powers the controller as a whole. That supply operates down to 4.5 V. That means that if you decide to power your encoder with a supply other than the one provided and the provided supply browns out, the signals will still make their way to the FPGA. As noted earlier, if your sensor depends on pull-up resistors (like limit switches or banner sensors or open-collector output encoders) then you will also need to add pull resistors connected to your external supply. You should be able to test this by either using the new power API to disable the 5 V supply manually or by installing a jumper between 5 V and Ground which puts the supply in protection.
+ 
+
  
