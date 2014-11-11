@@ -38,7 +38,7 @@ The USB drivers are installed on the computer when the NI MAX software is instal
 
 ---
 
-##How do I access the RoboRio WebServer settings?
+##How do I access the RoboRio WebServer?
 
 Simply navigate to any of the RoboRios IP address from any computer on the same network. 
 i.e http://10.xx.xx.2 over ethernet, or http://172.22.11.2 when using the USB cable.
@@ -51,6 +51,7 @@ Once you determine the IP address of the RoboRio, make sure your network interfa
 > Note: Fellow linux users, silverlight doesn't mesh well with *nix system. If you are on a linux machine you can try to install moonlight (which is a port of silverlight, unfortunately NI has no alternatives to access the WEB site other than through the silverlight plug-in at this time)
 
 Click the login button in the top righr corner and login with:
+
 ```
 username: admin
 password: <leave blank> there is no password
@@ -59,15 +60,7 @@ password: <leave blank> there is no password
 ---
 
 ##How do I set my team number?
-Your team number IP address will be set when you image the Rio for the first time. However, you can always check all of your network interface settings, and modify them through the web interface of the Rio. 
-
----
-
-##How do I connect to the Internet using the RoboRio
-Assuming you are connected to a network that has an internet connection, you need to set the default gateway and DNS server on the RoboRio. Use your browser to connect to the RoboRio webserver and click on login using `admin` as the user name, and leave the password blank. Select the Network interfaces Icon, and under eth0 select `advanced` to modify the default gateway and provide a DNS server. Here is a pic of what our setting look like:
-
-<img src="http://khengineering.github.io/RoboRio/Images/internetsettings.png">
-
+Your team number IP address will be set when you image the Rio for the first time. However, you can always check all of your network interface settings, and modify them through the web interface of the Rio. You must be logged in as `admin` to make any changes. 
 
 ---
 
@@ -87,6 +80,14 @@ password: <leave blank> there is no password
 ```
 
 Using SSH, you will hever terminal access to the RoboRio Linux filesystem
+
+---
+
+##How do I connect to the Internet using the RoboRio
+Assuming you are connected to a network that has an internet connection, you need to set the default gateway and DNS server on the RoboRio. Use your browser to connect to the RoboRio webserver and click on login using `admin` as the user name, and leave the password blank. Select the Network interfaces Icon, and under eth0 select `advanced` to modify the default gateway and provide a DNS server. Here is a pic of what our setting look like:
+
+<img src="http://khengineering.github.io/RoboRio/Images/internetsettings.png">
+
 
 ---
 
@@ -192,15 +193,17 @@ All PWM outputs on the RoboRio are 6V output power, 5v signals. There is no jump
 As the input voltage drops below a certain level, certain systems are turned off automatically. The brownout condition I believe starts when the input voltage to the RoboRio dips below 6.8V, at the moment it is unclear if it needs to stay below this level for any period of time.
 
 ```
-VbattIn ----[6 V "servo" supply]-----[current limit/disable]---6 V terminals
-                                    \
-                                     ----[5 V user supply]-----5 V terminals
-                                      \
-                                       --[3.3 V user supply]---3.3 V terminals
+VbattIn --[6 V "servo" supply]--[current limit/disable]---6 V terminals
+                                \
+                                 --[5 V user supply]-----5 V terminals
+                                  \
+                                   --[3.3 V user supply]---3.3 V terminals
 ```
 
 The change we made was to not disable the 3.3 V or 5 V supplies when we detect a brown-out condition (VbattIn < 6.8 V). This helps a bit for the 5 V to survive, but when the VbattIn drops to about 6.2 V, the 6 V servo supply is no longer able to stay active, so the 5 V and 3.3 V supplies drop out with a source voltage fault.
+
 It does mean there is now ~ 0.6 V between when the motors are disabled and when the 5 V and 3.3 V supplies shut down instead of them happening at the same time.
+
 I believe there is current work on a feature that will allow the FPGA to stop motor controllers (probable source of brown-out in non-pathological case) in far less time. The plan is to actively send one PWM pulse of "idle" when commanded to disable by the watchdog / power monitor before stopping the generation of PWM signals. Because the motor controllers are not continuing to draw high current for as long, the voltage drop should be less severe. This should reduce the time from brown-out detection to load removal from 100 ms +/- 5ms to about 10 ms +/- 5 ms.
 
 
@@ -227,7 +230,6 @@ Luckily the system is capable of managing current draw at many levels.
 
  There are probably others. I feel that the next step is to characterize the improvement that Joe has already implemented. I'm sure that will be accomplished in the beta. Probably quite soon.
 
- Greg McKaskle
  
  The bus switch that adjusts the signals passed to the FPGA is powered by a supply that is sourced by the buck-boost that powers the controller as a whole. That supply operates down to 4.5 V. That means that if you decide to power your encoder with a supply other than the one provided and the provided supply browns out, the signals will still make their way to the FPGA. As noted earlier, if your sensor depends on pull-up resistors (like limit switches or banner sensors or open-collector output encoders) then you will also need to add pull resistors connected to your external supply. You should be able to test this by either using the new power API to disable the 5 V supply manually or by installing a jumper between 5 V and Ground which puts the supply in protection.
  
