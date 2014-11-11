@@ -8,6 +8,15 @@ permalink: /faq//pdp/
 ##Specs
 
 
+
+---
+##Can I Use the old PDP Board with the new Control System?
+Refer to legal FRC rules for the official answer to this question. I don't imagine this will be legal for competition. The RoboRio requires a 7-16V input while the PDP board provides regulated 24V DC out of the cRIO terminal (This is because the old cRIO was a 24V device while the new RoboRio is a 12V nominal device).
+
+Now if you want to run some tests, or use this on a practice bot, you can safely power the RoboRio from one of the unregulated 30A wago power channels on the old PDB. The RoboRio takes in unregulated 12V battery voltage, so plugging it directly into a 12V channel on the old PDB will work. - BUT This should only be done for testing/practicing purposes and only if you do not have a new 2015 CTRE Power Distribution Board Available. 
+
+Do not plug the RoboRio into the old PDB cRIO power port. See the [RoboRio Faq](/faq/RoboRio.html) for more info
+
 ---
 
 ##What is sample rate of current monitoring?
