@@ -74,6 +74,7 @@ From Linux or Mac: Open Terminal and type `ssh -l admin <IP of RoboRio>
 From Windows install [putty](http://www.putty.org) and configure it to SSH to the roborio.
 
 The Login information for the RoboRio from the factory is:
+
 ```
 username: admin
 password: <leave blank> there is no password
