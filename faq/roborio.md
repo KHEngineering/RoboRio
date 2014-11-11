@@ -38,9 +38,28 @@ The USB drivers are installed on the computer when the NI MAX software is instal
 
 ---
 
-##How do I set my team number?
-Your team number IP address will be set when you image the Rio for the first time. However, you can always check all of your network interface settings, and modify them through the web interface of the Rio. Simply navigate to any of the RoboRios IP address from any computer on the same network. 
+##How do I access the RoboRio WebServer settings?
+
+Simply navigate to any of the RoboRios IP address from any computer on the same network. 
 i.e http://10.xx.xx.2 over ethernet, or http://172.22.11.2 when using the USB cable.
+
+If this is your first time starting up the RoboRio, the Ethernet port is set to DHCP, and the USB
+port is configured to static IP 172.22.11.2 address when connected to a computer that has the USB Driver installed (supplied when NI MAX is installed).
+
+Once you determine the IP address of the RoboRio, make sure your network interface card is also on the same network as the RoboRio, and you can navigate to it in any brower, which supports the Microsoft silverlight plugin to view the RoboRio webpage.
+
+> Note: Fellow linux users, silverlight doesn't mesh well with *nix system. If you are on a linux machine you can try to install moonlight (which is a port of silverlight, unfortunately NI has no alternatives to access the WEB site other than through the silverlight plug-in at this time)
+
+Click the login button in the top righr corner and login with:
+```
+username: admin
+password: <leave blank> there is no password
+```
+
+---
+
+##How do I set my team number?
+Your team number IP address will be set when you image the Rio for the first time. However, you can always check all of your network interface settings, and modify them through the web interface of the Rio. 
 
 ---
 
