@@ -11,10 +11,12 @@ permalink: /faq//pdp/
 8 - 12V 30A Unregulated Breaker Channels (accept up to XX awg wire
 
 3 Dedicated 12V Unregulated Channels for VRM, PCM, and RoboRio
+
    - RoboRio on Dedicated 15A ATX Fuse
    - VRM and PCM on Shared 20A ATX Fuse
 
 CAN Bus for Sensor Monitoring
+
    - Current
    - Voltage
    - Temp
