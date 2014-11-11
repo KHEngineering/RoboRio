@@ -20,12 +20,12 @@ CAN Bus for Sensor Monitoring
 
    - Current
    - Voltage
-   - Temp
+   - Temperture
  
 ---
 
 ##Can I Use the old PDP Board with the new Control System?
-Refer to legal FRC rules for the official answer to this question. I don't imagine this will be legal for competition. The RoboRio requires a 6.8-16VDV input voltage for normal operation while the old PDP board provides regulated 24VDC out of the dedicated cRIO terminal (This is because the old cRIO was a 24V device while the new RoboRio is a 12V nominal device).
+Refer to legal FRC rules for the official answer to this question. I don't imagine this will be legal for competition. The RoboRio requires a 6.8-16VDC input voltage for normal operation while the old PDP board provides regulated 24VDC out of the dedicated cRIO terminal (This is because the old cRIO was a 24V device while the new RoboRio is a 12V nominal device).
 
 Now if you want to run some tests, or use this on a practice bot, you can safely power the RoboRio from one of the unregulated 30A wago power channels on the old PDB. The RoboRio takes in unregulated 12V battery voltage, so plugging it directly into a 12V channel on the old PDB will work and will not damage the RoboRio. BUT this should only be done for testing/practicing purposes and only if you do not have a new 2015 CTRE Power Distribution Board Available. 
 
@@ -33,7 +33,7 @@ Do not plug the RoboRio into the old PDB cRIO power port. See the [RoboRio Faq](
 
 ---
 
-##What is sample rate of current monitoring?
+##What is the sample rate of current monitoring?
 The PDP sensor readings are put out on CANbus once every 25ms.
 
 ---
