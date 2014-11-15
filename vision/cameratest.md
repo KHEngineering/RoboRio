@@ -59,7 +59,7 @@ M1011 IP: 10.21.68.90
 Development Computer: 10.21.68.101
 No other devices on network
 
-<Insert Scenario A Pic>
+<img src="somepic">
 
 ---
 
@@ -78,7 +78,6 @@ Scenario B Test Apparatus:
 - No other devices on network
 
 
-<Insert Scenario B Pic>
 
 ---
 
@@ -95,7 +94,6 @@ Scenario C Test Apparatus:
 - No other devices on network
 - 
 
-<Insert Scenario C Pic>
 
 
 Measurement Accuracy:
