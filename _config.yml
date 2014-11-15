@@ -58,7 +58,6 @@ highlighter: pygments
 
 syntax-highlighting:
  enabled: true
- css: 
  
 permalink: /:title/
 
