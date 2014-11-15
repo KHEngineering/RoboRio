@@ -55,6 +55,11 @@ markdown: kramdown
 kramdown:
   input: GFM
 highlighter: pygments
+
+syntax-highlighting:
+ enabled: true
+ css: 
+ 
 permalink: /:title/
 
 # The release of Jekyll Now that you're using
