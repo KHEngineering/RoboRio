@@ -58,7 +58,7 @@ Scenario A Test Apparatus:
 - Development Computer: 10.21.68.101
 - No other devices on network
 
-<img src="somepic">
+<img src="/RoboRio/vision/320x24010fps.png">
 
 ---
 
