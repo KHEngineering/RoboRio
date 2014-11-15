@@ -101,7 +101,7 @@ The performance measurements will be done internally in the code Using C++ RT li
 
 Here is an example of how the measurements are taken within the code.
 
-{% highlight cpp %}
+{% highlight cp %}
 #include <ctime>
 
 clock_gettime(CLOCK_REALTIME, &start);
