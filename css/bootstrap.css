@@ -99,14 +99,14 @@ hr {
           box-sizing: content-box;
 }
 pre {
-  overflow: auto;
+  overflow: false;
 }
 code,
 kbd,
 pre,
 samp {
   font-family: monospace, monospace;
-  font-size: 1em;
+  font-size: 0.5em;
 }
 button,
 input,
