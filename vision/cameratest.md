@@ -43,7 +43,8 @@ Meet the hardware:
 30FPS max rate
 
 Test Apparatus:
-Scenario A Test Apparatus: 
+Scenario A Test Apparatus:
+
 BeagleBone Black, RoboRio, and M1011 Camera are connected via hardware Ethernet using  D-Link 1522 Rev B switch.
 M1011 Camera and D-Link are powered from 2015 Voltage Regulator Module
 VRM and RoboRio are powered from 2015 Power Distribution Panel
@@ -60,9 +61,12 @@ No other devices on network
 
 <Insert Scenario A Pic>
 
+
 ---
 
+
 Scenario B Test Apparatus:
+
 Jetson TK1, RoboRio, and M1011 Camera are connected via hardware Ethernet using D-Link 1522 Rev B switch.
 M1011 Camera and D-Link are powered from 2015 Voltage Regulator Module
 VRM and RoboRio are powered from 2015 Power Distribution Panel
