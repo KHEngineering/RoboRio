@@ -51,8 +51,7 @@ Scenario A Test Apparatus:
 - VRM and RoboRio are powered from 2015 Power Distribution Panel
 - PDP is powered by FRC Legal Battery
 - BeagleBone Black is powered from 5v2A supply connected to 110V wall outlet
-
-
+^
 - BeagleBone Black IP: 10.21.68.33
 - RoboRio IP: 10.21.68.2
 - M1011 IP: 10.21.68.90
@@ -70,8 +69,7 @@ Scenario B Test Apparatus:
 - VRM and RoboRio are powered from 2015 Power Distribution Panel
 - PDP is powered by FRC Legal Battery
 - Jetson TK1 is powered from 12v5A external supply connected to 110V wall outlet
-
-
+^
 - Jetson TK1 IP: 10.21.68.71
 - RoboRio IP: 10.21.68.2
 - M1011 IP: 10.21.68.90
@@ -88,8 +86,7 @@ Scenario C Test Apparatus:
 - M1011 Camera and D-Link are powered from 2015 Voltage Regulator Module
 - VRM and RoboRio are powered from 2015 Power Distribution Panel
 - PDP is powered by FRC Legal Battery
-
-
+^
 - RoboRio IP: 10.21.68.2
 - M1011 IP: 10.21.68.90
 - Development Computer: 10.21.68.101
@@ -104,7 +101,8 @@ The performance measurements will be done internally in the code Using C++ RT li
 
 Here is an example of how the measurements are taken within the code.
 
-```cpp
+~~~cpp
+```
 #include <ctime>
 
 clock_gettime(CLOCK_REALTIME, &start);
@@ -121,7 +119,8 @@ double diffClock(timespec start, timespec end)
 { 
   return	(end.tv_sec - start.tv_sec) + (double) (end.tv_nsec - start.tv_nsec)/ 1000000000.0f; 
 } 
-``` 
+```
+~~~
 
 Source Code Description:
 
