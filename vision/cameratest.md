@@ -13,9 +13,9 @@ The purpose of this test is to help determine which approach is best suitable to
 Test Objectives:
 In this test we will be focusing on 3 test scenarios:
 
-A. Beagle Bone Black - Off Board Processor
-B. Nvidia Jetson TK1 - Off Board Processor
-C. Vision on Roborio along side Robot Code
+  A. Beagle Bone Black - Off Board Processor
+  B. Nvidia Jetson TK1 - Off Board Processor
+  C. Vision on Roborio along side Robot Code
 
 The reason we are focusing on these 3 devices is two fold:
 
@@ -46,18 +46,18 @@ Meet the hardware:
 Test Apparatus:
 Scenario A Test Apparatus:
 
-BeagleBone Black, RoboRio, and M1011 Camera are connected via hardware Ethernet using  D-Link 1522 Rev B switch.
-M1011 Camera and D-Link are powered from 2015 Voltage Regulator Module
-VRM and RoboRio are powered from 2015 Power Distribution Panel
-PDP is powered by FRC Legal Battery
-BeagleBone Black is powered from 5v2A supply connected to 110V wall outlet
+- BeagleBone Black, RoboRio, and M1011 Camera are connected via hardware Ethernet using  D-Link 1522 Rev B switch.
+- M1011 Camera and D-Link are powered from 2015 Voltage Regulator Module
+- VRM and RoboRio are powered from 2015 Power Distribution Panel
+- PDP is powered by FRC Legal Battery
+- BeagleBone Black is powered from 5v2A supply connected to 110V wall outlet
 
 
-BeagleBone Black IP: 10.21.68.33
-RoboRio IP: 10.21.68.2
-M1011 IP: 10.21.68.90
-Development Computer: 10.21.68.101
-No other devices on network
+- BeagleBone Black IP: 10.21.68.33
+- RoboRio IP: 10.21.68.2
+- M1011 IP: 10.21.68.90
+- Development Computer: 10.21.68.101
+- No other devices on network
 
 <img src="somepic">
 
@@ -70,6 +70,7 @@ Scenario B Test Apparatus:
 - VRM and RoboRio are powered from 2015 Power Distribution Panel
 - PDP is powered by FRC Legal Battery
 - Jetson TK1 is powered from 12v5A external supply connected to 110V wall outlet
+
 
 - Jetson TK1 IP: 10.21.68.71
 - RoboRio IP: 10.21.68.2
@@ -88,11 +89,12 @@ Scenario C Test Apparatus:
 - VRM and RoboRio are powered from 2015 Power Distribution Panel
 - PDP is powered by FRC Legal Battery
 
+
 - RoboRio IP: 10.21.68.2
 - M1011 IP: 10.21.68.90
 - Development Computer: 10.21.68.101
 - No other devices on network
-- 
+
 
 
 
@@ -126,10 +128,11 @@ Source Code Description:
 The vision code used is the exact source code we ran throughout 5 competition in the 2014 season on a Beaglebone white. The source has undergone no changes for these test other than adding/modifying the areas to be timed
 
 The code has 5 threads:
-1st: Outgoing TCP Messages to RoboRio
-2nd: Incoming TCP Messages to RoboRio
-3rd: FFMPEG Video Capture of Camera
-4th: Image processing thread
+
+  1st: Outgoing TCP Messages to RoboRio
+  2nd: Incoming TCP Messages to RoboRio
+  3rd: FFMPEG Video Capture of Camera
+  4th: Image processing thread
 
 The program is written using pthread and pthread mutex locks for thread safe operation.
 Upon startup the Outgoing TCP link and FFMPEG threads start and try to establish communication with the RoboRIo and the IP
