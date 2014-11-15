@@ -59,12 +59,9 @@ M1011 IP: 10.21.68.90
 Development Computer: 10.21.68.101
 No other devices on network
 
-
 <Insert Scenario A Pic>
 
-
 ---
-
 
 Scenario B Test Apparatus:
 
