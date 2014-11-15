@@ -101,7 +101,7 @@ The performance measurements will be done internally in the code Using C++ RT li
 
 Here is an example of how the measurements are taken within the code.
 
-{% highlight cp %}
+```
 #include <ctime>
 
 clock_gettime(CLOCK_REALTIME, &start);
@@ -118,7 +118,7 @@ double diffClock(timespec start, timespec end)
 { 
   return	(end.tv_sec - start.tv_sec) + (double) (end.tv_nsec - start.tv_nsec)/ 1000000000.0f; 
 } 
-{% endhighlight %}
+```
 
 Source Code Description:
 
