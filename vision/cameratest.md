@@ -56,7 +56,7 @@ Scenario A Test Apparatus:
 - RoboRio IP: 10.21.68.2
 - M1011 IP: 10.21.68.90
 - Development Computer: 10.21.68.101
-- No other devices on network
+- No other devices on networks
 
 <img src="../320x24010fps.png">
 
