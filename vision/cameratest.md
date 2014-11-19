@@ -58,7 +58,7 @@ Scenario A Test Apparatus:
 - Development Computer: 10.21.68.101
 - No other devices on network
 
-<img src="/320x24010fps.png">
+<img src="320x24010fps.png">
 
 ---
 
@@ -101,12 +101,12 @@ The performance measurements will be done internally in the code Using C++ RT li
 
 Here is an example of how the measurements are taken within the code.
 
-{% highlight cpp %}
+{% highlight java %}
 #include <ctime>
 
 clock_gettime(CLOCK_REALTIME, &start);
 
-   //some process to measure
+   //some process to measurve
 
 clock_gettime(CLOCK_REALTIME, &end);
 
