@@ -58,7 +58,7 @@ Scenario A Test Apparatus:
 - Development Computer: 10.21.68.101
 - No other devices on networks
 
-<img src="{{baseurl}}/vision/cameratest/320x24010fps.png">
+<img src="{{site.baseurl}}/vision/cameratest/320x24010fps.png">
 
 ---
 
