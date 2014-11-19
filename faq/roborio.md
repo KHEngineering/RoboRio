@@ -4,7 +4,7 @@ title: RoboRio FAQ
 permalink: /faq/roborio/
 ---
 
-<img src = "http://khengineering.github.io/RoboRio/Images/roborio.jpg">
+<img src = "../../Images/roborio.jpg">
 
 ##Specs: 
 
@@ -24,7 +24,7 @@ USB 2.0
 
 ---
 
-##What If I accidently plug into 24V?
+##What If I accidently plug into 24V power?
 The new RoboRio will not be damaged. It will sense any voltage over 16V and safely shut down the systems which can not handle the voltage. You will need to remove the 24VDC supply and provide a suitable input voltage before the RoboRio can start up again.
 
 ---
