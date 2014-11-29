@@ -109,6 +109,23 @@ If you get a message similar to the one below:
 
 It means you haven't set up your project build path with a Java Development Kit (JDK).
 
+---
+
+##When I deploy I get "Remote command failed with exit status 1" error
+
+If you get an error similar to this after line `cmd : test -d /usr/local/frc/JRE`
+
+<img src = "../../Images/eclipseerror/jvmmissingerror.png">
+
+The most likely cause is your RoboRio does not have the Java JVM installed. Please be sure to follow the steps exactly above to install the JVM on the Roborio. 
+
+If you believe you installed the JVM but are still receiving this error, please ensure that the JVM is in the right location and that that the bin file has the executable attribute set. 
+
+1. Use find to determine where the JVM is located. Run `find / -name *javac*` in the Roborio termina. The `javac` application must be in the location `/usr/local/frc/JRE/bin`
+2. Once the JVM is in the right folder location ensure the execute attribute is set `chmod +x /usr/local/frc/JRE/bin/*`
+
+---
+
 ##Can you tell me whats new between 2014 Java and 2015 Java WPILib
 
 Here Goes:
