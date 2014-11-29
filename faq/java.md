@@ -129,7 +129,7 @@ brownout status.
 compiling programs and not the default. If it is desired to run with a higher compiler
 optimization level, a team can do that in the project properties and verify that it is working.
 13. We have (with some controversy) removed the timing option from the IterativeRobot
-template. The belief is that it represents a distinctly different way of the template from operating from it’s original
+template. The belief is that it represents a distinctly different way of the template from operating from it's original
  intent which was to sync with the DS packet arrival (a 20ms loop). Teams wishing to run with other timing can easily 
 use the SampleRobot template or make their own by subclassing RobotBase.
 14. OutlineViewer is not part of the regular build and is now included in the tools directory.
@@ -154,7 +154,7 @@ builder issue with doing improper dependency checking. (art3766)
 34. Re-added the Wiring.html file to RobotBuilder
 35. using mDNS name derived from team number in SmartDashboard
 
-Still have more to come that didn’t make it in today:
+Still have more to come that didn't make it in today:
 - Talon SRX CAN support
 - additional camera and vision support (java bindings for NIVision - thanks Peter) - a glitch filter from Austin Schuh 
 on 971
