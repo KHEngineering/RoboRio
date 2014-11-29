@@ -4,6 +4,7 @@ title: Power Distribution Panel (PDP) FAQ
 permalink: /faq//pdp/
 ---
 
+<img src = "../../Images/pdpinfo.png">
 
 ##Specs
 12V Battery input (M6x1 Threaded Terminals)
@@ -29,7 +30,7 @@ Refer to legal FRC rules for the official answer to this question. I don't imagi
 
 Now if you want to run some tests, or use this on a practice bot, you can safely power the RoboRio from one of the unregulated 30A wago power channels on the old PDB. The RoboRio takes in unregulated 12V battery voltage, so plugging it directly into a 12V channel on the old PDB will work and will not damage the RoboRio. BUT this should only be done for testing/practicing purposes and only if you do not have a new 2015 CTRE Power Distribution Board Available. 
 
-Do not plug the RoboRio into the old PDB cRIO power port. See the [RoboRio Faq](/RoboRio/faq/roborio/) for more info
+Do not plug the RoboRio into the old PDB cRIO power port. See the [RoboRio Faq](/RoboRio/faq/roborio/) for more info.
 
 ---
 
@@ -68,7 +69,7 @@ The PDP only monitors the current outputs of each (16) of the high power channel
  
 There is no current/voltage monitoring of the PCM, VRM, or RoboRio dedicated ports.
 
-Here are some work arounds to measure the PCM, VRM, RoboRio:
+Here are some work-arounds to measure the PCM, VRM, RoboRio:
 
 * The PCM monitors compressor current, and faults for shorts and compressor over-current and can be accessed over can
 * The DriveStation Battery Voltage Reading is directly from the RoboRio input voltage.
@@ -79,10 +80,20 @@ Here are some work arounds to measure the PCM, VRM, RoboRio:
 ##I have nothing connected to a channel, but the current reading is XXA?
 
 
+If the current is small this is probably OK (small being 1.2A or less). The current is larger this can indicate something wrong with the current sensor reading chip. The PDP has 4 current sensors chips
+
+[0-3] share a a current sensing chip
+[4-7] share a a current sensing chip
+[8-11] share a a current sensing chip
+[12-15] share a a current sensing chip
+
+If there is damage to the current sensing device itself, expect to see erroneous readings on the other channels sharing the sensor.
+
+
 ---
 
 
-##What is fault monitoring?
+##What is faults are monitored on the PDP?
 
 
 ---
