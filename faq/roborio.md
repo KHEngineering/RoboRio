@@ -330,11 +330,12 @@ To get out of Safemode reboot the RoboRio by pressing the Reset Button, issuing 
 ##How to I commuicate with the RoboRio over Serial (RS-232)
 
 The Serial Information is:
-– 115,200 bits per second
-– Eight data bits
-– No parity
-– One stop bit
-– No flow control
+
+- 115,200 bits per second
+- Eight data bits
+- No parity
+- One stop bit
+- No flow control
 
 You will need to buy USB-to-serial adapter and make a DB-9 to 3-pin header cable. Follow Instructions here: []()
 
