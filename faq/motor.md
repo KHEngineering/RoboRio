@@ -4,6 +4,9 @@ title: Motor Controller FAQ
 permalink: /faq/motor/
 ---
 
+<img src = "../../Images/motorcontrollers.png">
+
+
 ##Can I still use the Black and Tan Jaguars?
 The system should support either jag with the latest firmware (v107 for black, v101 for grey).
 
@@ -30,8 +33,8 @@ updates.
 ---
 
 ##Do I need to set the internal jumper on the RoboRio to drive Servos?
-The 3.3v/5v internal jumper only affects the DIO power output.
-The PWM signals are always 5v max. The PWM power is always 6v. The motor controllers have this line disconnected, so power on it doesn't affect them. This means you can use the same PWM pins to power 6V servos, or FRC legal motor controllers without changing any hardware settings.
+No. The 3.3v/5v internal jumper only affects the DIO channel power output.
+The PWM signals are always 5v max. The PWM power is always 6v output. The motor controllers have this line disconnected, so power on it doesn't affect them. This means you can use the same PWM pins to power 6V servos, or FRC legal motor controllers without changing any hardware settings.
 
 ---
 
@@ -39,5 +42,11 @@ The PWM signals are always 5v max. The PWM power is always 6v. The motor control
 
 Fear not. This is an artifact of the back-drive protection on this supply. The current path passes through a diode when the load is low. When the current is detected to be greater than 0, a FET is switched on and the diode is bypassed. This means that at no load the output looks low (5.7V), but as soon as there is a load, the voltage climbs to 6V.
 
- Please see the attached image. This is a graph created using the new Power palette in WPILib (that's right, you can monitor this directly in the controller without external connections). I plugged in a servo, enabled, and then twisted the output shaft with my hand, forcing it to fight me and increase load on the power supply. You can see that under load the voltage increases, not decreases.
+Please see the attached image. This is a graph created using the new Power palette in WPILib (that's right, you can monitor this directly in the controller without external connections). I plugged in a servo, enabled, and then twisted the output shaft with my hand, forcing it to fight me and increase load on the power supply. You can see that under load the voltage increases, not decreases.
  
+---
+
+##Can I use the Talon SRX in PWM or CAN mode?
+
+Yes, the talon SRX will automatically detect whether it is connected to a PWM source or a CAN source
+
