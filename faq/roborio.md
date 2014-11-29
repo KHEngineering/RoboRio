@@ -256,20 +256,20 @@ The PDP Power supply to the RoboRio is not regulated, the RoboRio regulates its 
 
 Here is the breakdown of the logic we noticed during brownout testing:
 
-input voltage is 7.5V and above
-    All RoboRio Systems are fully functional, Power LED is Green
-input voltage Below 6.8V, Power LED is Organge
-	RoboRio Power light goes from Green to Red
-	All PWM Output signals are disabled (Motor controllers are neutral)
-	6V Servo Output power is disabled
-input voltage power Below 6.3V
-    All DIO 5V output power is disabled (RoboRio and MXP)
-    All 3.3V output is disabled (RoboRio and MXP)
-    Digital Input and Analong input signal pins are still active
-input voltage Below 4.0V, Power LED is Off
-    RoboRio Processor died
-    No longer able to read an DIO channel states
-    Loss of Comms with Robot
+* input voltage is 7.5V and above
+    - All RoboRio Systems are fully functional, Power LED is Green
+* input voltage Below 6.8V, Power LED is Organge
+	- RoboRio Power light goes from Green to Red
+	- All PWM Output signals are disabled (Motor controllers are neutral)
+	- 6V Servo Output power is disabled
+* input voltage power Below 6.3V
+    - All DIO 5V output power is disabled (RoboRio and MXP)
+    - All 3.3V output is disabled (RoboRio and MXP)
+    - Digital Input and Analong input signal pins are still active
+* input voltage Below 4.0V, Power LED is Off
+    - RoboRio Processor died
+    - No longer able to read an DIO channel states
+    - Loss of Comms with Robot
 
 
 From my understanding, the regualtor topology on the RoboRio is such that the 6V supply feeds the 5V supply, and the 5V supply feeds the 3,3V supply. So upon a brownout event, (VbattIn < 6.8 V) PWM output and 6V servo power are deactivated, but the 6V supply is still operational (so 5V and 3.3V rails are still operational). When the RoboRio drops below 6.3V, the 6V regulator can no longer be sustained so the 6V, 5V and 3.3V power are lost. 
