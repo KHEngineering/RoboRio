@@ -58,10 +58,13 @@ Ensure RoboRio is flashed and Imaged to latest versions then continue with steps
 5. Go back to Roborio terminal and execute `cd /usr/local/frc/JRE`
 6. If you run `ls` you should see the tar file we just transfered
 7. Untar the tar file `tar -zxvf ejdk-8u6-fcs-b23-linux-arm-vfp-sflt-12_jun_2014.tar.gz`
-8. If you run 'ls' you should see a bin folder and a bunch of other folders
-9. Remove the tar file `rm ejdk-8u6-fcs-b23-linux-arm-vfp-sflt-12_jun_2014.tar.gz`
-10. Set permissions on java files `chmod +x /usr/local/frc/JRE/bin/*`
-11. Done
+8. Once complete, if you run `ls` you should see a folder similar too `ejdk1.8.0_06`
+9. move the contents of this folder ` mv ejdk1.8.0_06/* .`
+10. If you run 'ls' now you should see a bin folder and a bunch of other folders
+11. Remove the tar file `rm ejdk-8u6-fcs-b23-linux-arm-vfp-sflt-12_jun_2014.tar.gz`
+12. Remove the empty folder `rm -r ejdk1.8.0_06/`
+13. Set permissions on java files `chmod +x /usr/local/frc/JRE/bin/*`
+14. Done
 
 ---
 
@@ -90,7 +93,8 @@ User programs are downloaded to /home/lvuser directory
 
 ##When I open eclipse I get an error stating "Unable to find JVM"
 
-This problem is most likely caused by not having a JVM or JDK installed on your computer. Please See step 
+````This problem is most likely caused by not having a JVM or JDK installed on your computer. Please See step 
+
 ---
 
 ##When I Deploy My Java Program I get an "Unable to find Javac Message"
