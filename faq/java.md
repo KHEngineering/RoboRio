@@ -31,46 +31,27 @@ Note: Mac Users must install 64-bit JDK
 
 ##How do I install the Java Virtual Machine on the RoboRio
 
+Installing the JVM for Embedded Devices, is not the same as install the JVM on a desktop. Oracle, the developers of the Java Virtual Machine for Embedded devices decided to release the JVM with a special installation procedure. The use must download the JVM to a host computer and run a program which build an embedded JVM for your targer with all of the configurations you desire. Then, you transfer the built JVM to your target (embedded device).
+
+FIRST has created an easy to follow process that does all of the configurations for you so that you do not need to be concerned with the details. Follow their directions below. If you with to do it on your own, I am working on posting the manual steps required.
+
+###Official FIRST Procedure
 Ensure RoboRio is flashed and Imaged to latest versions then continue with steps below.
 
 [Offical screensteps directions](https://wpilib.screenstepslive.com/s/4485/m/13809/l/243933-installing-java-8-on-the-roborio-java-only)
 
-###From Development Computer
+###Manual Procedure
 1. Create an account on Oracles Website [oracle](https://login.oracle.com/mysso/signon.jsp)
 2. Download the Java SE 8 Embedded JVM for ARMv7 Linux VFP, SoftFP ABI, Little Endian [ARM JVM](http://www.oracle.com/technetwork/java/embedded/embedded-se/downloads/javase-embedded-downloads-2209751.html)
-3. Transfer and untar the JVM to the RoboRio using the project provided by FIRST in the official documentation or do it manually using the steps below:
+3. Use 7-zip to untar the download on your host machine
 
-###Deploy JRE Project
-1. Follow Official directions
-
-###Windows Host Machine Connected to RoboRio
-1. Use SFTP via browser or WINSCP application to connect to RoboRio
-2. Create director `JRE` in folder /usr/local/frc/ such that you now have a /usr/local/frc/JRE/ folder structure
-3. transfer downloaded .tar.gz file to RoboRio folder /etc/bin/frc/JRE/
-4. Use putty to connect to shell terminal on RoboRio. See the [RoboRio FAQ](/RoboRio/faq/roborio/) for more info.
-5. Continue to Step 5 under Linux/Mac Host Machine
-
-###Linux/Mac Host Machine Connected to RoboRio
-1. Open terminal and connect to RoboRio via SSH. See the [RoboRio FAQ](/RoboRio/faq/roborio/) for more info.
-2. On RoboRio terminal run `mkdir /usr/local/frc/JRE`
-3. Open a second local terminal window
-4. Using local terminal window Transfer downloaded file to to RoboRio `scp /home/user/downloads/ejdk-8u6-fcs-b23-linux-arm-vfp-sflt-12_jun_2014.tar.gz admin@172.22.11.2:/usr/local/frc/JRE
-5. Go back to Roborio terminal and execute `cd /usr/local/frc/JRE`
-6. If you run `ls` you should see the tar file we just transfered
-7. Untar the tar file `tar -zxvf ejdk-8u6-fcs-b23-linux-arm-vfp-sflt-12_jun_2014.tar.gz`
-8. Once complete, if you run `ls` you should see a folder similar too `ejdk1.8.0_06`
-9. move the contents of this folder ` mv ejdk1.8.0_06/* .`
-10. If you run 'ls' now you should see a bin folder and a bunch of other folders
-11. Remove the tar file `rm ejdk-8u6-fcs-b23-linux-arm-vfp-sflt-12_jun_2014.tar.gz`
-12. Remove the empty folder `rm -r ejdk1.8.0_06/`
-13. Set permissions on java files `chmod +x /usr/local/frc/JRE/bin/*`
-14. Done
+TO BE CONTINUED
 
 ---
 
 ##How Can I see live Program Output in Eclipse?
 
-Use the RioLog Viewer.
+Yes. Use the RioLog Viewer.
 
 To find the RIOLog window, in eclipse, go to Window, Show View, Other and search for RIOlog and you'll see it. Once you add it, it will stay around between eclipse restarts.
 
@@ -93,7 +74,7 @@ User programs are downloaded to /home/lvuser directory
 
 ##When I open eclipse I get an error stating "Unable to find JVM"
 
-````This problem is most likely caused by not having a JVM or JDK installed on your computer. Please See step 
+This problem is most likely caused by not having a JVM or JDK installed on your computer. Please install a JVM on your programming computer in accordance with step 4 of the quick start guide above.
 
 ---
 
@@ -121,87 +102,14 @@ The most likely cause is your RoboRio does not have the Java JVM installed. Plea
 
 If you believe you installed the JVM but are still receiving this error, please ensure that the JVM is in the right location and that that the bin file has the executable attribute set. 
 
-1. Use find to determine where the JVM is located. Run `find / -name *javac*` in the Roborio termina. The `javac` application must be in the location `/usr/local/frc/JRE/bin`
+1. Use find to determine where the JVM is located. Run `find / -name *jar*` in the Roborio termina. The `jar` application must be in the location `/usr/local/frc/JRE/bin`
 2. Once the JVM is in the right folder location ensure the execute attribute is set `chmod +x /usr/local/frc/JRE/bin/*`
 
 ---
 
 ##Can you tell me whats new between 2014 Java and 2015 Java WPILib
 
-Here Goes:
-
-Changes for is version:
-1. Wait on starting until DS is connected - Java only for now. C++ equivalent change coming
-soon.
-2. Java installed test on program startup
-3. Image version check to make sure image version matches library.
-4. NI Vision code integrated for C++ release, Java coming soon. There are two sample
-programs for C++ that should get you started. There is a camera server built-in that will feed
-images to the NI Dashboard. We will have support for the SmartDashboard soon.
-5. We are now using the NetConsole protocol for sending output to the development system.
-There is a new window in eclipse called RIOLog (thanks to Manuel from 1511). Pop this up after launching to see program 
-output. You can also use the NetConsole utility that is supplied with the LabVIEW release.
-6. Added FRCSim.
-7. Methods added to check for robot status including Watchdog status, DS status, and
-brownout status.
-9. Added support for launching a simulation friendly SmartDashboard.
-11. Restored the -ip option support for SmartDashboard
-12. The release configuration is removed from the C++ template. This was an untested mode of
-compiling programs and not the default. If it is desired to run with a higher compiler
-optimization level, a team can do that in the project properties and verify that it is working.
-13. We have (with some controversy) removed the timing option from the IterativeRobot
-template. The belief is that it represents a distinctly different way of the template from operating from it's original
- intent which was to sync with the DS packet arrival (a 20ms loop). Teams wishing to run with other timing can easily 
-use the SampleRobot template or make their own by subclassing RobotBase.
-14. OutlineViewer is not part of the regular build and is now included in the tools directory.
-15. An off-by-one error in Digital Output PWM Gen has been fixed (artf3705).
-16. User APIs for the roboRIO power methods has been implemented (artf3728 and artf3537)
-17. The "clean" step is being invoked before deploying java programs to get around the ant
-builder issue with doing improper dependency checking. (art3766)
-18. All samples now build with the appropriate C++11/14 syntax to avoid warnings (constexpr)
-20. Fixed 0-based joysticks and joystick axis in simulation
-21. PIDController loop timing is now done with a notifier to remove jitter in timing.
-22. Check for fatal interrupt status on multiple interrupt methods to avoid hanging program
-23. Talon now uses 1X update rate (artf 3733)
-24. Use ByteBuffer for conversion from raw sensor byte to Java types
-25. Remove unimplemented sendErrorStreamToDriverStation method
-26. Detect projects which are duplicates on Windows due to casing
-27. Update Interrupt Javadocs
-28. DigitalInputs are now automatically added to LiveWindows in both C++ and Java
-29. No longer raising exception for Joystick axis/POV out of range (Thanks to Peter Johnson) 30. 
-30. User programs are now downloaded to /home/lvuser
-31. Added isEnabled() method calls to loops in sample programs
-32. Added a message to notify users of unsupported simulation platform. 33. Fixed issue with RobotBuilder jar files.
-34. Re-added the Wiring.html file to RobotBuilder
-35. using mDNS name derived from team number in SmartDashboard
-
-Still have more to come that didn't make it in today:
-- Talon SRX CAN support
-- additional camera and vision support (java bindings for NIVision - thanks Peter) - a glitch filter from Austin Schuh 
-on 971
-- an OpenCV library build for the roboRIO complete with C++ and Java bindings. - and more smaller improvements
-- Many more sample programs
-- Java driver station test mode flag set correctly
-- Number of joysticks increased to 6
-- Additional joystick support implemented including POV
-- Runtime errors are now more properly passed to the DS Log
-- Jaguar getControlMode() is now public
-- Relay "On" state can now be set from SmartDashboard
-- Wait() now recovers from signals - continues to wait for remaining time
-- Preferences class now checks for [ and ]
-- Scheduler now runs in disabled mode
-- Add SmartDashboard methods with default values to match network tables
-- Add method to get the CAN device ID for Jaguar
-
-
-SmartDashboard now uses mDNS by default. The command line argument is temporarily removed, but you can set either mDNS 
-or IP address in the preferences.
-
-- home path stored in newly created projects references the user directory dynamically to better support multi-developer
- and source code control projects
-
-- More sample programs
-- Interrupts can now be triggered from AnalogTriggers and Digital inputs
+- This list is a work in progress and will be provided soon
 
 
       
