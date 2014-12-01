@@ -118,6 +118,7 @@ You can use this web interface to read the current sensor readings of the PDP, r
 
 
 Note: 
+
 1. The webdash needs about 5 seconds on boot up to scan all CAN Node. This means it is possible to load the webpage before all CAN devices are discovered. Use the browser refresh in order to populate all discovered CAN devices. 
 
 2. When a NEW can node is installed while the website has already been loaded, the webpage will need to be refreshed to discover the new device.
