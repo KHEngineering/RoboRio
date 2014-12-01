@@ -93,7 +93,17 @@ If there is damage to the current sensing device itself, expect to see erroneous
 ---
 
 
-##What is faults are monitored on the PDP?
+##What faults are monitored on the PDP?
+
+Refer to the official documentation on the PDP []().
+
+If the PDP is connected to the RoboRio via CAN, you can use the RoboRio webpage to view the status of any PDP faults. 
+
+1. Log in to the RoboRio webpage (see [RoboRio FAQ](/RoboRio/faq/roborio)
+2. Click on the CAN interface from the side menu
+3. Select the PDP to view more information on the hardware
+4. Use the Self-Test button to provide detailed information of all sensors on the PDP, including any faults
+5. Double-clicking the self-test button will reset any stick faults.
 
 
 ---
@@ -103,7 +113,40 @@ If there is damage to the current sensing device itself, expect to see erroneous
 If the PDP is plugged into the RoboRio via CAN, you can view the status of the PDP through the RoboRio's web interface.
 
 Simply use any browser with the silverlight plugin to navigate to the RoboRio's IP address. From there you can see all CAN devices connected to the RoboRio, and view their available data.
-You can use this web interface to read the current sensor readings of the PDP, review any faults, and even upgrade it's firmware.
+
+You can use this web interface to read the current sensor readings of the PDP, review any faults, change its CAN ID number, and even upgrade it's firmware.
+
+```
+Note: 
+1. The webdash needs about 5 seconds on boot up to scan all CAN Node. This means it is possible to load the webpage before all CAN devices are discovered. Use the browser refresh in order to populate all discovered CAN devices. 
+
+2. When a NEW can node is installed while the website has already been loaded, the webpage will need to be refreshed to discover the new device.
+
+3. If there is a conflict of multiple devices with the same ID on the CAN network, the webpage will notify you. A "blink" LED feature on the CAN page will help you physically identify which CAN device you are working on by flashing its LED repeatedly.
+
+4. From the website standpoing, having multiple dissimilar CAN node with the same ID is harmless. I.E having a PCM, PDP, and Jaguar with ID of 1 is acceptable. If this happens the website will not indicate any error.
+
+5. Having two or more CAN node of the same type and device ID will prevent your robot application from identifying one can device from another. This can happen when you have multiple PCMs or Multiple CAN Talons. The Website will indicate an error. By defailt all CTRE devices ship with an ID of 0. The website handles this gracefully, so you can see all the devices still, and change their ID accordingly. Use the "Blink LED" feature to physically identify which device you are working on. 
+
+5. You will need to give each and every device on your CAN bus a unique ID (whether they are similar or dissimilar) so that you can use them successuly in your code. The above points were just to highlight the limitations and relaxations imposed by the RoboRio webpage when dealing with CAN devices.
+
+```
+
+---
+
+##How can I upgrade the Firmware on the PDP
+
+For Beta testing the Firmware for the PDP was provided by CTRE. To flash the PDP is very similar to flashing the RoboRio.
+
+1. Connect the RoboRio to the PDP using CAN.
+2. Power the System and launch the RoboRio website
+3. Login as `admin`
+4. If you have trouble with any of the above steps see the [RoboRio FAQ](/RoboRio/faq/roborio)
+5. Select the CAN device icon
+6. Select the PDP and click on Upgrade Firmware
+7. Navigate to the PDP Firmware you would like to use and select being update.
+ 
+
 
 ---
 
