@@ -27,7 +27,7 @@ To use mDNS on FRC, a mDNS resolver must be installed on your development comput
 
 Most web-browsers should be able to utilize the mDNS address to access the roboRIO webserver as long as an mDNS provider is installed. Please note the following exceptions:
 
-Chrome - In Google Chrome, a trailing '/' must be appended to access mDNS addresses (eg.  roboRIO-190.local/)
+Chrome - In Google Chrome, a trailing '/' must be appended to access mDNS addresses (eg.roboRIO-2168.local/)
 
 ###How do I set up my Robot Network to use mDNS?
 USB
