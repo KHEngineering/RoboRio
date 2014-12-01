@@ -116,7 +116,7 @@ Simply use any browser with the silverlight plugin to navigate to the RoboRio's 
 
 You can use this web interface to read the current sensor readings of the PDP, review any faults, change its CAN ID number, and even upgrade it's firmware.
 
-```
+
 Note: 
 1. The webdash needs about 5 seconds on boot up to scan all CAN Node. This means it is possible to load the webpage before all CAN devices are discovered. Use the browser refresh in order to populate all discovered CAN devices. 
 
@@ -130,7 +130,6 @@ Note:
 
 5. You will need to give each and every device on your CAN bus a unique ID (whether they are similar or dissimilar) so that you can use them successuly in your code. The above points were just to highlight the limitations and relaxations imposed by the RoboRio webpage when dealing with CAN devices.
 
-```
 
 ---
 
