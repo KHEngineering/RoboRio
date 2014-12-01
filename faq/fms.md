@@ -69,3 +69,11 @@ Note: You can still assign static IPs to any device on the Robot. However, do so
 Yes, however remember the Link between the driverstation and the Robot is capped at 7 Mbits/second total. The Driverstation protocol uses roughly 900kbits/sec alone, leaving ~6Mb/s for any network tables, camera traffic, or any other data the team wishes to transmit over the WIFI network. As a Control Engineer, I would recommend teams ensure that at no time are they using more than 5Mb/s total (including DS packets) to maintain reliable connection. More information on FMS can be learned from the FMS whitepaper released by FIRST: [FMS Whitepaper](http://www.usfirst.org/sites/default/files/uploadedFiles/Robotics_Programs/FRC/Game_and_Season__Info/2013/FMSWhitePaper_RevA.pdf)
 
 FIRST also released a FMS light program so teams can practice at home, with a similar FMS in the loop. However, FMS Lite is not FMS and there is no guarantee that your performance during tests will be mirrored during a competition. [FMS Lite](http://www.usfirst.org/roboticsprograms/frc/blog-2014-fms-lite-available)
+
+---
+
+##When practicing at Home, how can I run multiple Robots with RoboRio installed?
+
+Simply flash one RoboRio with your actual team number, and additional RoboRios with different team numbers that are not yours. 
+
+For example we would flash Robot A with 2168, and Robot B with 2169 (or any other team numer that is not yours). This allows us to drive both robots simultaneoulsy once the DS for each robot is set to the proper team number.
