@@ -99,7 +99,7 @@ Refer to the official documentation on the PDP []().
 
 If the PDP is connected to the RoboRio via CAN, you can use the RoboRio webpage to view the status of any PDP faults. 
 
-1. Log in to the RoboRio webpage (see [RoboRio FAQ](/RoboRio/faq/roborio)
+1. Log in to the RoboRio webpage (see [RoboRio FAQ](/RoboRio/faq/roborio))
 2. Click on the CAN interface from the side menu
 3. Select the PDP to view more information on the hardware
 4. Use the Self-Test button to provide detailed information of all sensors on the PDP, including any faults
