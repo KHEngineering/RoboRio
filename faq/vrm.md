@@ -26,7 +26,9 @@ Each rail is split into a 0.5A Max set of channels, and a 2A Max set of channels
 ---
 
 ##Can I power the D-Link from the VRM?
-Yes, but check 2015 rules for official wiring. One caveate, the D-link manufacture spec state the DAP-1522 requires 2A @ 5VDC. I would recommend teams to not plug any other 5V device into the same VRM they are using to power the D-Link radio. The VRM is limited to 2.5 amps on the 5V rail, and you do not want anything (such as a camera, or off-board processor) robbing current from the Radio. If you loose power to the radio, you loose communications during a match. If you must power other 5V devices, use another FIRST approved regulator, or use a second VRM. It is safe to use the 12V rail to power another device from the same VRM that powers the D-link because the 12V and 5V are isolated.
+Yes, but check 2015 rules for official wiring. One caveate, the D-link manufacture spec state the DAP-1522 requires 2A @ 5VDC. I would recommend teams to not plug any other 5V device into the same VRM they are using to power the D-Link radio. The VRM is limited to ~2.0 amps on the 5V rail, and you do not want anything (such as a camera, or off-board processor) robbing current from the Radio. If you loose power to the radio, you loose communications during a match. 
+
+If you must power other 5V devices, use another FIRST approved regulator, or use a second VRM. It is safe to use the 12V rail to power another device from the same VRM that powers the D-link because the 12V and 5V are isolated.
 
 ---
 
@@ -36,4 +38,15 @@ Refer to the official rules for the answer to this question.
 ---
 
 ##How can I wire a second VRM?
+Refer to the official rules for the answer to this question. Beta teams have been sucessfully wiring additial VRM and PCM modules to spare 30A unregulated channels on the PDP. 
+
+---
+
+##Can I montior the VRM over CAN?
+No the VRM is not a CAN device, it is simply a regulated suppy and provides no feedback other than the LED status light on the device.
+
+---
+
+##What do the LEDs on the VRM indicate?
+When the VRM is powered properly (12 volts input), the 12V and 5V LED should be green indicating that circuit is operation.
 
