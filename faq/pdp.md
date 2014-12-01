@@ -155,8 +155,8 @@ For Beta testing the Firmware for the PDP was provided by CTRE. To flash the PDP
 The PDP include a protective cover over the battery input cables. This solves having to use electrical tape to cover exposed terminals on the main input cables to the PDP. We use 6 awg cable from our battery to the PDP. 
 
 The connector we use on the PDP terminals are here: [battery terminal](http://www.andymark.com/product-p/am-0805.htm)
-The crimp tool we use is here: [swedge tool]()
-The cable we use is bought here: [battery cable]()
+The crimp tool we use is here: [swedge tool](http://www.cableyard.com/LENCO-Swedg-On-Tool_p_29.html)
+The cable we use is bought here: [battery cable](http://www.cableyard.com/RADAFLEX-6-AWG-Twin-Cable_p_17.html)
 
 ---
 
