@@ -36,9 +36,7 @@ Installing the JVM for Embedded Devices, is not the same as install the JVM on a
 FIRST has created an easy to follow process that does all of the configurations for you so that you do not need to be concerned with the details. Follow their directions below. If you with to do it on your own, I am working on posting the manual steps required.
 
 ###Official FIRST Procedure
-Ensure RoboRio is flashed and Imaged to latest versions then continue with steps below.
-
-[Offical screensteps directions](https://wpilib.screenstepslive.com/s/4485/m/13809/l/243933-installing-java-8-on-the-roborio-java-only)
+Ensure RoboRio is flashed and Imaged to latest versions then continue with [Offical screensteps directions](https://wpilib.screenstepslive.com/s/4485/m/13809/l/243933-installing-java-8-on-the-roborio-java-only)
 
 ###Manual Procedure
 1. Create an account on Oracles Website [oracle](https://login.oracle.com/mysso/signon.jsp)
