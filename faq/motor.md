@@ -13,12 +13,16 @@ The system should support either jag with the latest firmware (v107 for black, v
 ---
 
 ##I Accidently supplied power to the Motor Controller with reversed polarity, did I break it?
-Possibly. The Talon,Talon SR, Victor 884, Victor 888, Black Jaguar or Tan Jaguars models DO NOT have reverse polarity protection. It may not fail immediately, but can fail over time. One should always be cautious when wiring a motor controller, the labels for each terminal are clearly marked. Review all wiring before powering any motor controller to ensure that they are wired correctly, and that power is being supplied to the proper terminals, in the proper polarity. 
+Possibly. The Talon SRX, Victor SP Talon,Talon SR, Victor 884, Victor 888, Black Jaguar or Tan Jaguars models DO NOT have reverse polarity protection. It may not fail immediately, but can fail over time. One should always be cautious when wiring a motor controller, the labels for each terminal are clearly marked. Review all wiring before powering any motor controller to ensure that they are wired correctly, and that power is being supplied to the proper terminals, in the proper polarity. 
+
+###The New Talon SRX and Victor SP DO NOT have reverse polarity protection. Reversing the polaritys will damage the motor controllers.
 
 ---
 
 ##I Accidently supplied 12V power to the output side of the Motor Controller, did I break it?
-Possibly, supplying unregulated power to the output of the Talon, Talon SR, Victor 884, Victor 888, Black Jaguar, or Tan Jaguar models may permenantly damage the H-bridge inside of the device. The device may not fail immediately, but can fail over time.
+Possibly, supplying unregulated power to the output of the Talon SRX, Victor SP, Talon, Talon SR, Victor 884, Victor 888, Black Jaguar, or Tan Jaguar models may permenantly damage the H-bridge inside of the device. The device may not fail immediately, but can fail over time.
+
+###The New Talon SRX and Victor SP DO NOT have H-bridge output protection. Supplying power to the output of the motor controllers will damamge them.
 
 ---
 
