@@ -30,9 +30,11 @@ The new RoboRio will not be damaged. It will sense any voltage over 16V and safe
 ---
 
 ##Can I program over USB, Ethernet, and WIFI?
-For all languages deploying code using previous cRIO methods still work. That is programming via Ethernet Tether or wireless using a (D-link in AP mode) are all supported.
+For all languages deploying code using previous cRIO methods still work. That is, programming via Ethernet Tether or wireless using a (D-link in AP mode) are all supported.
 
-The RoboRio offers the addition to program over the USB host port. The drivers for the RoboRio emulate a Ethernet Controller when plugged in via USB. This USB Ethernet port is always static, and can be used to program or modify the roborio. It put the RIo on the network 172.22.11.2. Since the Rio uses mDNS, you can use your driverstation via USB, without changing any Ethernet settings. We still set our IP to a static IP on the RoboRio and Driverstation.
+The RoboRio offers the addition to program over the USB host port. The drivers for the RoboRio emulate a Ethernet Controller when plugged in via USB. This USB Ethernet port is always static, and can be used to program or modify the roborio. It puts the RIo on the network 172.22.11.2. Since the Rio uses mDNS, you can use your driverstation via USB, Ethernet, or WIFI without changing any Ethernet settings as you switch between interfaces. If you would like to learn more about mDNS and how it is used on FRC please check out the [FMS FAQ](/RoboRio/faq/fms).
+
+On Team 2168 we still set manually set all devices on our Robot to a static IP. IP to a static IP on the RoboRio and Driverstation.
 
 The USB drivers are installed on the computer when the FRC Utilities are installed which is provided in the official software released by NI.
 
@@ -44,7 +46,10 @@ You no longer need to set the IP address for the RoboRio. The new 2015 System us
 
 Your team number will be assigned to the RoboRio when you image the Rio for the first time. After which you can access the RoboRio using RoboRio-2168.local (replacing 2168 with your own 4 digit team number, prefix 0 for 3 digit teams). 
 
-For those teams wishing to assign their own static IP to the RoboRio you can still do this through the web interface. Once the RoboRio has been successfully images, navigate to http://RoboRio-2168.local, and check your network settings. You can login as admin and change the ethernet port from dhcp to static and assign your own 10.TE.AM.2 address.
+So if your team 359 for example, after imaging your RoboRio you can access it via Ethernet, Wifi, or USB using the single address Roborio-0359.local, which will resolve to the IP address of the RoboRio using mDNS.
+
+For those teams wishing to assign their own static IP to the RoboRio you can still do this through the web interface. Once the RoboRio has been successfully images, navigate to http://RoboRio-2168.local, and check your network settings. You can login as admin and change the ethernet port from dhcp to static and assign your own 10.TE.AM.2 address. The mDNS address will still work correctly even when the ethernet port is set to static.
+
 You can always check all of your network interface settings, and modify them through the web interface of the Rio. You must be logged in as `admin` to make any changes. 
 
 ---
@@ -52,7 +57,7 @@ You can always check all of your network interface settings, and modify them thr
 ##How do I access the RoboRio WebServer?
 
 Simply navigate to any of the RoboRios IP address from any computer on the same network. 
-i.e http://RoboRio-2168.local (replace 2168 with your team number) over Ethernet using mDNS, http://10.TE.AM.2 if you assigned a static IP or http://172.22.11.2 when using the USB cable.
+i.e http://RoboRio-2168.local (replace 2168 with your team number) will work on any interface using mDNS, http://10.TE.AM.2 if you assigned a static IP or http://172.22.11.2 when using the USB cable.
 
 If this is your first time starting up the RoboRio, the Ethernet port is set to DHCP, and the USB
 port is configured to static IP 172.22.11.2 address when connected to a computer that has the USB Driver installed (supplied when FRC Utilities are installed).
@@ -67,7 +72,6 @@ Click the login button in the top right corner and login with the `admin` user.
 ---
 
 
-
 ##How do I access the Linux Operating System on the RoboRio?
 
 The RoboRio is a headless device, meaning it is designed to run without using a display. If you would like to access the underlying linux filesystem you will need to use another device to do so.
@@ -79,7 +83,7 @@ You can access the linux operating system in any of 3 ways:
 
 The method you choose is largely based on what operation you are trying to berform.
 
-Using another computer you can use the secure shell protocol to access the RoboRio. You will need to connect to the RoboRio via ethernet tether, WIFI, USB and know the IP address of the RoboRio or use RS-232 with Console out enabled (for shell terminal only).
+Using another computer you can use the secure shell protocol to access the RoboRio. You will need to connect to the RoboRio via ethernet tether, WIFI, or USB and either know the IP address of the RoboRio, use mDNS to resolve the address, or use RS-232 with Console out enabled (for shell terminal only).
 
 
 ###Shell Terminal
@@ -89,7 +93,7 @@ From Windows install [putty](http://www.putty.org) and configure it to SSH to th
 
 When asked for a password leave it blank and hit `enter`
 
-Using SSH, you will have terminal access to the RoboRio Linux filesystem and can run linux based commands, create/delete files or folders etc and execute programs.
+Using SSH, you will have terminal access to the RoboRio Linux filesystem and can run linux based commands, create/delete files or folders etc and execute and stop programs and services on the RoboRio.
 
 ###SFTP
 1. Add a SFTP client to your web browswer. [Filezilla client](https://filezilla-project.org/) is freeware
@@ -133,7 +137,7 @@ The pins are spaced by 2 0.1" headers. A 4 pin header can be used to bridge the 
 * Power
   - Green = Rio input voltage is acceptable
   - Orange = Rio input voltage is unacceptable
-  - Off = Rio is not powered on
+  - Off = Rio is not powered, voltage is less than 4V
 
 * Status
    - Normal Operation:
@@ -160,12 +164,12 @@ So far for Beta testing the RoboRio software has been delivered in two parts, a 
 
 The user can upgrade the firmware over Ethernet Tether/WIFI or USB. USB method is preferred and you should use that when ever possible, although we have had no problems updating the system over Ethernet/Wifi. 
 
-The Image and Firmware will be provided via an FRC Tools Software installation by FIRST/NI. This must be installed on a Windows 7/8 computer running 32 or 64 bits.
+The Image and Firmware will be provided via an FRC Tools Software installation by FIRST/NI which can only be installed on a Windows 7/8 computer running 32 or 64 bits. While it is possible to flash the firmware from another non-windows computer using the website, the RoboRio Image tool is a windows only software and so windows must be used to image the RoboRio at the very minimum.
 
 ###Firmware Upgrade: 
-   1. Connect to the RoboRio via USB
-   2. login to the RoboRio webpage using your internet browser (You will need to have silverlight plugin). (Labview teams can use webpage of NI Max, Java/C++ teams must use WebPage).
-   3. http://10.xx.xx.2 when using ethernet or http://172.22.11.2 when using USB. Login using "admin" as the user name and leave the password field empty. Click on the RoboRio icon and select upgrade firmware. 
+   1. Connect to the RoboRio via USB and Power on the RoboRio
+   2. login to the RoboRio webpage using your internet browser (You will need to have silverlight plugin). (Labview teams can use webpage or NI Max, Java/C++ teams must use WebPage).
+   3. Navigate to http://roborio-TEAM.local (where TEAM rempresents your team number) or use http://172.22.11.2 when using USB. Login using "admin" as the user name and leave the password field empty. Click on the RoboRio icon and select upgrade firmware. 
    4. Browse to the firmware you wish to use and apply (Typically in c:/program files(x86)/national instruments/shared/firmware/FXXX/
    5. The RoboRio will update the firmware, and if successful the new firmware version will be showed on the webpage. If not, just try again.
 
@@ -177,7 +181,7 @@ The Image and Firmware will be provided via an FRC Tools Software installation b
    5. Formatting will take a few minutes, and once complete the program will notify you.
    6. The new image version will show on the Image Tool
    7. Verify the RoboRio Power is Green and Status light is off (that means all went well).
-   8. Java Teams Only (Reload the Java 8 Virtual Machine (JVM) on RoboRio)
+   8. Java Teams Only (Reload the Java 8 Virtual Machine (JVM) on RoboRio see [Java FAQ](/RoboRio/faq/java)
    9. All Teams - Upload Code to the RoboRio
 
 ---
@@ -189,13 +193,16 @@ When we tried to image the RoboRio prior to installing a compatible firmware we 
 
 During this time, all power to the peripherals seems to have been off. The USB port and Ethernet ports didn't seem to be powered anymore so the Imaging tool could not find the device and the ethernet link was down. We were unable to establish any link or comms to the RoboRio.
 
-If you experience the above symptoms, hold down the reset button for 10 seconds, I held it down for about 30 seconds and after release the RoboRio should start back up. This puts the RoboRio in safemode and loads a default/clean filesystem from the factory.  The Status LED should change. We noticed it started to pulse, about 3 blinks then pause, then 3 blinks and pause, and continue this way.
+If you experience the above symptoms, hold down the reset button for 5 seconds and after release the RoboRio should start back up. This puts the RoboRio in safemode and loads a default/clean filesystem from the factory.  The Status LED should change. We noticed it started to pulse, about 3 blinks then pause, then 3 blinks and pause, and continue this way. Follow the below general debugging guideline to get the RoboRio back up and running.
 
-After putting the Rio in safemode, I notice all the peripheral ports were back up and we were able to http back into the RIO using the initial static IP setup. 10.TE.AM.2. The status of the RIO was SafeMode, no software, as shown by the webserver. If you did not have a static IP set, you can use the USB port to have ethernet access to the RoboRio.
+1. Use the status lights of the RoboRio to determine what could potentioally be wrong. Ensure the power light is green and take note of what the status light indicator. If the power light is off, or orange, ensure the RoboRio is getting proper 12V DC input. 
+2. If the status light is flashing use the answer to the previous question to determine what it means. If the status flashing 2 or 3 times a second and the Power light is green, we can recover the RoboRio by flashing and reimaging.
+4. Hold down the User Button on the RoboRio for 5 seconds then release, this puts the RoboRio in Safe Mode
+5. Attempt to Flash the RoboRio using the steps provided above, and then try to reimage the RoboRio using the imaging tool. Ensure that you are using the latest firmware and image versions provided by FIRST/NI. 
 
-You can now login to the RoboRio webpage, and update the firmware. Once I updated the firmware through the Web interface, the RIO was back to normal operations.
+After putting the Rio in safemode, I notice all the peripheral ports were back up and we were able to http back into the RIO using the initial static IP setup. 10.TE.AM.2., the mDNS worked as well (http://roborio-2168.local) The status of the RIO was SafeMode, no software, as shown by the webserver. If you did not have a static IP set, you can use the USB port to have ethernet access to the RoboRio.
 
-You can then re-image the RoboRio using the RoboRio Imaginge tool and ensue normal operations. 
+You can now login to the RoboRio webpage, and update the firmware and re-image the Rio, the Rio should now ensue normal operations. 
  
 --- 
 
@@ -205,9 +212,15 @@ CAN is a 2 wire serial bus mostly used in cars. Its an interface with a specific
 ---
 
 ##How do I connect to the Internet using the RoboRio
-Assuming you are connected to a network that has an internet connection, you need to set the default gateway and DNS server on the RoboRio. Use your browser to connect to the RoboRio webserver and click on login using `admin` as the user name, and leave the password blank. Select the Network interfaces Icon, and under eth0 select `advanced` to modify the default gateway and provide a DNS server. Here is a pic of what our setting look like:
+Assuming you are connected to a network that has an internet connection, you need to set the default gateway and DNS server on the RoboRio. Use your browser to connect to the RoboRio webserver and click on login using `admin` as the user name, and leave the password blank. Select the Network interfaces Icon, and under eth0 modify the default gateway and provide a DNS server. Here is a pic of what our setting look like:
 
 <img src="../../Images/internetsettings.png">
+
+As long as the default gateway leads to the internet and the DNS server is active you will have internet access on the RoboRio. You can test by connecting to the RoboRio via ssh and running this command in the terminal
+
+`wget www.google.com`
+
+If you see a file downloaded, your RoboRio is connected to the internet, and DNS server is working properly.
 
 ---
 
@@ -224,23 +237,27 @@ Luckily, you can make use of the Angstrom Repository to load additional software
 4. Hit the `i` button on your keyboard to enter insert mode in vi
 5. Paste this line into the file `src/gz angstrom-base http://feeds.angstrom-distribution.org/feeds/next/ipk/eglibc/armv7a/base/`
 6. Hit the `esc` button on your keyboard to exit insert mode in vi
-7. Type `:wq` to save the file and exit VI
-8. You should now be back at the terminal prompt $, type `reboot` to restart the roborio (You will loose SSH connection)
+7. Type `:wq` and hit enter to save the file and exit VI
+8. You should now be back at the terminal prompt $, type `reboot` to restart the roborio (You will loose SSH connection). If your terminal freeses, just close it and open a new one.
 9. Once the RoboRio restarts reconnect to it via SSH (same procedure as above) and once at the prompt type `opkg update`
 10. If connected to the internet, your RoboRio will now download the list of angstrom packages you can safely install on your RoboRio.
 11. use `opkg install <package>` to install new software on the RoboRio
 12. use `opkg updgrade <package>` to upgrade packages
 13. use `opkg list-installed` to see what you already have installed on the RoboRio
-14. use `opkg search <package> to see what you can install from the Angstrom repo onto the RoboRio.  
+14. use `opkg search <package>` to see what you can install from the Angstrom repo onto the RoboRio.  
 
 ---
 
 ##Can I use 3.3V sensors on the RoboRio?
 In short - yes. The power output pins on the RoboRio DIO pins and Analog pins are all 5V outputs by default. There is a jumper to set the DIO pins to 3.3V output but is internal to the Rio and you must remove the case to do so. This is not something FIRST or NI envisons teams to do frequently. I would suggest stick with one voltage source for all sensors, or use external supplies instead of going into the RoboRio.
+
 The jumper is located inside the RoboRio case next to the connector for DIO9. See attached photo for details. When no jumper is installed the voltage output is 0V.
+
+<img src="../../Images/voltagejumper.png">
  
 The jumper only affects the DIO power pins on the built-in DIO connectors, it does not affect the analog power output, or any power output pins in the MXP port. The MXP has both power supply rails included, so you can use either 5V or 3.3V supplies from the MPX without changing the internal jumper.
-All DIO signal pins are 3.3 V drive and 5 V tolerant, so if you power your 3.3V sensor from an external source, the signal will be interpreted correctly on the IO pin without any jumper change.
+
+All DIO signal pins are 3.3 V drive and 5 V tolerant, so if you power your 3.3V sensor from an external source, the signal will be interpreted correctly on the IO pin without any jumper change for either 3.3V or 5V signals.
  
 ---
 
@@ -276,7 +293,7 @@ From my understanding, the regualtor topology on the RoboRio is such that the 6V
 
 This means there is now ~ 0.6 V between when the motors are disabled and when the 5 V and 3.3 V supplies shut down instead of them happening at the same time.
 
-I believe there is current work on a feature that will allow the FPGA to stop motor controllers (probable source of brown-out in non-pathological case) in far less time. The plan is to actively send one PWM pulse of "idle" when commanded to disable by the watchdog / power monitor before stopping the generation of PWM signals. Because the motor controllers are not continuing to draw high current for as long, the voltage drop should be less severe. This should reduce the time from brown-out detection to load removal from 100 ms +/- 5ms to about 10 ms +/- 5 ms.
+I believe there is current work on a feature that will allow the FPGA to stop motor controllers in far less time. The plan is to actively send one PWM pulse of "idle" when commanded to disable by the watchdog / power monitor before stopping the generation of PWM signals. Because the motor controllers are not continuing to draw high current for as long, the voltage drop should be less severe. This should reduce the time from brown-out detection to load removal from 100 ms +/- 5ms to about 10 ms +/- 5 ms.
 
 Here is a pic of the Regulator Topology:
 
@@ -286,27 +303,21 @@ Here is a pic of the Regulator Topology:
 
 ##Will we lose encoder counts while that happens (encoder brownout)?
 
-Luckily the system is capable of managing current draw at many levels.
- 1. The roboRIO monitors its input voltage level and coordinates brownout staging in order to prevent blackout of critical elements. This is the approach that is currently being tweaked.
+This depends on how your Robot is wired and what voltage level the Electrical System is dipping too. If the Robot is dipping below 6.3V and you are powering your encoders from the 5V source on the RoboRio, then yes, as the 5V supply dies, so will power to your encoder.
 
- The general approach of the brownout behavior is to disable high draw components -- motor controllers -- in order to stabilize the voltage level and avoid reboots and further faults. As mentioned earlier, the alpha results were quite promising, but the response is being tweaked in order to maintain the supply rails to sensors -- both analog and digital.
+However, the RoboRio can read it's inputs down to above 4V, so if you supply power to your encoder externally (using a boost regulator for example), then the encoder will still maintain its power, and the RoboRio will still be capable of reading the pin states until the input voltage is too low to run the RoboRio processor (below 4.0V). 
 
- One aspect of this, detailed by Joe earlier, is to identify which PWM devices are motors and which are servos. The FPGA will then be able to disable motors directly instead of simply removing their signal and waiting for their micros to timeout. This quicker response has not been tested by the alpha or beta teams, but it is a ~10X improvement in timing control of the circuit driver.
+ The roboRIO monitors its input voltage level and coordinates brownout staging in order to prevent blackout of critical elements. This is the approach that is currently being tweaked.
 
- 2. When a brownout does occur, the information will be accessible to robot code. If the motor controllers outputs are zeroed by the FPGA, this can cause integral windup in control loops. If those control loops are aware that their set point was not what they requested, they can adjust their integral state.
+The general approach of the brownout behavior is to disable high draw components -- motor controllers -- in order to stabilize the voltage level and avoid reboots and further faults. As mentioned earlier, the response is being tweaked in order to maintain the supply rails to sensors -- both analog and digital.
 
- If the brownout is more severe and the supply lines to servos and sensors is interrupted, the robot code can know that absolute position of some mechanisms may need to be recalibrated. 
+One aspect of this, detailed by NI, is to identify which PWM devices are motors and which are servos. The FPGA will then be able to disable motors directly instead of simply removing their signal and waiting for their the controllers to timeout. This quicker response has not been tested by the alpha or beta teams, but it is a ~10X improvement in timing control of the circuit driver.
 
- 3. Motor controllers implement the set point, and as seen with the Jaguar, they can impose limits. Currently this is not a part of the plan.
+When a brownout does occur, the information will be accessible to robot code. Labview, C++, and Java libraries have been outfitted with new function calls that will return true or false depending on if a specific system is currently in the brownout state. Using these methods can help teams prevent control loop Integral windup.If the motor controllers outputs are zeroed by the FPGA, this can cause integral windup in control loops. If those control loops are aware that their set point was not what they requested, they can adjust their integral state. If the brownout is more severe and the supply lines to servos and sensors is interrupted, the robot code can know that absolute position of some mechanisms may need to be recalibrated. 
 
- 4. User code is in charge of motor controller set points. Ramping or limits are easy to implement. The Power API now gives feedback from the PD and roboRIO that should help with balancing performance and current draw. I don't personally have a PD to test, but it is hoped that external current sensors and monitoring isn't really required in order to make this approach effective and accessible to many teams.
+If you are really worried about this situation, the best recommendation is to put your critical sensors, feeding control loops on a dedicated regulator, that will be sustained when the voltage drops. This way the sensor stays alive, and the RoboRio will be able to read the digital/analog signals as long as the RoboRio is still running.
 
- 5. Robots sensors could be allowed to use a suppy that is not shared with servos. 
-
- There are probably others. I feel that the next step is to characterize the improvement that Joe has already implemented. I'm sure that will be accomplished in the beta. Probably quite soon.
-
- 
- The bus switch that adjusts the signals passed to the FPGA is powered by a supply that is sourced by the buck-boost that powers the controller as a whole. That supply operates down to 4.5 V. That means that if you decide to power your encoder with a supply other than the one provided and the provided supply browns out, the signals will still make their way to the FPGA. As noted earlier, if your sensor depends on pull-up resistors (like limit switches or banner sensors or open-collector output encoders) then you will also need to add pull resistors connected to your external supply. You should be able to test this by either using the new power API to disable the 5 V supply manually or by installing a jumper between 5 V and Ground which puts the supply in protection.
+The bus switch that adjusts the signals passed to the FPGA is powered by a supply that is sourced by the buck-boost that powers the controller as a whole. That supply operates down to 4.5 V. That means that if you decide to power your encoder with a supply other than the one provided and the provided supply browns out, the signals will still make their way to the FPGA. As noted earlier, if your sensor depends on pull-up resistors (like limit switches or banner sensors or open-collector output encoders) then you will also need to add pull resistors connected to your external supply. You should be able to test this by either using the new power API to disable the 5 V supply manually or by installing a jumper between 5 V and Ground which puts the supply in protection.
  
 ---
 
