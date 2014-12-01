@@ -23,7 +23,7 @@ Not Exactly. Each PCM supplies either 12V or 24V. There is a jumper setting in t
 ---
 
 ##Driving non 12V/24V solenoids possible?
-If you want to drive say a 5V solenoid, it is possible, but refer to the official rules for legality. The PCM switches the low (blac) side not the high (red) side of each channel, so in theory if you wanted to power 5V solenoids for instance, you could make all of your 5v common, provide power to it externally, and connect only the ground to the PCM channels. This will allow you to switch the channels using the PCM even though you are not using the 12V or 24V supply from the PCM channels themselves.
+If you want to drive say a 5V solenoid, it is possible, but refer to the official rules for legality. The PCM switches the low (black) side not the high (red) side of each channel, so in theory if you wanted to power 5V solenoids for instance, you could make all of your 5v common, provide power to it externally, and connect only the ground to the PCM channels. This will allow you to switch the channels using the PCM even though you are not using the 12V or 24V supply from the PCM channels themselves.
 
 ---
 
@@ -48,7 +48,7 @@ No this is not a concern.  The PCM monitors for both short circuits and absolute
 
 We have replaced the fuse on our Beta PDP with a 15A fuse to put extra stress on the system, and have not blown it yet under normal use. 
 
-However, with that said, anything is possible, and teams have found ways to blow the 20Amp ATX fuse by stalling the compressor motor for long periods of time. So if the rules allow, I will ensure my teams powers the D-link from a separate VRM (or other legal buck-boost regulator that is connected to one of the unregulated 30Amp channels on the PDP. This will ensure that at no point will the compressor and D-link be on the same fuse.
+However, with that said, anything is possible, and teams have found ways to blow the 20Amp ATX fuse by stalling the compressor motor for long periods of time, shorting out the VRM wires, etc. So if the rules allow, I will ensure my teams powers the D-link from a separate VRM (or other legal buck-boost regulator that is connected to one of the unregulated 30Amp channels on the PDP. This will ensure that at no point will the compressor and D-link be on the same fuse. I recommend other teams do the same. The D-link is the life-blood of the Robot.
 
 
 ---
@@ -75,15 +75,14 @@ additional modules?
 
 This is a question for FIRST, and the official 2015 rules. 
 Beta teams have been connecting additional VRM's and PCM's directly to 1 of the 16 motor channels and allow more than one 
-to be connected to any given channel. They bot take in unregulated 12V.
+to be connected to any given channel. They both take in unregulated 12V.
 
 We have also connected 2 devices on a single 30amp channel without problems, however defer to FIRST and the official 2015 rules for correct wireing.
 
 ---
 
 ##Does the PCM have any other features over CAN?
-Yes,  the PCM logs all faults.  Compressor faults are both momentary and sticky meaning you will see a red status LED while the fault is occuring and an orange LED that is persistant across power cycle (sticky fault)  indicating that a fault has occured.  The exact type of fault is revealed in 
-the web interface of the RoboRIO.
+Yes,  the PCM logs all faults.  Compressor faults are both momentary and sticky meaning you will see a red status LED while the fault is occuring and an orange LED that is persistant across power cycle (sticky fault)  indicating that a fault has occured.  The exact type of fault is revealed in the web interface of the RoboRIO.
 
 ---
 
