@@ -50,16 +50,12 @@ mDNS works on the field such that all of your devices are located using their mD
 
 IPs for system components:
 
-roboRIO USB: 172.22.11.2
-
-roboRIO mDNS: roboRIO-####.local (where #### is your team number with no leading zeroes) You should be able to use this address to communicate with the roboRIO over either interface through ping, browser, etc.
-
-Robot Radio: 10.TE.AM.1 (where TE.AM is your 4 digit team number with leading zeroes if required)
-roboRIO Ethernet: DHCP, assigned by the Robot Radio
-Driver Station PC: DHCP, assigned by the Robot Radio
-Additional Programming computers: DHCP, assigned by the Robot Radio
-
-DHCP range: 10.TE.AM.20 to 10.TE.AM.199
+- roboRIO USB: 172.22.11.2
+- roboRIO mDNS: roboRIO-####.local (where #### is your team number with no leading zeroes) You should be able to use this address to communicate with the roboRIO over either interface through ping, browser, etc.
+- Robot Radio: 10.TE.AM.1 (where TE.AM is your 4 digit team number with leading zeroes if required)
+- roboRIO Ethernet: DHCP, assigned by the Robot Radio
+- Driver Station PC: DHCP, assigned by the Robot Radio
+- Additional Programming computers: DHCP, assigned by the Robot Radio (DHCP range: 10.TE.AM.20 to 10.TE.AM.199)
 
 Note: You can still assign static IPs to any device on the Robot. However, do so between 10.TE.AM.2 and 10.TE.AM.19 so as to not interfere with the DHCP addressing on the of the field.
 
