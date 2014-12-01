@@ -370,6 +370,7 @@ The Modular Expansion Port (MXP) is an additional breakout that provides access 
 The MXP also has 5V and 3.3V sources. You can use this port to make your own custom board or buy pre-made boards.
 
 [Make your Own Board FIRST Compliance](http://www.usfirst.org/roboticsprograms/frc/blog-myrio-expansion-port-whats-the-deal)
+
 [Pre-made board from Rev Robotics](http://www.andymark.com/product-p/am-2995.htm) 
 
 ---
