@@ -10,7 +10,7 @@ permalink: /faq/roborio/
 
 Dual-Core Arm Cortex A9 @ 667 MHz
 256MB RAM for System Memory
-256 MB NAND for NonVolitile Memory
+512MB NAND for NonVolitile Memory
 Runs Linux Kernel patched with pre_emtRT
 Input Power: 6.8 to 16V (brownout from 4.5 to 6.8VDC)
 
@@ -32,7 +32,7 @@ The new RoboRio will not be damaged. It will sense any voltage over 16V and safe
 ##Can I program over USB, Ethernet, and WIFI?
 For all languages deploying code using previous cRIO methods still work. That is, programming via Ethernet Tether or wireless using a (D-link in AP mode) are all supported.
 
-The RoboRio offers the addition to program over the USB host port. The drivers for the RoboRio emulate a Ethernet Controller when plugged in via USB. This USB Ethernet port is always static, and can be used to program or modify the roborio. It puts the RIo on the network 172.22.11.2. Since the Rio uses mDNS, you can use your driverstation via USB, Ethernet, or WIFI without changing any Ethernet settings as you switch between interfaces. If you would like to learn more about mDNS and how it is used on FRC please check out the [FMS FAQ](/RoboRio/faq/fms).
+The RoboRio offers the addition to program over the USB device port. The drivers for the RoboRio emulate a Ethernet Controller when plugged in via USB. This USB Ethernet port is always static, and can be used to program or modify the roborio. It puts the Rio on the network 172.22.11.2. Since the Rio uses mDNS, you can use your driverstation via USB, Ethernet, or WIFI without changing any Ethernet settings as you switch between interfaces. If you would like to learn more about mDNS and how it is used on FRC please check out the [FMS FAQ](/RoboRio/faq/fms).
 
 On Team 2168 we still set manually set all devices on our Robot to a static IP. IP to a static IP on the RoboRio and Driverstation.
 
@@ -213,11 +213,14 @@ CAN is a 2 wire serial bus mostly used in cars. Its an interface with a specific
 ---
 
 ##How do I connect to the Internet using the RoboRio
-Assuming you are connected to a network that has an internet connection, you need to set the default gateway and DNS server on the RoboRio. Use your browser to connect to the RoboRio webserver and click on login using `admin` as the user name, and leave the password blank. Select the Network interfaces Icon, and under eth0 modify the default gateway and provide a DNS server. Here is a pic of what our setting look like:
+
+When the RoboRio ships from the factory, the default settings for the RoboRio ethernet port is DHCP. So if you plug the roborio into a network switch which has internet access and a DHCP server (like a router), then the RoboRio will automatically connect to the internet.
+
+If you choose to set a static IP on the RoboRio and sssuming you are connected to a network that has an internet connection, you need to set the default gateway and DNS server on the RoboRio manually (in addition to the IP address). Use your browser to connect to the RoboRio webserver and click on login using `admin` as the user name, and leave the password blank. Select the Network interfaces Icon, and under eth0 modify the default gateway and provide a DNS server. Here is a pic of what our setting look like:
 
 <img src="../../Images/internetsettings.png">
 
-As long as the default gateway leads to the internet and the DNS server is active you will have internet access on the RoboRio. You can test by connecting to the RoboRio via ssh and running this command in the terminal
+As long as the default gateway leads to the internet and the DNS server is active you will have internet access on the RoboRio. You can test your internet connection by connecting to the RoboRio via ssh and running this command in the terminal
 
 `wget www.google.com`
 
@@ -226,11 +229,17 @@ If you see a file downloaded, your RoboRio is connected to the internet, and DNS
 ---
 
 ##Can I install 3rd party packages/software on the RoboRio?
-Yes, the roboRio uses OPKG package manager. You can run OPKG from the terminal and install packages that way. There is a public repository for the RoboRio released by NI here:XXXXXXXXXXXXX
+Yes, the roboRio uses OPKG package manager. You can run OPKG from the terminal and install packages that way. There is a public repository for the RoboRio released by NI that already has many useful applications and comes loaded by deafult.
+
+simply run the following commands in the Rio terminal while the rio is connected to the internet to see wwhat packages are available in the NI repo for installation:
+`opkg update`
+`opkg list`
+
+use `opkg install <package` to install your package.
 
 The RoboRio is an ARM processor based on soft VFP registers with NEON instruction support. You can use any binary that has been compiled for ArmV7 with softFP on the RoboRio.
 
-Luckily, you can make use of the Angstrom Repository to load additional software onto the RoboRio. To add the Angstrom Repo to the RoboRio package manager, follow the steps below:
+If the NI repo doesn't have what you are looking for, luckily, you can make use of the Angstrom Repository to load additional software onto the RoboRio. The Angstrom repository has over 800 different packages all of which are compatible on the Rio.  To add the Angstrom Repo to the RoboRio package manager, follow the steps below:
 
 1. SSH into the RoboRio using putty on windows or terminal on any Mac or other linux based computer
 2. Login using `admin` as the username and leave the password blank (just hit enter)
@@ -356,7 +365,7 @@ Well since we are a Java test team we can only comment for Java. Typically it ta
 
 ##What are some of the linux based information I should know?
 
-Kernel: 
+Kernel: 3.2.35
 File System: UBI
 Boot Loader: uboot
 Init: SystemV
@@ -365,7 +374,7 @@ Init: SystemV
 
 ##How do I put the RoboRio in Safe Mode?
 
-Hold the Reset Button for 5 seconds and release, The RoboRio will rebot and the status light will blink 3 times repeatedly. This indicates the RoboRio is now in Safe Mode
+Hold the Reset Button until the status light illuminates (about 5 seconds) and release, The RoboRio will rebot and the status light will blink 3 times repeatedly. This indicates the RoboRio is now in Safe Mode
 
 To get out of Safemode reboot the RoboRio by pressing the Reset Button, issuing a `reboot` Command in the terminal, or power cycle.
 
@@ -381,7 +390,7 @@ The Serial Information is:
 - One stop bit
 - No flow control
 
-You will need to buy USB-to-serial adapter and make a DB-9 to 3-pin header cable. Follow Instructions here: []()
+You will need to buy a USB-to-serial adapter and make a DB-9 to 3-pin header cable. Follow Instructions here: []()
 
 
 
