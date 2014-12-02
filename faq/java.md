@@ -31,9 +31,9 @@ Note: Mac Users must install 64-bit JDK
 
 ##How do I install the Java Virtual Machine on the RoboRio
 
-Installing the JVM for Embedded Devices, is not the same as install the JVM on a desktop. Oracle, the developers of the Java Virtual Machine for Embedded devices decided to release the JVM with a special installation procedure. The use must download the JVM to a host computer and run a program which build an embedded JVM for your targer with all of the configurations you desire. Then, you transfer the built JVM to your target (embedded device).
+Installing the JVM for Embedded Devices, is not the same as install the JVM on a desktop. Oracle, the developers of the Java Virtual Machine for Embedded devices decided to release the JVM with a special installation procedure. The user must download the JVM to a host computer and run a program which builds an embedded JVM for your target with all of the configurations you desire. Then, you transfer the built JVM to your target (embedded device).
 
-FIRST has created an easy to follow process that does all of the configurations for you so that you do not need to be concerned with the details. Follow their directions below. If you with to do it on your own, I am working on posting the manual steps required.
+FIRST has created an easy to follow process that does all of the configurations for you, and runs the commands to build the JVM for you so that you do not need to be concerned with the details. Follow their directions below. If you wish to do it on your own, I am working on posting the manual steps required.
 
 ###Official FIRST Procedure
 Ensure RoboRio is flashed and Imaged to latest versions then continue with [Offical screensteps directions](https://wpilib.screenstepslive.com/s/4485/m/13809/l/243933-installing-java-8-on-the-roborio-java-only)
@@ -47,7 +47,7 @@ TO BE CONTINUED
 
 ---
 
-##How Can I see live Program Output in Eclipse?
+##Can I see live Program Output in Eclipse?
 
 Yes. Use the RioLog Viewer.
 
@@ -56,7 +56,7 @@ To find the RIOLog window, in eclipse, go to Window, Show View, Other and search
 ---
 
 ##Can I use an older version of Eclipse like Kelper with the plugins?
-Yes, but only with a Java v7 or earlier JDK. There is a ANT build bug in older version of eclipse that is does not recognize the default ANT build version that is shipped with Kelper.
+Yes, but only with a Java v7 or earlier JDK. There is a ANT build bug in older version of eclipse where the default ANT build version that ship with the older eclipse versions do not recognize Java v8.
 
 See the bug report here: [bug](https://wiki.eclipse.org/Ant/Java8)
 
