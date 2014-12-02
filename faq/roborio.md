@@ -320,13 +320,23 @@ The bus switch that adjusts the signals passed to the FPGA is powered by a suppl
  
 ---
 
-##When the RoboRio browns-out, will I loose Motor Controllers?
+##When the RoboRio browns-out, will I loose command of Motor Controllers?
 
 Yes. When the RoboRio browns out, the power indicator on the RoboRio will turn orange, and immediately motor controller outputs will be disabled.
 
 If you notice your robot is staggering all of a sudden, it is most likely because your battery is on the edge of the RoboRio brownout point, and when the motors are driven the roborio disables outputs, which causes your voltage to raise above the Brown out threshold, enables the motors, which then browns the rio out again...and you enter this loop.
 
 To be sure you are not browning out at a quick glance, when driving your Robot, always ensure the Power light on the RoboRio is solid Green. If it is orange at any point, the roborio is browning out and you should check your power sources. 
+
+---
+
+##Everytime I deploy code, immediately after the Driverstation says no Robot Code. Whats Happening?
+
+Well the RobotRode indicator in the DS means, that your Robot application is actually executing. If the code crashes for any reason, such as a null pointer error, or other exception, the Application will stop running, and the Robot Code idicatior will go red.
+
+This most likely means your code is crashing upon start-up, so check for runtime errors using netconsole. 
+
+When this happens, you will also notice the Comms light on the RoboRio go red. This means that Robot Code is not running.
 
 ---
 
