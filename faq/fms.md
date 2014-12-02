@@ -8,7 +8,11 @@ permalink: /faq/fms/
 
 The network setup being tested for the 2015 system is a little bit different than the previous Control System. The new scheme utilizes mDNS to allow for the use of DHCP addressing and seamless transition from ethernet to USB and back.
 
-###What is mDNS?
+There is also a new 2015 protocol which uses less bandwidth for DS to Robot communications.
+
+---
+
+##What is mDNS?
 Multicast Domain Name System (mDNS) is a system which allows for resolution of host names to IP addresses on small networks with no dedicated name server. To resolve a host name a device sends out a multicast message to the network querying for the device. The device then responds with a multicast message containing it's IP. Devices on the network can store this information in a cache so subsequent requests for this address can be resolved from the cache without repeating the network query.
 
 The FRC Driver Station, LabVIEW, and the Eclipse plugins for C++ and Java are all programmed to discover your roboRIO using the mDNS protocol. This means that the roboRIO can be detected regardless of the interface or IP being used.
@@ -29,7 +33,9 @@ Most web-browsers should be able to utilize the mDNS address to access the roboR
 
 Chrome - In Google Chrome, a trailing '/' must be appended to access mDNS addresses (eg.roboRIO-2168.local/)
 
-###How do I set up my Robot Network to use mDNS?
+---
+
+##How do I set up my Robot Network to use mDNS?
 
 * USB
 If using the USB interface, no setup is required. The roboRIO driver will automatically configure the IP address of the host (your computer) and roboRIO and the software listed above should be able to locate and utilize your roboRIO
@@ -63,7 +69,9 @@ Note: You can still assign static IPs to any device on the Robot. However, do so
 ---
 
 ##Can I still stream images/Video to the Driver Station?
-Yes, however remember the Link between the driverstation and the Robot is capped at 7 Mbits/second total. The Driverstation protocol uses roughly 900kbits/sec alone, leaving ~6Mb/s for any network tables, camera traffic, or any other data the team wishes to transmit over the WIFI network. As a Control Engineer, I would recommend teams ensure that at no time are they using more than 5Mb/s total (including DS packets) to maintain reliable connection. More information on FMS can be learned from the FMS whitepaper released by FIRST: [FMS Whitepaper](http://www.usfirst.org/sites/default/files/uploadedFiles/Robotics_Programs/FRC/Game_and_Season__Info/2013/FMSWhitePaper_RevA.pdf)
+Yes, however remember the Link between the driverstation and the Robot is capped at 7 Mbits/second total. The 2014 Driverstation protocol uses roughly 900kbits/sec alone, leaving ~6Mb/s for any network tables, camera traffic, or any other data the team wishes to transmit over the WIFI network. As a Control Engineer, I would recommend teams ensure that at no time are they using more than 5Mb/s total (including DS packets) to maintain reliable connection. More information on FMS can be learned from the FMS whitepaper released by FIRST: [FMS Whitepaper](http://www.usfirst.org/sites/default/files/uploadedFiles/Robotics_Programs/FRC/Game_and_Season__Info/2013/FMSWhitePaper_RevA.pdf)
+
+NI states the new 2015 protocol should only use about 90kbits/sec vs the 900kbits/sec of the 2014 protocol, so this should give more headroom for users wishing to utilize the link bandwidth. This does not change my recommendation. Try to limit all comms between the Robot and DS to 5MB/s max to ensure smooth operations.
 
 FIRST also released a FMS light program so teams can practice at home, with a similar FMS in the loop. However, FMS Lite is not FMS and there is no guarantee that your performance during tests will be mirrored during a competition. [FMS Lite](http://www.usfirst.org/roboticsprograms/frc/blog-2014-fms-lite-available)
 
@@ -74,3 +82,16 @@ FIRST also released a FMS light program so teams can practice at home, with a si
 Simply flash one RoboRio with your actual team number, and additional RoboRios with different team numbers that are not yours. 
 
 For example we would flash Robot A with 2168, and Robot B with 2169 (or any other team numer that is not yours). This allows us to drive both robots simultaneoulsy once the DS for each robot is set to the proper team number.
+
+---
+
+##How do I configure my D-link for home use?
+
+You can use the FIRST provided bridge configuration tool installed on your Windows machine when you install the official FIRST utilities software.
+
+Afterwhich place the D-Link in AP mode and connect your DS to it wirelessly.
+
+Over the years we have adpoted a practice from more experienced teams. We always leave our D-link in bridged mode, and connect it to a secondary Wireless Access point which acts as a medium between our DS and the Robot Radio. This more realistically mimicks the Field setup. We also enable encrption on the D-link so to ensure all packets are encrypted just like they are on the field.
+
+---
+
