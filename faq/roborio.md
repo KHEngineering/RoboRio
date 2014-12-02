@@ -139,28 +139,27 @@ The pins are spaced by 2 0.1" headers. A 4 pin header can be used to bridge the 
   - Orange = Rio input voltage is unacceptable
   - Off = Rio is not powered, voltage is less than 4V
 
-* Status
-   - Normal Operation:
-       - Solid Green = Robot in Teleop Mode
-       - Solid Yellow = Robot in Auto Mode
-       - Solid Red = Robot in Test Mode
-       - Off = Rio booted-up correctly, Robot in Disabled Mode
+* Mode
+  - Solid Green = Robot in Teleop Mode
+  - Solid Yellow = Robot in Auto Mode
+  - Solid Red = Robot in Test Mode
+  - Off = Robot in Disabled Mode
     
-    - Error Mode
-       - 2 Blinks Repeatedly = Error Detected in Software, RoboRio is put into Safe Mode Automatically, Re-image RoboRio using Imaging Tool
-       - 3 Blinks Repeatedly = User Directed RoboRio to start in Safemode, Recycle Power to exit safemode and boot normally
-       - 4 Blinks Repeatedly = Software Crashed Multiple times, Most likely running out of Memory during program run
-       - Continuous Blinking  = Catastrophic Unrecoverable Error, FileSystem is corrupt, use Seial to Debug and Contact NI
+* Status
+  - 2 Blinks Repeatedly = Error Detected in Software, RoboRio is put into Safe Mode Automatically, Re-image RoboRio using Imaging Tool
+  - 3 Blinks Repeatedly = User Directed RoboRio to start in Safemode, Recycle Power to exit safemode and boot normally
+  - 4 Blinks Repeatedly = Software Crashed Multiple times, Most likely running out of Memory during program run
+  - Continuous Blinking  = Catastrophic Unrecoverable Error, FileSystem is corrupt, use Seial to Debug and Contact NI
+  - Off - RoboRio booted up correctly, no errors
             
-
 * COMM = green means robot code.  Red means comms with DS, but no robot code.
 
-* RSL = solid means powered.  Blinking means enabled.
+* RSL = solid means powered, but disabled.  Blinking means enabled.
 
 ---
 
 ##How do I upgrade the Image or Install new Firmware?
-So far for Beta testing the RoboRio software has been delivered in two parts, a Firmware, and an Image. The Firmware is for the FPGA, and the Image is to load the operating system, linux file system and default settings.
+So far for Beta testing the RoboRio software has been delivered in two parts, a Firmware, and an Image. The Firmware provides the bootlader, safemode, and firmware for the RoboRio. The Image is to load the FPGA, operating system, linux file system and default settings.
 
 The user can upgrade the firmware over Ethernet Tether/WIFI or USB. USB method is preferred and you should use that when ever possible, although we have had no problems updating the system over Ethernet/Wifi. 
 
@@ -321,6 +320,28 @@ The bus switch that adjusts the signals passed to the FPGA is powered by a suppl
  
 ---
 
+##When the RoboRio browns-out, will I loose Motor Controllers?
+
+Yes. When the RoboRio browns out, the power indicator on the RoboRio will turn orange, and immediately motor controller outputs will be disabled.
+
+If you notice your robot is staggering all of a sudden, it is most likely because your battery is on the edge of the RoboRio brownout point, and when the motors are driven the roborio disables outputs, which causes your voltage to raise above the Brown out threshold, enables the motors, which then browns the rio out again...and you enter this loop.
+
+To be sure you are not browning out at a quick glance, when driving your Robot, always ensure the Power light on the RoboRio is solid Green. If it is orange at any point, the roborio is browning out and you should check your power sources. 
+
+---
+
+##How long does the RoboRio take to start up?
+
+With the RoboRio off, and Driverstation application running on the DS computer, it took approximately 30 seconds from the time the Roborio was switch on to the point when Comms and Robot Code was established.
+
+---
+
+##How long does it take to deploy code?
+
+Well since we are a Java test team we can only comment for Java. Typically it takes about 8-10 seconds from the time we hit deploy in eclipse to the time the code is running and established Robot Code on the DS. 
+
+---
+
 ##What are some of the linux based information I should know?
 
 Kernel: 
@@ -358,7 +379,8 @@ On Linux:
 	3. Find out which port the adapter is assigned `dmesg | grep tty` (output should be something like ttyUSB0)
 	4. Open second terminal window
 	5. Configure MiniCom with the above settings `sudo minicom -s`
-	6. Exit Minicom, the modem should initialize, hit enter and the terminal should now show the RoboRio terminal (assuming the cable is correct) 
+	6. Be sure to replace the port with the one found earlier i.e ttyUSB0
+	7. Exit Minicom, the modem should initialize, hit enter and the terminal should now show the RoboRio terminal (assuming the cable is correct) 
 
 On Windows:
 
