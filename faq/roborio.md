@@ -46,7 +46,7 @@ You no longer need to set the IP address for the RoboRio. The new 2015 System us
 
 Your team number will be assigned to the RoboRio when you image the Rio for the first time. After which you can access the RoboRio using RoboRio-2168.local (replacing 2168 with your own team number, DO NOT prefix 0 for 3 digit teams). 
 
-So if your team 359 for example, after imaging your RoboRio you can access it via Ethernet, Wifi, or USB using the single address Roborio-359.local, which will resolve to the IP address of the RoboRio using mDNS. (Using roborio.0359.local will result in error).
+So if your team 359 for example, after imaging your RoboRio you can access it via Ethernet, Wifi, or USB using the single address Roborio-359.local, which will resolve to the IP address of the RoboRio using mDNS. (Using roborio-0359.local will result in error).
 
 For those teams wishing to assign their own static IP to the RoboRio you can still do this through the web interface. Once the RoboRio has been successfully images, navigate to http://RoboRio-2168.local, and check your network settings. You can login as admin and change the ethernet port from dhcp to static and assign your own 10.TE.AM.2 address. The mDNS address will still work correctly even when the ethernet port is set to static.
 
