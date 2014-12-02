@@ -156,6 +156,8 @@ The pins are spaced by 2 0.1" headers. A 4 pin header can be used to bridge the 
 
 * RSL = solid means powered, but disabled.  Blinking means enabled.
 
+* Radio = Inactive for FRC
+
 ---
 
 ##How do I upgrade the Image or Install new Firmware?
