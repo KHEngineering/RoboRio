@@ -29,7 +29,11 @@ To use mDNS on FRC, a mDNS resolver must be installed on your development comput
   - Apple Bonjour is a mDNS resolver and is installed in OSX by default
 
 
-Most web-browsers should be able to utilize the mDNS address to access the roboRIO webserver as long as an mDNS provider is installed. Please note the following exceptions:
+Most web-browsers and applications should be able to utilize the mDNS address to access the roboRIO webserver as long as an mDNS provider is installed. 
+
+For example: you should be able to navigate to http://roborio-2168.local from any browser, or application requiring a hostname (like putty, or filezilla).
+
+Please note the following exceptions:
 
 Chrome - In Google Chrome, a trailing '/' must be appended to access mDNS addresses (eg.roboRIO-2168.local/)
 
