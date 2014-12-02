@@ -239,7 +239,7 @@ use `opkg install <package` to install your package.
 
 The RoboRio is an ARM processor based on soft VFP registers with NEON instruction support. You can use any binary that has been compiled for ArmV7 with softFP on the RoboRio.
 
-If the NI repo doesn't have what you are looking for, luckily, you can make use of the Angstrom Repository to load additional software onto the RoboRio. The Angstrom repository has over 800 different packages all of which are compatible on the Rio.  To add the Angstrom Repo to the RoboRio package manager, follow the steps below:
+If the NI repo doesn't have what you are looking for, luckily, you can make use of the Angstrom Repository to load additional software onto the RoboRio. The Angstrom repository has over 5000 different packages which are compatible on the Rio.  To add the Angstrom Repo to the RoboRio package manager, follow the steps below:
 
 1. SSH into the RoboRio using putty on windows or terminal on any Mac or other linux based computer
 2. Login using `admin` as the username and leave the password blank (just hit enter)
