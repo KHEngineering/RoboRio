@@ -30,16 +30,17 @@ Most web-browsers should be able to utilize the mDNS address to access the roboR
 Chrome - In Google Chrome, a trailing '/' must be appended to access mDNS addresses (eg.roboRIO-2168.local/)
 
 ###How do I set up my Robot Network to use mDNS?
-USB
+
+* USB
 If using the USB interface, no setup is required. The roboRIO driver will automatically configure the IP address of the host (your computer) and roboRIO and the software listed above should be able to locate and utilize your roboRIO
 
-Ethernet/Wireless
+* Ethernet/Wireless
 The 2015 Bridge Configuration Utility has been modified to enable the DHCP server on the DAP1522 radio in the home use case (AP mode), if you are putting the DAP1522 in bridge mode and using a router you can enable DHCP addressing on the router. The bridge is set to the same team based IP address as before (10.TE.AM.1) and will hand out DHCP address from 10.TE.AM.20 to 10.TE.AM.199
 
-RoboRIO Ethernet Configuration
+* RoboRIO Ethernet Configuration
 The roboRIO Ethernet interface should be set to DHCP. When connected to the DAP1522 bridge, the roboRIO will receive an IP from the bridge. When tethered directly to a PC, both devices will self-assign IPs.
 
-PC  Configuration
+* PC  Configuration
 When connecting via Ethernet (to either the radio or directly to the roboRIO) or Wireless (to the DLink radio), your computer adapter should be set to DHCP. When connecting through the DAP1522, your PC will receive an IP address from the radio. If tethered directly to the roboRIO both devices will self-assign IPs.
 
 mDNS works on the field such that all of your devices are located using their mDNS address so static IPs are no longer required.
