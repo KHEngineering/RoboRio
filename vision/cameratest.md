@@ -16,6 +16,12 @@ The purpose of this study is to understand the performance differences between d
 In general the time to process a frame is comprised of:
  time to capture frame from camera
  
+ <div>
+ \[\begin{aligned}
+ \dot{x} &amp; = \sigma(y-x)
+ \end{aligned \]
+ </div>
+ 
 
 ##1.1 Test Objectives:
 In this test we will be focusing on 3 test scenarios:
