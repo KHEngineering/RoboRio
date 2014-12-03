@@ -18,7 +18,7 @@ In general the time to process a frame is comprised of:
  
  <div>
  \[\begin{aligned}
- \dot{x} &amp; = \sigma(y-x)
+ \dot{x} = \sigma(y-x)
  \end{aligned \]
  </div>
  
