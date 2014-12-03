@@ -10,7 +10,14 @@ permalink: /vision/cameratest/
 In this article Team 2168 compares the performance of 3 popular embedded processors for Vision Processing for it is applicability to the First Robotics Competition.
 The purpose of this test is to help determine which approach is best suitable to a team depending on their needs.
 
-###1.1Test Objectives:
+## 1.1 Background information
+The purpose of this study is to understand the performance differences between different embedded devices and determine if there is a clear advantage in using one over the next for FRC. We will be studying the total time it takes to process images on each target. 
+
+In general the time to process a frame is comprised of:
+ time to capture frame from camera
+ 
+
+##1.1 Test Objectives:
 In this test we will be focusing on 3 test scenarios:
 
   A. Beagle Bone Black - Off Board Processor
@@ -24,6 +31,11 @@ The reason we are focusing on these 3 devices is two fold:
 
 The tests herein will be conducted using the same source code, library versions, and camera settings. The purpose is to have an apples-to-apples comparison of the same source code's performance on each target device.
 
+For each scenrio there will be two subsets of test:
+
+* Baseline performance test
+  - Used to capture the best case scenario procressing time and image downloading time.
+  - Goal is to isolate the processing thread and frame capture thread
 
 The images to be processes will be captured live from a connected IP camera so as to mimic a real FRC match. At no point will previously saved images or local files be used (we want image download time to be factored in as well).
 Each test will be using the Axis M1011 Ethernet Camera. We will vary the camera settings and apply those settings to each target so as to find the optimal and maximum FPS, and image quality settings which maximize performance on each embedded device.
