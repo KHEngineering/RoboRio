@@ -6,11 +6,11 @@ permalink: /vision/cameratest/
 
 
 
-Introduction:
+## 1.0 Introduction:
 In this article Team 2168 compares the performance of 3 popular embedded processors for Vision Processing for it is applicability to the First Robotics Competition.
 The purpose of this test is to help determine which approach is best suitable to a team depending on their needs.
 
-Test Objectives:
+###1.1Test Objectives:
 In this test we will be focusing on 3 test scenarios:
 
   A. Beagle Bone Black - Off Board Processor
