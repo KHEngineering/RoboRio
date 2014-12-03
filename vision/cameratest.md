@@ -17,9 +17,7 @@ In general the time to process a frame is comprised of:
  time to capture frame from camera
  
  <div>
- \[\begin{aligned}
  \dot{x} = \sigma(y-x)
- \end{aligned \]
  </div>
  
 
