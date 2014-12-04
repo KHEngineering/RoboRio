@@ -14,7 +14,6 @@ The purpose of this test is to help determine which approach is best suitable to
 The purpose of this study is to understand the performance differences between different embedded devices and determine if there is a clear advantage in using one over the next for FRC. We will be studying the total time it takes to process images on each target. 
 
 In general the time to process a frame is comprised of:
- time to capture frame from camera
  
  <div>
  \[
@@ -27,8 +26,11 @@ In general the time to process a frame is comprised of:
  \]
  </div>
  
+We can use the total time to process a frame to determine how many frames per second we can process on each device without missing frames.
 
-##1.1 Test Objectives:
+
+
+## 1.2 Test Objectives:
 In this test we will be focusing on 3 test scenarios:
 
   A. Beagle Bone Black - Off Board Processor
@@ -46,21 +48,22 @@ For each scenrio there will be two subsets of test:
 
 * Baseline performance test
   - Used to capture the best case scenario procressing time and image downloading time.
-  - Goal is to isolate the processing thread and frame capture thread
+  - Goal is to isolate the processing thread and frame capture thread to calculate times individually
+* Live performance test
+  - The images to be processes will be captured live from a connected IP camera so as to mimic a real FRC match. At no point will previously saved images or local files be used (we want image download time to be factored in as well).
 
-The images to be processes will be captured live from a connected IP camera so as to mimic a real FRC match. At no point will previously saved images or local files be used (we want image download time to be factored in as well).
 Each test will be using the Axis M1011 Ethernet Camera. We will vary the camera settings and apply those settings to each target so as to find the optimal and maximum FPS, and image quality settings which maximize performance on each embedded device.
 
 
 
-Meet the hardware:
-###Beagle Bone Black
+##2.0 Meet the hardware:
+## 2.1 Beagle Bone Black
 
 
-###Jetson TK1
+## 2.2 Jetson TK1
 
 
-###RoboRio
+## 2.3 RoboRio
 
 
 ###Axis M1011 IP Camera
