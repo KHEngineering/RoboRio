@@ -85,6 +85,7 @@ Each test will be using the Axis M1011 Ethernet Camera. We will vary the camera 
             <li>GPU: NVIDIA Kepler GPU with 192 SM3.2 CUDA cores</li>
             <li>2GB DDR3L 933MHz DRAM</li>
             <li>16BG SPI ROM</li>
+            <li>Ubuntu 14.04 Linux Operating System</li>
             <li>supports USB 3.0</li>
             <li>dimensions: 5" x 5"</li>
             <li>12V DC regulated input voltage required</li>
