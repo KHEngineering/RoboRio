@@ -72,7 +72,30 @@ Each test will be using the Axis M1011 Ethernet Camera. We will vary the camera 
 
 
 ## 2.4 Axis M1011 IP Camera
-30FPS max rate
+
+Camera Settngs:
+Camera: Axis M1011 Ethernet Camera
+Compression: 30
+Constant Bit Rate: 30kbit/s
+Color Level: 100 out of 100
+Brightness: 25 out of 100
+Sharpness: 100 out of 100
+Contrast: 100 out of 100
+WhiteBalance: Fixed Indoor
+Exposure: 23 out of 100
+Exposure control: Hold Current
+
+The only items we varied was:
+
+* Frame Size: 
+	- 320 x 240
+	- 640 x 480
+	
+* Frames Per Second
+    - 10 fps
+    - 20 fps
+    - unlimited (30FPS max rate)
+	
 
 ---
 ---
@@ -221,27 +244,56 @@ X11Forwarding yes
  
 ## 5.2 Scenario B Tests (Jetson TK1):
 
+## 5.2.1 Baseline Tests
 
-Camera Settngs:
-Camera: Axis M1011 Ethernet Camera
-Frame Size: 320 x 240
-Compression: 0
-FPS: 10 frames
-Constant Bit Rate: 30kbit/s
-Color Level: 100 out of 100
-Brightness: 25 out of 100
-Sharpness: 100 out of 100
-Contrast: 100 out of 100
-WhiteBalance: Fixed Indoor
-Exposure: 23 out of 100
-Exposure control: Hold Current
+On the Tegra we executed the Vision code while reading an image from the file. The image was a snapshot taken from the Axis camera of our vision target. The purpose of this test was to calculate the fastest rate we could process images without worrying about downloading first. The image is loaded into memory only once.
+We ran the test for both 320 x 240 images and 640x480 images.
 
+current CPU frequency is 2.32 GHz and all 4 cores are online
 
+Below is the sample image we used for the test.
 
-current CPU frequency is 2.32 GHz.
+<img src="../Images/image320x240.jpg">
 
+We ran the test for two cases:
+ - With X11 forwarding enabled
+ - Without X11 forwarding enabled
+ 
+ The reason we did this was because, during our testing last year, we used X11 forwarding to view the image output while debugging/testing our algorithm, and it was notably slower than with X11 off. In a match, we do not use X11 forwarding.
+ 
+ Below is a plot of how long each processing loop took to execute without X11 (blue) and with X11 (red).
+ 
+ <img src="../Images/320x240 Tegra Baseline Processing Speed (no X11).png">
+ <img src="../Images/320x240 Tegra Baseline Processing Speed (with X11).png">
+ 
+ We can see that our processing time per frame on the Tegra took about 2.6ms nominally, and was under 3.4ms in the worst case. We also notice that when X11 is activated, our nominal processing time increases to about 4ms and peaks around 5ms in the worst case.
+ 
+ 
+ NEED TO ADD FFMPEG BASELINE
+ 
+ 
+ 
+ ## 5.2.1.1 640x480 Baseline processing
 
-<Sample of Image>
+We ran the same test as above, but with a 640x480 image captured from the Axis. Below is the sample image we used for the test.
+
+<img src="../Images/image640x480.jpg">
+
+Just as before We ran the test for two cases:
+ - With X11 forwarding enabled
+ - Without X11 forwarding enabled
+ 
+ 
+ Below is a plot of how long each processing loop took to execute without X11 (blue) and with X11 (red).
+ 
+ <img src="../Images/640x480 Tegra Baseline Processing Speed (no X11).png">
+ <img src="../Images/640x480 Tegra Baseline Processing Speed (with X11).png">
+ 
+ We can see that our processing time per frame on the Tegra took about 10.3ms nominally, and was under 10.4ms in the worst case. We also notice that when X11 is activated, our nominal processing time increases to about 20ms and peaks around 22ms in the worst case.
+ 
+ 
+ NEED TO ADD FFMPEG BASELINE
+ 
 
 ## 5.2 Scenario C Tests (RoboRio)
 
@@ -258,7 +310,7 @@ Below is the sample image we used for the test.
 
 We ran the test for two cases:
  - With X11 forwarding enabled
- - Without X11 forwading enabled
+ - Without X11 forwarding enabled
  
  The reason we did this was because, during our testing last year, we used X11 forwarding to view the image output while debugging/testing our algorithm, and it was notably slower than with X11 off. In a match, we do not use X11 forwarding.
  
@@ -306,13 +358,13 @@ We ran the test for two cases:
 
 ## 5.2.1.1 640x480 Baseline processing
 
-Below is the sample image we used for the test.
+We ran the same test as above, but with a 640x480 image captured from the Axis. Below is the sample image we used for the test.
 
 <img src="../Images/image640x480.jpg">
 
 Just as before We ran the test for two cases:
  - With X11 forwarding enabled
- - Without X11 forwading enabled
+ - Without X11 forwarding enabled
  
  
  Below is a plot of how long each processing loop took to execute without X11 (blue) and with X11 (red).
