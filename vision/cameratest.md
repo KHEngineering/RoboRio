@@ -34,13 +34,13 @@ We can use the total time to process a frame to determine how many frames per se
 Now a word of caution, the above is kind of a best case scenario for estimating processing time. It doesn't account for any overhead. Overhead is any other external process which takes away CPU time from your processing thread, thus increasing processing time. 
 
 For example:
-	- Other Opperating system services
-	- servicing other program threads
-	- waiting for another thread to release a mutex lock
-	- other programs running on the device
+	- Other Operating system services
+	- Servicing other program threads
+	- Waiting for another thread to release a mutex lock
+	- Other programs running on the device
 	- etc.
 
-To truely get an accurate account of performance, these overhead processing times will need to be accounted for as well. All of the above will increase your effective processing time.
+To truely get an accurate account of performance, these overhead processing times will need to be accounted for as well. All of the above will increase your effective processing time and reduce acutal FPS your device can process.
 
 ## 1.2 Test Objectives:
 In this test we will be focusing on 3 test scenarios:
@@ -73,6 +73,24 @@ Each test will be using the Axis M1011 Ethernet Camera. We will vary the camera 
 
 ## 2.1 Beagle Bone Black
 
+<table>
+  <tr>
+    <td><img src="http://www.ti.com/ww/en/beagleboard/product_detail_black_lg.jpg" width="320" height=240"><td>
+    <td>
+       <ul>
+          <li>CPU: AM335 Dual Core ARM Cortex A8 @ 1GHz</li>
+          <li>GPU:</li>
+          <li>512MD DDR3 Random Access Memory (RAM)</li>
+          <li>4GB eMMC Flash Memory</li>
+          <li>Angstrom Linux Distribution<li>
+          <li>Supports USB 2.0 devices</li>
+          <li>Dimensions: 3.4" x 2.1"<li>
+          <li>5V DC regulated input voltage required</li>
+       </ul>
+    </td>
+  </tr>
+
+</table>
 
 ## 2.2 Jetson TK1
 
