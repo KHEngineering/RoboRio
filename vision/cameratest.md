@@ -11,7 +11,7 @@ In this article Team 2168 compares the performance of 3 popular embedded process
 The purpose of this test is to help determine which approach is best suitable to a team depending on their needs.
 
 ## 1.1 Background information
-The purpose of this study is to understand the performance differences between different embedded devices and determine if there is a clear advantage in using one over the next for FRC. We will be studying the total time it takes to process images on each target. 
+In this study we wish to understand the performance differences between different embedded devices and determine if there is a clear advantage in using one over the next for FRC. We will be studying the total time it takes to process images on each target. 
 
 In general the time to process a frame is comprised of:
  
@@ -57,6 +57,7 @@ Each test will be using the Axis M1011 Ethernet Camera. We will vary the camera 
 
 
 ##2.0 Meet the hardware:
+
 ## 2.1 Beagle Bone Black
 
 
@@ -66,11 +67,12 @@ Each test will be using the Axis M1011 Ethernet Camera. We will vary the camera 
 ## 2.3 RoboRio
 
 
-###Axis M1011 IP Camera
+## 2.4 Axis M1011 IP Camera
 30FPS max rate
 
-Test Apparatus:
-Scenario A Test Apparatus:
+## 3.0 Test Apparatus:
+
+## 3.1 Scenario A Test Apparatus:
 
 - BeagleBone Black, RoboRio, and M1011 Camera are connected via hardware Ethernet using  D-Link 1522 Rev B switch.
 - M1011 Camera and D-Link are powered from 2015 Voltage Regulator Module
@@ -88,7 +90,7 @@ Scenario A Test Apparatus:
 
 ---
 
-Scenario B Test Apparatus:
+## 3.2 Scenario B Test Apparatus:
 
 - Jetson TK1, RoboRio, and M1011 Camera are connected via hardware Ethernet using D-Link 1522 Rev B switch.
 - M1011 Camera and D-Link are powered from 2015 Voltage Regulator Module
@@ -106,7 +108,7 @@ Scenario B Test Apparatus:
 
 ---
 
-Scenario C Test Apparatus:
+## 3.3 Scenario C Test Apparatus:
 
 - RoboRio, and M1011 Camera are connected via hardware Ethernet using D-Link 1522 Rev B switch.
 - M1011 Camera and D-Link are powered from 2015 Voltage Regulator Module
@@ -119,11 +121,9 @@ Scenario C Test Apparatus:
 - No other devices on network
 
 
+## 3.4 Measurement Accuracy:
 
-
-Measurement Accuracy:
-
-The performance measurements will be done internally in the code Using C++ RT library clock
+The performance measurements will be done internally in the code Using C++ RT library clock on each device:
 
 Here is an example of how the measurements are taken within the code.
 
@@ -131,13 +131,9 @@ Here is an example of how the measurements are taken within the code.
 #include <ctime>
 
 clock_gettime(CLOCK_REALTIME, &start);
-
    //some process to measurve
-
 clock_gettime(CLOCK_REALTIME, &end);
-
 cout << diffClock(start, end) <<endl;
-
 
 //Where diffClock is defined as
 double diffClock(timespec start, timespec end) 
@@ -146,7 +142,8 @@ double diffClock(timespec start, timespec end)
 } 
 {%  endhighlight %}
 
-Source Code Description:
+
+## 4.0 Source Code Description:
 
 The vision code used is the exact source code we ran throughout 5 competition in the 2014 season on a Beaglebone white. The source has undergone no changes for these test other than adding/modifying the areas to be timed
 
@@ -188,7 +185,8 @@ processing determine which are then sent over the outgoing TCP message to the Ro
 Then the process Image continues, all while FFMPEG continues to grab the latest frame from the camera in parallel.
 
 
-Generic Code Optimizations:
+## 4.1 Generic Code Optimizations:
+
 The code is compiled with GCC 4.6.3 with -o3 optimizations enabled
 NEON mfpu for floating point is enabled for all targets
 Specific target optimizations are not enabled
@@ -200,7 +198,6 @@ Jetson TK1 vision code is compiled with gcc 4.6.3 with hardFP floating point ope
  
 In all instances the CPU of the device was manually set to the highest clock-rate so performance would not be dimminshed by "on demand" CPU throttling built into the linux OS.
  
-
 Also X11 fowarding has been enabled and a view window outputting the processed image is displayed on the Development computer
 
 ```
@@ -208,14 +205,15 @@ Check the server's sshd_config (normally /etc/ssh/sshd_config), and make sure th
 X11Forwarding yes
 ```
 
+ ## 5.0 Results
  
- Scenario A Tests:
- 
- 
- 
+ ## 5.1 Scenario A Tests:
  
  
-Scenario B Tests:
+ 
+ 
+ 
+## 5.2 Scenario B Tests:
 
 
 Camera Settngs:
