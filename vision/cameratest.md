@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Vision Processing Device Test
+title: Vision Processing Device Test (Work In Progress)
 permalink: /vision/cameratest/
 ---
 
