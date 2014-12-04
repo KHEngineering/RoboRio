@@ -76,6 +76,22 @@ Each test will be using the Axis M1011 Ethernet Camera. We will vary the camera 
 
 ## 2.2 Jetson TK1
 
+<table>
+   <tr>
+      <td><img src="http://elinux.org/File:Nvidia-tegra124-jetson-tk1-labelled.jpg" width="320" height="240"></td>
+      <td>
+         <ul>
+            <li>CPU: ARM Quad Core Cortex A15 CPU @ 2.32 GHz</li>
+            <li>GPU: NVIDIA Kepler GPU with 192 SM3.2 CUDA cores</li>
+            <li>2GB DDR3L 933MHz DRAM</li>
+            <li>16BG SPI ROM</li>
+            <li>supports USB 3.0</li>
+            <li>dimensions: 5" x 5"</li>
+            <li>12V DC regulated input voltage required</li>
+         </ul>
+      </td>
+   </tr>
+</table>
 
 
 ## 2.3 RoboRio
@@ -90,6 +106,7 @@ Each test will be using the Axis M1011 Ethernet Camera. We will vary the camera 
             <li>512MB Non-volitile Memory (Flash)</li>
             <li>Supports USB 2.0 Devices</li>
             <li>NI RT Linux with preemt RT patch</li>
+            <li>7-16V DC Unregulated input voltage required</li>
          </ul>
       </td>
    </tr>
