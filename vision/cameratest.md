@@ -116,7 +116,7 @@ The only items we varied was:
 - Development Computer: 10.21.68.101
 - No other devices on networks
 
-<img src="../320x24010fps.png">
+<img src="../320x24010fps.png" align="middle">
 
 
 ## 3.2 Scenario B Test Apparatus:
@@ -253,7 +253,7 @@ current CPU frequency is 2.32 GHz and all 4 cores are online
 
 Below is the sample image we used for the test.
 
-<img src="../Images/image320x240.jpg">
+<img src="../Images/image320x240.jpg" align="middle">
 
 We ran the test for two cases:
  - With X11 forwarding enabled
@@ -277,7 +277,7 @@ We ran the test for two cases:
 
 We ran the same test as above, but with a 640x480 image captured from the Axis. Below is the sample image we used for the test.
 
-<img src="../Images/image640x480.jpg">
+<img src="../Images/image640x480.jpg" align="middle">
 
 Just as before We ran the test for two cases:
  - With X11 forwarding enabled
