@@ -18,11 +18,11 @@ In general the time to process a frame is comprised of:
  
  <div>
  \[
- \begin{array}{cc}
-   & time to capture frame from camera \\
- + & time to process frame \\
+ \begin{array}{ll}
+   & \mbox{time to capture frame from camera} \\
+ + & \mbox{time to process frame} \\
  \hline
-   & Total Processing time per frame \\
+   & \mbox{Total Processing time per frame} \\
  \end{array}
  \]
  </div>
