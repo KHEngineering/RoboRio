@@ -54,7 +54,8 @@ For each scenrio there will be two subsets of test:
 
 Each test will be using the Axis M1011 Ethernet Camera. We will vary the camera settings and apply those settings to each target so as to find the optimal and maximum FPS, and image quality settings which maximize performance on each embedded device.
 
-
+---
+---
 
 ##2.0 Meet the hardware:
 
@@ -69,6 +70,9 @@ Each test will be using the Axis M1011 Ethernet Camera. We will vary the camera 
 
 ## 2.4 Axis M1011 IP Camera
 30FPS max rate
+
+---
+---
 
 ## 3.0 Test Apparatus:
 
@@ -88,7 +92,6 @@ Each test will be using the Axis M1011 Ethernet Camera. We will vary the camera 
 
 <img src="../320x24010fps.png">
 
----
 
 ## 3.2 Scenario B Test Apparatus:
 
@@ -104,9 +107,6 @@ Each test will be using the Axis M1011 Ethernet Camera. We will vary the camera 
 - Development Computer: 10.21.68.101
 - No other devices on network
 
-
-
----
 
 ## 3.3 Scenario C Test Apparatus:
 
@@ -143,16 +143,19 @@ double diffClock(timespec start, timespec end)
 {%  endhighlight %}
 
 
+---
+---
+
 ## 4.0 Source Code Description:
 
 The vision code used is the exact source code we ran throughout 5 competition in the 2014 season on a Beaglebone white. The source has undergone no changes for these test other than adding/modifying the areas to be timed
 
 The code has 5 threads:
 
-  1st: Outgoing TCP Messages to RoboRio
-  2nd: Incoming TCP Messages to RoboRio
-  3rd: FFMPEG Video Capture of Camera
-  4th: Image processing thread
+  - 1st: Outgoing TCP Messages to RoboRio
+  - 2nd: Incoming TCP Messages to RoboRio
+  - 3rd: FFMPEG Video Capture of Camera
+  - 4th: Image processing thread
 
 The program is written using pthread and pthread mutex locks for thread safe operation.
 Upon startup the Outgoing TCP link and FFMPEG threads start and try to establish communication with the RoboRIo and the IP
