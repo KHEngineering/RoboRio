@@ -7,13 +7,13 @@ permalink: /vision/cameratest/
 
 
 ## 1.0 Introduction:
-In this article Team 2168 compares the performance of 3 popular embedded processors for Vision Processing for it is applicability to the First Robotics Competition.
+   In this article Team 2168 compares the performance of 3 popular embedded processors for Vision Processing for it is applicability to the First Robotics Competition.
 The purpose of this test is to help determine which approach is best suitable to a team depending on their needs.
 
 ## 1.1 Background information
-In this study we wish to understand the performance differences between different embedded devices and determine if there is a clear advantage in using one over the next for FRC. We will be studying the total time it takes to process images on each target. 
+   In this study we wish to understand the performance differences between different embedded devices and determine if there is a clear advantage in using one over the next for FRC. We will be studying the total time it takes to process images on each target. 
 
-In general the time to process a frame is comprised of:
+   In general the time to process a frame is comprised of test:
  
  <div>
  \[
