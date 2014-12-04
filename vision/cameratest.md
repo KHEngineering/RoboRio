@@ -78,7 +78,7 @@ Each test will be using the Axis M1011 Ethernet Camera. We will vary the camera 
 
 <table>
    <tr>
-      <td><img src="http://elinux.org/File:Nvidia-tegra124-jetson-tk1-labelled.jpg" width="320" height="240"></td>
+      <td><img src="http://elinux.org/images/thumb/2/27/Nvidia-tegra124-jetson-tk1-labelled.jpg/800px-Nvidia-tegra124-jetson-tk1-labelled.jpg" width="320" height="240"></td>
       <td>
          <ul>
             <li>CPU: ARM Quad Core Cortex A15 CPU @ 2.32 GHz</li>
