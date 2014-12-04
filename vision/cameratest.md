@@ -31,7 +31,7 @@ permalink: /vision/cameratest/
  
 We can use the total time to process a frame to determine how many frames per second we can process on each device without missing frames.
 
-Now a word of caution, the best is kind of a best case scenario for estimating processing time. It doesn't account for any overhead. Overhead is any other external process which takes away CPU time from your processing thread, thus increasing processing time. 
+Now a word of caution, the above is kind of a best case scenario for estimating processing time. It doesn't account for any overhead. Overhead is any other external process which takes away CPU time from your processing thread, thus increasing processing time. 
 
 For example:
 	- Other Opperating system services
@@ -82,7 +82,7 @@ Each test will be using the Axis M1011 Ethernet Camera. We will vary the camera 
 
 <table>
    <tr>
-      <td><img src="../Images/roborio.jpg"></td>
+      <td><img src="../../Images/roborio.jpg" width = "320" height="240"></td>
       <td>
          <ul>
             <li>Dual-Core Arm Cortex A9 Processor @ 667 MHz</li>
