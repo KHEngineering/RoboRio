@@ -77,8 +77,23 @@ Each test will be using the Axis M1011 Ethernet Camera. We will vary the camera 
 ## 2.2 Jetson TK1
 
 
+
 ## 2.3 RoboRio
 
+<table>
+   <tr>
+      <td><img src="../Images/roborio.jpg"></td>
+      <td>
+         <ul>
+            <li>Dual-Core Arm Cortex A9 Processor @ 667 MHz</li>
+            <li>256MB Random Access Memory (RAM)</li>
+            <li>512MB Non-volitile Memory (Flash)</li>
+            <li>Supports USB 2.0 Devices</li>
+            <li>NI RT Linux with preemt RT patch</li>
+         </ul>
+      </td>
+   </tr>
+</table>
 
 ## 2.4 Axis M1011 IP Camera
 
