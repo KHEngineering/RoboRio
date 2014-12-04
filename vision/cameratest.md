@@ -18,7 +18,7 @@ In general the time to process a frame is comprised of:
  
  <div>
  \[
- \begin{tabular}
+ \begin{tabular}{cc}
    & time to capture frame from camera \\
  + & time to process frame \\
  \hline
