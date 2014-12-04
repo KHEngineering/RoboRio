@@ -15,7 +15,8 @@ permalink: /vision/cameratest/
 ## 1.1 Background information
 
    In this study we wish to understand the performance differences between different embedded devices and determine if there is a clear advantage in using one over the next for FRC. We will be studying the total time it takes to process images on each target. 
-   In general the time to process a frame is comprised of test:
+   
+   In general the time to process a frame is comprised of:
  
  <div>
  \[
