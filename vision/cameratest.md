@@ -8,9 +8,9 @@ permalink: /vision/cameratest/
 
 ## 1.0 Introduction:
 
-   In this article Team 2168 compares the performance of 3 popular embedded processors for Vision Processing for it is applicability to the First Robotics Competition.
+   In this article Team 2168 compares the performance of 3 popular embedded processors used in Vision Processing for it is applicability to the First Robotics Competition.
 
-   The purpose of this test is to help determine which approach is best suitable to a team depending on their needs.
+   The purpose of this test is to help determine which device is best suitable to a team depending on their needs.
 
 ## 1.1 Background information
 
@@ -173,7 +173,7 @@ double diffClock(timespec start, timespec end)
 
 ## 4.0 Source Code Description:
 
-The vision code used is the exact source code we ran throughout 5 competition in the 2014 season on a Beaglebone white. The source has undergone no changes for these test other than adding/modifying the areas to be timed
+The vision code used is the exact source code we ran throughout 5 competition in the 2014 season on a Beaglebone white. The source has undergone no changes for these test other than adding/modifying the areas to be timed.
 
 The code has 5 threads:
 
@@ -182,24 +182,17 @@ The code has 5 threads:
   - 3rd: FFMPEG Video Capture of Camera
   - 4th: Image processing thread
 
-The program is written using pthread and pthread mutex locks for thread safe operation.
-Upon startup the Outgoing TCP link and FFMPEG threads start and try to establish communication with the RoboRIo and the IP
-camera respectively.
+The program is written using pthreads and pthread mutex locks for thread safe operation. Upon startup the Outgoing TCP link and FFMPEG threads start and try to establish communication with the RoboRio and the IP camera respectively.
 
-Once communication with the RoboRio is established, the Incoming TCP message thread starts, if there is no communication with
-the RoboRio the outgoing thread will retry 5 times a second
+Once communication with the RoboRio is established, the Incoming TCP message thread starts, if there is no communication with the RoboRio the outgoing thread will retry once a second, until communications are established.
 
-In parallel, the FFMPEG thread is trying to establish a link with the IP Camera. IF no link is established the thread will
-retry at a rate of 1 time a second.
+In parallel, the FFMPEG thread is trying to establish a link with the IP Camera. IF no link is established the thread will retry at a rate of five times a second.
 
-Once the camera is established, the thread flushes all images for 12 seconds. This means the thread just grabs the frame and
-throws it away. This is to ensure that there is no buffered/old images stored in the camera's network buffer during camera
-startup.
+Once a connection to the IP camera is established, the thread reads and flushes all images for 12 seconds. This means the thread just grabs the frame and throws it away. This is to ensure that there is no buffered/old images stored in the camera's network buffer during camera startup. (Which we noticed was happening on camera startup).
 
-After the 12 second flush, the Imagine processing thread will start and the FFMPEG thread will capture each frame and store
-it in a thread safe global variable. Each loop iteration, the FFMPEG overwrites the previous frame captured.
+After the 12 second flush, the Imagine processing thread will start and the FFMPEG thread will capture each frame and store it in a thread safe global variable. Each loop iteration, the FFMPEG overwrites the previous frame captured.
 
-Each processing loop, the thread will grab the latest FFMPEG frame and perform the following OPENCV operations:
+Each processing loop, the processing thread will grab the latest FFMPEG frame and perform the following OPENCV operations:
 
 - InRange Threshold
 - Blur filter
@@ -207,10 +200,9 @@ Each processing loop, the thread will grab the latest FFMPEG frame and perform t
 - Box all Contours
 - Determine Size ratio and position of all contours (for Hot target detection)
 
-After which the processing image is done, and a few global thread safe variables are updated based on what the image
-processing determine which are then sent over the outgoing TCP message to the RoboRio
+After which the processing image is done, and a few global thread safe variables are updated based on what the image processing determine, and those values are then sent over the outgoing TCP message to the RoboRio.
 
-Then the process Image continues, all while FFMPEG continues to grab the latest frame from the camera in parallel.
+Then cycle continues forever, all while FFMPEG continues to grab the latest frame from the camera in parallel.
 
 
 ## 4.1 Generic Code Optimizations:
