@@ -47,10 +47,10 @@ The reason we are focusing on these 3 devices is two fold:
 
 The tests herein will be conducted using the same source code, library versions, and camera settings. The purpose is to have an apples-to-apples comparison of the same source code's performance on each target device.
 
-For each scenrio there will be two subsets of test:
+For each scenario there will be two subsets of test:
 
 * Baseline performance test
-  - Used to capture the best case scenario procressing time and image downloading time.
+  - Used to capture the best case scenario processing time and image downloading time.
   - Goal is to isolate the processing thread and frame capture thread to calculate times individually
 * Live performance test
   - The images to be processes will be captured live from a connected IP camera so as to mimic a real FRC match. At no point will previously saved images or local files be used (we want image download time to be factored in as well).
@@ -73,7 +73,7 @@ Each test will be using the Axis M1011 Ethernet Camera. We will vary the camera 
 
 ## 2.4 Axis M1011 IP Camera
 
-Camera Settngs:
+Camera Settings:
 Camera: Axis M1011 Ethernet Camera
 Compression: 30
 Constant Bit Rate: 30kbit/s
@@ -156,7 +156,7 @@ Here is an example of how the measurements are taken within the code.
 #include <ctime>
 
 clock_gettime(CLOCK_REALTIME, &start);
-   //some process to measurve
+   //some process to measure
 clock_gettime(CLOCK_REALTIME, &end);
 cout << diffClock(start, end) <<endl;
 
@@ -224,9 +224,9 @@ All output is written to a file vs cout (file output is much faster)
 RoboRio and BeagleBone black are compiled with gcc 4.6.3 with softFP floating point operations, -03 code optimization, and NEON SIMD support
 Jetson TK1 vision code is compiled with gcc 4.6.3 with hardFP floating point operations, -03 code optimizations, and NEON SIMD support
  
-In all instances the CPU of the device was manually set to the highest clock-rate so performance would not be dimminshed by "on demand" CPU throttling built into the linux OS.
+In all instances the CPU of the device was manually set to the highest clock-rate so performance would not be diminished by "on demand" CPU throttling built into the linux OS.
  
-Also X11 fowarding has been enabled and a view window outputting the processed image is displayed on the Development computer
+Also X11 forwarding has been enabled and a view window outputting the processed image is displayed on the Development computer
 
 ```
 Check the server's sshd_config (normally /etc/ssh/sshd_config), and make sure the X11Forwarding option is enabled with the line 
@@ -359,7 +359,7 @@ We ran the test for two cases:
 
 We ran the same test as above, but with a 640x480 image captured from the Axis. Below is the sample image we used for the test.
 
-<img src="../Images/image640x480.jpg">
+<img style="margin:0px auto;display:block" img src="../Images/image640x480.jpg">
 
 Just as before We ran the test for two cases:
  - With X11 forwarding enabled
@@ -368,8 +368,8 @@ Just as before We ran the test for two cases:
  
  Below is a plot of how long each processing loop took to execute without X11 (blue) and with X11 (red).
  
- <img src="../Images/640x480 RoboRio Baseline Processing Speed (no X11).png">
- <img src="../Images/40x480 RoboRio Baseline Processing Speed (with X11).png">
+ <img style="margin:0px auto;display:block" img src="../Images/640x480 RoboRio Baseline Processing Speed (no X11).png">
+ <img style="margin:0px auto;display:block" img src="../Images/640x480 RoboRio Baseline Processing Speed (with X11).png">
  
  We can see that our processing time per frame on the Roborio took about 90ms nominally, and was under 110ms in the worst case. We also notice that when X11 is activated, our nominal processing time increases to about 140ms and peaks around 170ms in the worst case.
  
@@ -378,8 +378,8 @@ Just as before We ran the test for two cases:
  When then disable the processing thread, and enable the FFMPEG image capture thread. This test captures live images from the Axis camera as quickly as possible. The framerate on the camera is set to unlimited, which means it will serve pictures at 30 fps. This test will show how long it takes our software to download and store into memory a single frame.
  Again we run the tests with X11 (blue) and without X11 (red) forwarding on.
  
- <img src="../Images/640x480 RoboRio Baseline FFMPEG Frame Capture(no X11).png">
- <img src="../Images/640x480 RoboRio Baseline FFMPEG Frame Capture Speed (with X11).png">
+ <img style="margin:0px auto;display:block" img src="../Images/640x480 RoboRio Baseline FFMPEG Frame Capture(no X11).png">
+ <img style="margin:0px auto;display:block" img src="../Images/640x480 RoboRio Baseline FFMPEG Frame Capture Speed (with X11).png">
  
  We can see from the plot, that it takes a nominal time of about 33ms, and worst case of 53ms to download a frame, and load it into memory. When comparing the charts it doesn't appear that X11 forwarding affect the outcome. This makes sense because X11 forwarding should only be active when the process thread is running (serving our output image). So this is what we should expect.
  
