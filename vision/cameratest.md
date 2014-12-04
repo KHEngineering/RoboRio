@@ -73,9 +73,10 @@ Each test will be using the Axis M1011 Ethernet Camera. We will vary the camera 
 
 ## 2.1 Beagle Bone Black
 
+
 <table>
   <tr>
-    <td><img src="http://www.ti.com/ww/en/beagleboard/product_detail_black_lg.jpg" width="320" height="473"><td>
+    <td><img src="http://www.ti.com/ww/en/beagleboard/product_detail_black_lg.jpg" width="263" height="390"><td>
     <td>
        <ul>
           <li>CPU: AM335 Dual Core ARM Cortex A8 @ 1GHz</li>
@@ -91,6 +92,7 @@ Each test will be using the Axis M1011 Ethernet Camera. We will vary the camera 
   </tr>
 
 </table>
+
 
 ## 2.2 Jetson TK1
 
