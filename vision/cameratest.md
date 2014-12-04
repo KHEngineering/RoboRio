@@ -6,11 +6,34 @@ permalink: /vision/cameratest/
 
 
 
-Introduction:
-In this article Team 2168 compares the performance of 3 popular embedded processors for Vision Processing for it is applicability to the First Robotics Competition.
-The purpose of this test is to help determine which approach is best suitable to a team depending on their needs.
+## 1.0 Introduction:
 
-Test Objectives:
+   In this article Team 2168 compares the performance of 3 popular embedded processors for Vision Processing for it is applicability to the First Robotics Competition.
+
+   The purpose of this test is to help determine which approach is best suitable to a team depending on their needs.
+
+## 1.1 Background information
+
+   In this study we wish to understand the performance differences between different embedded devices and determine if there is a clear advantage in using one over the next for FRC. We will be studying the total time it takes to process images on each target. 
+   
+   In general the time to process a frame is comprised of:
+ 
+ <div>
+ \[
+ \begin{array}{ll}
+   & \text{time to capture frame from camera} \\
+ + & \text{time to process frame} \\
+ \hline
+   & \text{Total Processing time per frame} \\
+ \end{array}
+ \]
+ </div>
+ 
+We can use the total time to process a frame to determine how many frames per second we can process on each device without missing frames.
+
+
+
+## 1.2 Test Objectives:
 In this test we will be focusing on 3 test scenarios:
 
   A. Beagle Bone Black - Off Board Processor
@@ -24,27 +47,39 @@ The reason we are focusing on these 3 devices is two fold:
 
 The tests herein will be conducted using the same source code, library versions, and camera settings. The purpose is to have an apples-to-apples comparison of the same source code's performance on each target device.
 
+For each scenrio there will be two subsets of test:
 
-The images to be processes will be captured live from a connected IP camera so as to mimic a real FRC match. At no point will previously saved images or local files be used (we want image download time to be factored in as well).
+* Baseline performance test
+  - Used to capture the best case scenario procressing time and image downloading time.
+  - Goal is to isolate the processing thread and frame capture thread to calculate times individually
+* Live performance test
+  - The images to be processes will be captured live from a connected IP camera so as to mimic a real FRC match. At no point will previously saved images or local files be used (we want image download time to be factored in as well).
+
 Each test will be using the Axis M1011 Ethernet Camera. We will vary the camera settings and apply those settings to each target so as to find the optimal and maximum FPS, and image quality settings which maximize performance on each embedded device.
 
+---
+---
+
+##2.0 Meet the hardware:
+
+## 2.1 Beagle Bone Black
 
 
-Meet the hardware:
-###Beagle Bone Black
+## 2.2 Jetson TK1
 
 
-###Jetson TK1
+## 2.3 RoboRio
 
 
-###RoboRio
-
-
-###Axis M1011 IP Camera
+## 2.4 Axis M1011 IP Camera
 30FPS max rate
 
-Test Apparatus:
-Scenario A Test Apparatus:
+---
+---
+
+## 3.0 Test Apparatus:
+
+## 3.1 Scenario A Test Apparatus:
 
 - BeagleBone Black, RoboRio, and M1011 Camera are connected via hardware Ethernet using  D-Link 1522 Rev B switch.
 - M1011 Camera and D-Link are powered from 2015 Voltage Regulator Module
@@ -60,9 +95,8 @@ Scenario A Test Apparatus:
 
 <img src="../320x24010fps.png">
 
----
 
-Scenario B Test Apparatus:
+## 3.2 Scenario B Test Apparatus:
 
 - Jetson TK1, RoboRio, and M1011 Camera are connected via hardware Ethernet using D-Link 1522 Rev B switch.
 - M1011 Camera and D-Link are powered from 2015 Voltage Regulator Module
@@ -77,10 +111,7 @@ Scenario B Test Apparatus:
 - No other devices on network
 
 
-
----
-
-Scenario C Test Apparatus:
+## 3.3 Scenario C Test Apparatus:
 
 - RoboRio, and M1011 Camera are connected via hardware Ethernet using D-Link 1522 Rev B switch.
 - M1011 Camera and D-Link are powered from 2015 Voltage Regulator Module
@@ -93,11 +124,9 @@ Scenario C Test Apparatus:
 - No other devices on network
 
 
+## 3.4 Measurement Accuracy:
 
-
-Measurement Accuracy:
-
-The performance measurements will be done internally in the code Using C++ RT library clock
+The performance measurements will be done internally in the code Using C++ RT library clock on each device:
 
 Here is an example of how the measurements are taken within the code.
 
@@ -105,13 +134,9 @@ Here is an example of how the measurements are taken within the code.
 #include <ctime>
 
 clock_gettime(CLOCK_REALTIME, &start);
-
    //some process to measurve
-
 clock_gettime(CLOCK_REALTIME, &end);
-
 cout << diffClock(start, end) <<endl;
-
 
 //Where diffClock is defined as
 double diffClock(timespec start, timespec end) 
@@ -120,16 +145,20 @@ double diffClock(timespec start, timespec end)
 } 
 {%  endhighlight %}
 
-Source Code Description:
+
+---
+---
+
+## 4.0 Source Code Description:
 
 The vision code used is the exact source code we ran throughout 5 competition in the 2014 season on a Beaglebone white. The source has undergone no changes for these test other than adding/modifying the areas to be timed
 
 The code has 5 threads:
 
-  1st: Outgoing TCP Messages to RoboRio
-  2nd: Incoming TCP Messages to RoboRio
-  3rd: FFMPEG Video Capture of Camera
-  4th: Image processing thread
+  - 1st: Outgoing TCP Messages to RoboRio
+  - 2nd: Incoming TCP Messages to RoboRio
+  - 3rd: FFMPEG Video Capture of Camera
+  - 4th: Image processing thread
 
 The program is written using pthread and pthread mutex locks for thread safe operation.
 Upon startup the Outgoing TCP link and FFMPEG threads start and try to establish communication with the RoboRIo and the IP
@@ -162,7 +191,8 @@ processing determine which are then sent over the outgoing TCP message to the Ro
 Then the process Image continues, all while FFMPEG continues to grab the latest frame from the camera in parallel.
 
 
-Generic Code Optimizations:
+## 4.1 Generic Code Optimizations:
+
 The code is compiled with GCC 4.6.3 with -o3 optimizations enabled
 NEON mfpu for floating point is enabled for all targets
 Specific target optimizations are not enabled
@@ -174,7 +204,6 @@ Jetson TK1 vision code is compiled with gcc 4.6.3 with hardFP floating point ope
  
 In all instances the CPU of the device was manually set to the highest clock-rate so performance would not be dimminshed by "on demand" CPU throttling built into the linux OS.
  
-
 Also X11 fowarding has been enabled and a view window outputting the processed image is displayed on the Development computer
 
 ```
@@ -182,14 +211,15 @@ Check the server's sshd_config (normally /etc/ssh/sshd_config), and make sure th
 X11Forwarding yes
 ```
 
+ ## 5.0 Results
  
- Scenario A Tests:
- 
- 
- 
+ ## 5.1 Scenario A Tests:
  
  
-Scenario B Tests:
+ 
+ 
+ 
+## 5.2 Scenario B Tests:
 
 
 Camera Settngs:
