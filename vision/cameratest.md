@@ -76,7 +76,7 @@ Each test will be using the Axis M1011 Ethernet Camera. We will vary the camera 
 
 <table>
   <tr>
-    <td><img src="http://www.ti.com/ww/en/beagleboard/product_detail_black_lg.jpg" width="175" height="260"></td>
+    <td><img src="http://www.ti.com/ww/en/beagleboard/product_detail_black_lg.jpg" width="116" height="173"></td>
     <td>
        <ul>
           <li>CPU: AM335 Dual Core ARM Cortex A8 @ 1GHz</li>
