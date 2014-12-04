@@ -238,6 +238,8 @@ X11Forwarding yes
 
 ## 5.2.1 Baseline Tests
 
+## 5.2.1.1 320x240 Baseline Processing
+
 On the Tegra we executed the Vision code while reading an image from the file. The image was a snapshot taken from the Axis camera of our vision target. The purpose of this test was to calculate the fastest rate we could process images without worrying about downloading first. The image is loaded into memory only once.
 We ran the test for both 320 x 240 images and 640x480 images.
 
@@ -265,7 +267,7 @@ We ran the test for two cases:
  
  
  
-## 5.2.1.1 640x480 Baseline processing
+## 5.2.1.2 640x480 Baseline processing
 
 We ran the same test as above, but with a 640x480 image captured from the Axis. Below is the sample image we used for the test.
 
@@ -283,18 +285,21 @@ Just as before We ran the test for two cases:
  
  We can see that our processing time per frame on the Tegra took about 10.3ms nominally, and was under 10.4ms in the worst case. We also notice that when X11 is activated, our nominal processing time increases to about 20ms and peaks around 22ms in the worst case.
  
- 
+
  NEED TO ADD FFMPEG BASELINE
  
+## 5.2.2 Live Performance
 
-## 5.2 Scenario C Tests (RoboRio)
+ 
 
-## 5.2.1 Baseline Tests
+## 5.3 Scenario C Tests (RoboRio)
+
+## 5.3.1 Baseline Tests
 
 On the RoboRio we executed the Vision code while reading an image from the file. The image was a snapshot taken from the Axis camera of our vision target. The purpose of this test was to calculate the fastest rate we could process images without worrying about downloading first. The image is loaded into memory only once.
 We ran the test for both 320 x 240 images and 640x480 images.
 
-## 5.2.1.1 320 x 240 Baseline processing
+## 5.3.1.1 320 x 240 Baseline processing
 
 Below is the sample image we used for the test.
 
@@ -348,7 +353,7 @@ We ran the test for two cases:
  
  
 
-## 5.2.1.1 640x480 Baseline processing
+## 5.3.1.2 640x480 Baseline processing
 
 We ran the same test as above, but with a 640x480 image captured from the Axis. Below is the sample image we used for the test.
 
@@ -401,3 +406,7 @@ Just as before We ran the test for two cases:
  
  This shows that under these conditions we can successfully process our 640x480 images at 7fps on the RoboRio.
  
+
+## 5.3.2 Live Performance
+
+# TBR
