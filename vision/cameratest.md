@@ -17,7 +17,14 @@ In general the time to process a frame is comprised of:
  time to capture frame from camera
  
  <div>
- \[\dot{x} = \sigma(y-x)\]
+ \[
+ \begin{tabular}
+   & time to capture frame from camera \\
+ + & time to process frame \\
+ \hline
+   & Total Processing time per frame \\
+ \end{tabular}
+ \]
  </div>
  
 
