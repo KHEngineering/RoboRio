@@ -31,7 +31,16 @@ permalink: /vision/cameratest/
  
 We can use the total time to process a frame to determine how many frames per second we can process on each device without missing frames.
 
+Now a word of caution, the best is kind of a best case scenario for estimating processing time. It doesn't account for any overhead. Overhead is any other external process which takes away CPU time from your processing thread, thus increasing processing time. 
 
+For example:
+	- Other Opperating system services
+	- servicing other program threads
+	- waiting for another thread to release a mutex lock
+	- other programs running on the device
+	- etc.
+
+To truely get an accurate account of performance, these overhead processing times will need to be accounted for as well. All of the above will increase your effective processing time.
 
 ## 1.2 Test Objectives:
 In this test we will be focusing on 3 test scenarios:
