@@ -116,7 +116,6 @@ The only items we varied was:
 - Development Computer: 10.21.68.101
 - No other devices on networks
 
-<img src="../320x24010fps.png" align="middle">
 
 
 ## 3.2 Scenario B Test Apparatus:
@@ -273,7 +272,7 @@ We ran the test for two cases:
  
  
  
- ## 5.2.1.1 640x480 Baseline processing
+## 5.2.1.1 640x480 Baseline processing
 
 We ran the same test as above, but with a 640x480 image captured from the Axis. Below is the sample image we used for the test.
 
@@ -286,8 +285,8 @@ Just as before We ran the test for two cases:
  
  Below is a plot of how long each processing loop took to execute without X11 (blue) and with X11 (red).
  
- <img src="../Images/640x480 Tegra Baseline Processing Speed (no X11).png">
- <img src="../Images/640x480 Tegra Baseline Processing Speed (with X11).png">
+ <img style="margin:0px auto;display:block" img src="../Images/640x480 Tegra Baseline Processing Speed (no X11).png">
+ <img style="margin:0px auto;display:block" img src="../Images/640x480 Tegra Baseline Processing Speed (with X11).png">
  
  We can see that our processing time per frame on the Tegra took about 10.3ms nominally, and was under 10.4ms in the worst case. We also notice that when X11 is activated, our nominal processing time increases to about 20ms and peaks around 22ms in the worst case.
  
