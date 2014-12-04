@@ -18,12 +18,12 @@ In general the time to process a frame is comprised of:
  
  <div>
  \[
- \begin{tabular}{cc}
+ \begin{array}{cc}
    & time to capture frame from camera \\
  + & time to process frame \\
  \hline
    & Total Processing time per frame \\
- \end{tabular}
+ \end{array}
  \]
  </div>
  
