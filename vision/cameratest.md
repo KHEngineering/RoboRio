@@ -163,7 +163,7 @@ cout << diffClock(start, end) <<endl;
 //Where diffClock is defined as
 double diffClock(timespec start, timespec end) 
 { 
-  return	(end.tv_sec - start.tv_sec) + (double) (end.tv_nsec - start.tv_nsec)/ 1000000000.0f; 
+  return (end.tv_sec - start.tv_sec) + (double) (end.tv_nsec - start.tv_nsec)/1000000000.0f; 
 } 
 {%  endhighlight %}
 
@@ -215,13 +215,14 @@ Then the process Image continues, all while FFMPEG continues to grab the latest 
 
 ## 4.1 Generic Code Optimizations:
 
-The code is compiled with GCC 4.6.3 with -o3 optimizations enabled
-NEON mfpu for floating point is enabled for all targets
-Specific target optimizations are not enabled
-All output is written to a file vs cout (file output is much faster)
-\n is used instead of endl (to avoid flushing the buffer each time) 
+- The code is compiled with GCC 4.6.3 with -o3 optimizations enabled
+- NEON mfpu for floating point is enabled for all targets
+- Specific target optimizations are not enabled
+- All output is written to a file vs cout (file output is much faster)
+- \n is used instead of endl (to avoid flushing the buffer each time) 
 
 RoboRio and BeagleBone black are compiled with gcc 4.6.3 with softFP floating point operations, -03 code optimization, and NEON SIMD support
+
 Jetson TK1 vision code is compiled with gcc 4.6.3 with hardFP floating point operations, -03 code optimizations, and NEON SIMD support
  
 In all instances the CPU of the device was manually set to the highest clock-rate so performance would not be diminished by "on demand" CPU throttling built into the linux OS.
@@ -252,7 +253,7 @@ current CPU frequency is 2.32 GHz and all 4 cores are online
 
 Below is the sample image we used for the test.
 
-<img src="../Images/image320x240.jpg" align="middle">
+<img style="margin:0px auto;display:block" img src="../Images/image320x240.jpg">
 
 We ran the test for two cases:
  - With X11 forwarding enabled
@@ -262,8 +263,8 @@ We ran the test for two cases:
  
  Below is a plot of how long each processing loop took to execute without X11 (blue) and with X11 (red).
  
- <img src="../Images/320x240 Tegra Baseline Processing Speed (no X11).png">
- <img src="../Images/320x240 Tegra Baseline Processing Speed (with X11).png">
+ <img style="margin:0px auto;display:block" img src="../Images/320x240 Tegra Baseline Processing Speed (no X11).png">
+ <img style="margin:0px auto;display:block" img src="../Images/320x240 Tegra Baseline Processing Speed (with X11).png">
  
  We can see that our processing time per frame on the Tegra took about 2.6ms nominally, and was under 3.4ms in the worst case. We also notice that when X11 is activated, our nominal processing time increases to about 4ms and peaks around 5ms in the worst case.
  
@@ -276,7 +277,7 @@ We ran the test for two cases:
 
 We ran the same test as above, but with a 640x480 image captured from the Axis. Below is the sample image we used for the test.
 
-<img src="../Images/image640x480.jpg" align="middle">
+<img style="margin:0px auto;display:block" img src="../Images/image640x480.jpg" align="middle">
 
 Just as before We ran the test for two cases:
  - With X11 forwarding enabled
@@ -305,7 +306,7 @@ We ran the test for both 320 x 240 images and 640x480 images.
 
 Below is the sample image we used for the test.
 
-<img src="../Images/image320x240.jpg">
+<img style="margin:0px auto;display:block" img src="../Images/image320x240.jpg">
 
 We ran the test for two cases:
  - With X11 forwarding enabled
@@ -315,16 +316,16 @@ We ran the test for two cases:
  
  Below is a plot of how long each processing loop took to execute without X11 (blue) and with X11 (red).
  
- <img src="../Images/320x240baselineprocess_nox11.png">
- <img src="../Images/320x240baselineprocess_x11.png">
+ <img style="margin:0px auto;display:block" img src="../Images/320x240baselineprocess_nox11.png">
+ <img style="margin:0px auto;display:block" img src="../Images/320x240baselineprocess_x11.png">
  
  We can see that our processing time per frame on the Roborio took about 22ms nominally, and was under 40ms in the worst case. We also notice that when X11 is activated, our nominal processing time increases to about 29ms and peaks around 50ms in the worst case.
  
  When then disable the processing thread, and enable the FFMPEG image capture thread. This test captures live images from the Axis camera as quickly as possible. The framerate on the camera is set to unlimited, which means it will serve pictures at 30 fps. This test will show how long it takes our software to download and store into memory a single frame.
  Again we run the tests with X11 (blue) and without X11 (red) forwarding on.
  
-  <img src="../Images/320x240baselineffmpeg_nox11.png">
- <img src="../Images/320x240baselineffmpeg_x11.png">
+  <img style="margin:0px auto;display:block" img src="../Images/320x240baselineffmpeg_nox11.png">
+ <img style="margin:0px auto;display:block" img src="../Images/320x240baselineffmpeg_x11.png">
  
  We can see from the plot, that it takes a nominal time of about 33ms, and worst case of 45ms to download a frame, and load it into memory. When comparing the charts it doesn't appear that X11 forwarding affect the outcome. This makes sense because X11 forwarding should only be active when the process thread is running (serving our output image). So this is what we should expect.
  
