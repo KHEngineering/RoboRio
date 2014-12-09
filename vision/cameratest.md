@@ -297,9 +297,9 @@ Check the server's sshd_config (normally /etc/ssh/sshd_config), and make sure th
 X11Forwarding yes
 ```
 
- ## 5.0 Results
+## 5.0 Results
  
- ## 5.1 Scenario A Tests (BeagleBone):
+## 5.1 Scenario A Tests (BeagleBone):
  
  
  
@@ -384,11 +384,6 @@ Any time above this 33ms threshold is truly processing time spent on downloading
  This shows that under these conditions we can successfully process our 320x240 images at 66fps on the Tegra, under the worst case scenarios. Our nominal case (as in actual performance should be much better). In section 5.2.2 we look at actual performance of this code on the RoboRio. This quick study shows is that we can at least guarantee the ability to run this vision code at 66 frames per second without lag on the RoboRio in the worst case.
  
 
- 
- 
- 
- 
- 
 ## 5.2.1.2 640x480 Baseline processing
 
 We ran the same test as above, but with a 640x480 image captured from the Axis. Below is the sample image we used for the test.
@@ -447,11 +442,11 @@ When then disable the processing thread, and enable the FFMPEG image capture thr
  This shows that under these conditions we can successfully process our 640x480 images at 45fps on the Tegra, under the worst case scenarios. Our nominal case (as in actual performance should be much better). In section 5.2.2 we look at actual performance of this code on the RoboRio. This quick study shows is that we can at least guarantee the ability to run this vision code at 66 frames per second without lag on the RoboRio in the worst case.
  
  
- ## 5.2.2 Tegra Live Performance
+## 5.2.2 Tegra Live Performance
  
  In this section, we run the vision code, with all threads active and time the entire process each iteration. This gives us a true understanding of the actual performance of the code under real FRC match conditions. This test was ran for 160s exactly. 
  
- ## 5.2.2.1 320x240 Live performance 30 fps
+## 5.2.2.1 320x240 Live performance 30 fps
   
  We run the algorithm for 160s with the camera set to unlimited frames per second. The max output of the camera used is 30 fps.
  
@@ -461,25 +456,25 @@ When then disable the processing thread, and enable the FFMPEG image capture thr
  
  Below is a plot of how long each processing loop took to execute without X11 (blue) and with X11 (red).
  
- <img style="margin:0px auto;display:block" img src="../Images/320x240 Tegra unlimited FPS Processing Speed (no X11).png.png">
- <img style="margin:0px auto;display:block" img src="../Images/320x240 Tegra unlimited FPS Processing Speed (with X11).png.png">
+ <img style="margin:0px auto;display:block" img src="../Images/320x240 Tegra unlimited FPS Processing Speed (no X11).png">
+ <img style="margin:0px auto;display:block" img src="../Images/320x240 Tegra unlimited FPS Processing Speed (with X11).png">
  
  Note: the above timing chart takes into account the time it take to wait for a frame, download it, convert, it and process it.
  
  We can see from the chart that a majority of the time, the tegra is waiting for new frames. When it does get a frame it processes it within about 1-5ms. We also observe that this processing is done in real-time and at no point does the process image lag the real time image.
  
- Based on the above data, we can conclude that under the conditions of this test, the Tegra TK1 is fully capable of real-time processing using the Axis camera with max FPS set. 
+ Based on the above data, we can conclude that under the conditions of this test, the Tegra TK1 is fully capable of real-time processing using the Axis camera with max FPS set (30 fps) using the CPU alone, and has a lot of compute power left to do more. 
  
- ## 5.2.2.2 320x240 Live performance 20 fps
+## 5.2.2.2 320x240 Live performance 20 fps
  
  Because we have shown above that the Tegra can perform at 30+ fps, we chose to ignore testing it at an less fps.
  
- ## 5.2.2.3 320x240 Live performance 10 fps  
+## 5.2.2.3 320x240 Live performance 10 fps  
  
  Because we have shown above that the Tegra can perform at 30+ fps, we chose to ignore testing it at an less fps.
 
  
-  ## 5.2.2 Tegra Live Performance
+## 5.2.2 Tegra Live Performance
  
  
 
