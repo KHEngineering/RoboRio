@@ -42,13 +42,13 @@ For example:
 
 To truely get an accurate account of performance, these overhead processing times will need to be accounted for as well. All of the above will increase your effective processing time and reduce acutal FPS your device can process.
 
-1.1.1 Processing Lag
+## 1.1.1 Processing Lag
 
 When processing a streaming video, you must read every frame to get to the next. Lag occurs when you are no longer processing the latest image, but instead an intermediate frame. This occurs when your processing time takes longer then the time delta between frames. 
 
 For example: Let's assume that your camera is configured to produce images at a rate of 10 frames per second. That means that every 100ms a new image will be generated.
 
-If the time to dowload the image and process it is less than 100ms, then you will be processing images in real-time without any lag. However, if it takes more than 100ms to process a frame, such that new frames are generated while you are still processing the old one, then you will experience lag. The goal is to ensure that our processing loop executed before the next frame is generated. 
+If the time to download the image and process it is less than 100ms, then you will be processing images in real-time without any lag. However, if it takes more than 100ms to process a frame, such that new frames are generated while you are still processing the old one, then you will experience lag. The goal is to ensure that our processing loop executed before the next frame is generated. 
 
 However, lagging 1 or 2 frames behind the real time image is probably un-noticable for any FRC application. The danger is that you want to make sure any lag occurs infrequently, and doesn't compound itself. A compound situation is when every loop iteration, you take 1 or more frames to process the current frame. This means that as you are processing the current frame, one or more new frames are generated. This inturn causes all new frames to be buffered. Eventually, after enough time has passed, you could be processing a frame that is multiple seconds behind real-time, and that is a problem. The solution here is to turn down the frame rate of your camera to allow the processing thread to catch up.
 
@@ -333,8 +333,59 @@ We ran the test for two cases:
  
  We can see that our processing time per frame on the Tegra took about 2.6ms nominally, and was under 3.4ms in the worst case. We also notice that when X11 is activated, our nominal processing time increases to about 4ms and peaks around 5ms in the worst case.
  
+ When then disable the processing thread, and enable the FFMPEG image capture thread. This test captures live images from the Axis camera as quickly as possible. The framerate on the camera is set to unlimited, which means it will serve pictures at 30 fps. This test will show how long it takes our software to download and store into memory a single frame.
+ Again we run the tests with X11 (blue) and without X11 (red) forwarding on.
+
  
- NEED TO ADD FFMPEG BASELINE
+  <img style="margin:0px auto;display:block" img src="../Images/320x240 Tegra Baseline FFMPEG Frame Capture(no X11).png">
+ <img style="margin:0px auto;display:block" img src="../Images/320x240 Tegra Baseline FFMPEG Frame Capture Speed (with X11).png">
+ 
+ 
+ Before we break down the analysis of the charts above, we must note that we are using the VideoCapture C++ object from openCV to set up the FFMPEG stream. More importantly, when ever we read a frame the function will block until a frame is ready, download it, and then convert it to a 2D Matrix. 
+ 
+ When the camera serves images at 30 frames per second that means a new image is available every:
+ 
+ <div>
+ \[
+ \frac{1}{30} = 0.033334 \text{ seconds }
+ \]
+ </div>
+ 
+ Using that information, we expect the time between frames to be at least 33 milliseconds, this is when the FFMPEG capture thread is sleeping waiting for the next frame to be available. We must be cautions to not include this wait in our FPS calculations, because it is a limitation set by the camera max frame rate of our test environment, not of the embedded device we are using.
+ 
+Any time above this 33ms threshold is truly processing time spent on downloading and converting the image within our code.
+ 
+ We can see from the plot, that it takes a nominal time of about 34ms, and worst case of 45ms to download a frame, and load it into memory. This means that for the case where the capture time is around 34ms, downloading the frame and storing it into memory is of little contribution to processing time, all of the time is spent waiting on the next frame. In the case where we hit the peak numbers, that means in the worst case it took about 10-12ms to decode and store the image. Based on this data we can conclude that downloading and storing an image only contributes anywhere between 0-12ms to our processing time. When comparing the charts it doesn't appear that X11 forwarding affect the outcome. This makes sense because X11 forwarding should only be active when the process thread is running (serving our output image). So this is what we should expect.
+ 
+ Just based on these numbers, we can calculate a target FPS we can successfully process with the system we have set up, without experiencing lag. In addition, these logs were captured individually and don't account for any overhead processing time. So we want to be conservative. The next section shows total execution time for the complete application. 
+ 
+ For the Worst Processing Case:
+  <div>
+ \[
+ \begin{array}{ll}
+   & 3ms \text{(time to capture frame from camera)} \\
+ + & 12ms \text{(time to process frame)} \\
+ \hline
+   & 15ms \text{Total Processing time per frame} \\
+ \end{array}
+ \]
+ </div>
+ 
+ <br><br>
+ We convert this number to Frames per second:
+   <div>
+ \[
+\frac{1}{0.015} = 66.67 \text{ fps}
+ \]
+ </div>
+ 
+ <br><br>
+ 
+ This shows that under these conditions we can successfully process our 320x240 images at 66fps on the Tegra, under the worst case scenarios. Our nominal case (as in actual performance should be much better). In section 5.2.2 we look at actual performance of this code on the RoboRio. This quick study shows is that we can at least guarantee the ability to run this vision code at 66 frames per second without lag on the RoboRio in the worst case.
+ 
+
+ 
+ 
  
  
  
@@ -359,8 +410,41 @@ Just as before We ran the test for two cases:
 
  NEED TO ADD FFMPEG BASELINE
  
-## 5.2.2 Live Performance
+ 
+ ## 5.2.2 Tegra Live Performance
+ 
+ In this section, we run the vision code, with all threads active and time the entire process each iteration. This gives us a true understanding of the actual performance of the code under real FRC match conditions. This test was ran for 160s exactly. 
+ 
+ ## 5.2.2.1 320x240 Live performance 30 fps
+  
+ We run the algorithm for 160s with the camera set to unlimited frames per second. The max output of the camera used is 30 fps.
+ 
+ Just as before We ran the test for two cases:
+ - With X11 forwarding enabled
+ - Without X11 forwarding enabled
+ 
+ Below is a plot of how long each processing loop took to execute without X11 (blue) and with X11 (red).
+ 
+ <img style="margin:0px auto;display:block" img src="../Images/320x240 Tegra unlimited FPS Processing Speed (no X11).png.png">
+ <img style="margin:0px auto;display:block" img src="../Images/320x240 Tegra unlimited FPS Processing Speed (with X11).png.png">
+ 
+ Note: the above timing chart takes into account the time it take to wait for a frame, download it, convert, it and process it.
+ 
+ We can see from the chart that a majority of the time, the tegra is waiting for new frames. When it does get a frame it processes it within about 1-5ms. We also observe that this processing is done in real-time and at no point does the process image lag the real time image.
+ 
+ Based on the above data, we can conclude that under the conditions of this test, the Tegra TK1 is fully capable of real-time processing using the Axis camera with max FPS set. 
+ 
+ ## 5.2.2.2 320x240 Live performance 20 fps
+ 
+ Because we have shown above that the Tegra can perform at 30+ fps, we chose to ignore testing it at an less fps.
+ 
+ ## 5.2.2.3 320x240 Live performance 10 fps  
+ 
+ Because we have shown above that the Tegra can perform at 30+ fps, we chose to ignore testing it at an less fps.
 
+ 
+  ## 5.2.2 Tegra Live Performance
+ 
  
 
 ## 5.3 Scenario C Tests (RoboRio)
