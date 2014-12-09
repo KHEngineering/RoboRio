@@ -671,11 +671,8 @@ The same conditions as above applies with regards to the camera framerate. It ta
  
 ## 5.2.2.2 320x240 Live performance 20 fps
  
- Because we have shown above that the Tegra can perform at 30+ fps, we chose to ignore testing it at an less fps.
  
 ## 5.2.2.3 320x240 Live performance 10 fps  
- 
- Because we have shown above that the Tegra can perform at 30+ fps, we chose to ignore testing it at an less fps.
 
 
 ## 5.2.2.4 640x480 Live performance 30 fps
@@ -701,10 +698,10 @@ We are still trying to detrermine exactly why the processing time was so low (ar
  
 ## 5.2.2.5 640x480 Live performance 20 fps
  
- Because we have shown above that the Tegra can perform at 30+ fps, we chose to ignore testing it at a lower fps.
+
  
 ## 5.2.2.6 640x480 Live performance 10 fps  
  
- Because we have shown above that the Tegra can perform at 30+ fps, we chose to ignore testing it at a lower fps.
+
 
  
