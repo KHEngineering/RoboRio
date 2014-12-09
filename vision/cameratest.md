@@ -42,6 +42,16 @@ For example:
 
 To truely get an accurate account of performance, these overhead processing times will need to be accounted for as well. All of the above will increase your effective processing time and reduce acutal FPS your device can process.
 
+Lag
+
+When processing a streaming video, you must read every frame to get to the next. Lag occurs when you are no longer processing the latest image, but instead an intermediate frame. This occurs when your processing time takes longer then the time delta between frames. 
+
+For example: Let's assume that your camera is configured to produce images at a rate of 10 frames per second. That means that every 100ms a new image will be generated.
+
+If the time to dowload the image and process it is less than 100ms, then you will be processing images in real-time without any lag. However, if it takes more than 100ms to process a frame, such that new frames are generated while you are still processing the old one, then you will experience lag. The goal is to ensure that our processing loop executed before the next frame is generated. 
+
+However, lagging 1 or 2 frames behind the real time image is probably un-noticable for any FRC application. The danger is that you want to make sure any lag occurs infrequently, and doesn't compound itself. A compound situation is when every loop iteration, you take 1 or more frames to process the current frame. This means that as you are processing the current frame, one or more new frames are generated. This inturn causes all new frames to be buffered. Eventually, after enough time has passed, you could be processing a frame that is multiple seconds behind real-time, and that is a problem. The solution here is to turn down the frame rate of your camera to allow the processing thread to catch up.
+
 ## 1.2 Test Objectives:
 In this test we will be focusing on 3 test scenarios:
 
@@ -381,21 +391,38 @@ We ran the test for two cases:
  
  When then disable the processing thread, and enable the FFMPEG image capture thread. This test captures live images from the Axis camera as quickly as possible. The framerate on the camera is set to unlimited, which means it will serve pictures at 30 fps. This test will show how long it takes our software to download and store into memory a single frame.
  Again we run the tests with X11 (blue) and without X11 (red) forwarding on.
+
  
   <img style="margin:0px auto;display:block" img src="../Images/320x240baselineffmpeg_nox11.png">
  <img style="margin:0px auto;display:block" img src="../Images/320x240baselineffmpeg_x11.png">
  
- We can see from the plot, that it takes a nominal time of about 33ms, and worst case of 45ms to download a frame, and load it into memory. When comparing the charts it doesn't appear that X11 forwarding affect the outcome. This makes sense because X11 forwarding should only be active when the process thread is running (serving our output image). So this is what we should expect.
  
- Just based on these numbers, we can calculate a target FPS we can successfully process with the system we have set up, without experiencing lag. In this case we choose to use the worst case numbers because if we use the nominal numbers, when ever our processing thread, or FFMPEG thread hits a peak in execution time, our framerate will fall behind and this will introduce lag. In addition, these logs were captured individually and don't account for any overhead processing time. So we want to be conservative. The next section shows total execution time for the complete application. 
+ Before we break down the analysis of the charts above, we must note that we are using the VideoCapture C++ object from openCV to set up the FFMPEG stream. More importantly, when ever we read a frame the function will block until a frame is ready, download it, and then convert it to a 2D Matrix. 
  
+ When the camera serves images at 30 frames per second that means a new image is available every:
+ 
+ <div>
+ \[
+ \frac{1}{30} = 0.033334 \text{ seconds }
+ \]
+ </div>
+ 
+ Using that information, we expect the time between frames to be at least 33 milliseconds, this is when the FFMPEG capture thread is sleeping waiting for the next frame to be available. We must be cautions to not include this wait in our FPS calculations, because it is a limitation set by the camera max frame rate of our test environment, not of the embedded device we are using.
+ 
+Any time above this 33ms threshold is truly processing time spent on downloading and converting the image within our code.
+ 
+ We can see from the plot, that it takes a nominal time of about 33ms, and worst case of 45ms to download a frame, and load it into memory. This means that for the case where the capture time is around 33ms, downloading the frame and storing it into memory is of little contribution to processing time, all of the time is spent waiting on the next frame. In the case where we hit the peak numbers, that means in the worst case it took about 10-12ms to decode and store the image. Based on this data we can conclude that downloading and storing an image only contributes anywhere between 0-12ms to our processing time. When comparing the charts it doesn't appear that X11 forwarding affect the outcome. This makes sense because X11 forwarding should only be active when the process thread is running (serving our output image). So this is what we should expect.
+ 
+ Just based on these numbers, we can calculate a target FPS we can successfully process with the system we have set up, without experiencing lag. In addition, these logs were captured individually and don't account for any overhead processing time. So we want to be conservative. The next section shows total execution time for the complete application. 
+ 
+ For the Worst Processing Case:
   <div>
  \[
  \begin{array}{ll}
-   & 45ms \text{(time to capture frame from camera)} \\
- + & 40ms \text{(time to process frame)} \\
+   & 40ms \text{(time to capture frame from camera)} \\
+ + & 12ms \text{(time to process frame)} \\
  \hline
-   & 85ms \text{Total Processing time per frame} \\
+   & 52ms \text{Total Processing time per frame} \\
  \end{array}
  \]
  </div>
@@ -404,13 +431,13 @@ We ran the test for two cases:
  We convert this number to Frames per second:
    <div>
  \[
-\frac{1}{0.085} = 11.76 \text{fps}
+\frac{1}{0.052} = 19.23 \text{ fps}
  \]
  </div>
  
  <br><br>
  
- This shows that under these conditions we can successfully process our 320x240 images at 11fps on the RoboRio.
+ This shows that under these conditions we can successfully process our 320x240 images at 19fps on the RoboRio, under the worst case scenarios. Our nominal case (as in actual performance should be much better). In section 5.3.2 we look at actual performance of this code on the RoboRio. This quick study shows is that we can at least guarantee the ability to run this vision code at 19 frames per second without lag on the RoboRio in the worst case.
  
  
 
@@ -432,25 +459,29 @@ Just as before We ran the test for two cases:
  
  We can see that our processing time per frame on the Roborio took about 90ms nominally, and was under 110ms in the worst case. We also notice that when X11 is activated, our nominal processing time increases to about 140ms and peaks around 170ms in the worst case.
  
- The 640x480 has 4 times the pixel density of the 320x240 image. So it makes sense that the processing time is roughly 3 times larger for the 640x480. (It is not 4 times larger because the the time spent on the first 320x240 pixels are shared between both test cases, thus increasing the 640x480 case by only a factor of 3).
+ The 640x480 has 4 times the pixel density of the 320x240 image. So it makes sense that the processing time is roughly 3 times larger for the 640x480. (It is not 4 times larger because the the time spent on the first 320x240 pixels are shared between both test cases, thus increasing the processing of the 640x480 case by only a factor of 3).
  
  When then disable the processing thread, and enable the FFMPEG image capture thread. This test captures live images from the Axis camera as quickly as possible. The framerate on the camera is set to unlimited, which means it will serve pictures at 30 fps. This test will show how long it takes our software to download and store into memory a single frame.
+
+The same conditions as above applies with regards to the camera framerate. It take roughly 33ms seconds for the camera to serve a new picture, and because the thread waits for the new picture we can safely disregard any time under 33ms counting toward processing time.
+
+
  Again we run the tests with X11 (blue) and without X11 (red) forwarding on.
  
  <img style="margin:0px auto;display:block" img src="../Images/640x480 RoboRio Baseline FFMPEG Frame Capture(no X11).png">
  <img style="margin:0px auto;display:block" img src="../Images/640x480 RoboRio Baseline FFMPEG Frame Capture Speed (with X11).png">
  
- We can see from the plot, that it takes a nominal time of about 33ms, and worst case of 53ms to download a frame, and load it into memory. When comparing the charts it doesn't appear that X11 forwarding affect the outcome. This makes sense because X11 forwarding should only be active when the process thread is running (serving our output image). So this is what we should expect.
+ We can see from the plot, that it takes a nominal time of about 33ms, and worst case of 53ms to download a frame, and load it into memory. Nominally the downloading and decoding of the frame doesn't add to our processing time, however in the worst case we can see that it can take up to 23ms to download and convert the frame. When comparing the charts it doesn't appear that X11 forwarding affect the outcome. This makes sense because X11 forwarding should only be active when the process thread is running (serving our output image). So this is what we should expect.
  
- Just based on these numbers, we can calculate a target FPS we can successfully process with the system we have set up, without experiencing lag. In this case we choose to use the worst case numbers because if we use the nominal numbers, when ever our processing thread, or FFMPEG thread hits a peak in execution time, our framerate will fall behind and this will introduce lag. In addition, these logs were captured individually and don't account for any overhead processing time. So we want to be conservative. The next section shows total execution time for the complete application. 
+ Just based on these numbers, we can estimate a target FPS we can successfully process with the system we have set up, without experiencing lag.  In this case we choose to use the worst case numbers because if we use the nominal numbers, when ever our processing thread, or FFMPEG thread hits a peak in execution time, our framerate will fall behind and this will introduce lag. In addition, these logs were captured individually and don't account for any overhead processing time. So we want to be conservative. The next section shows total execution time for the complete application. 
  
   <div>
  \[
  \begin{array}{ll}
-   & 45ms \text{(time to capture frame from camera)} \\
+   & 23ms \text{(time to capture frame from camera)} \\
  + & 90ms \text{(time to process frame)} \\
  \hline
-   & 135ms \text{Total Processing time per frame} \\
+   & 113ms \text{Total Processing time per frame} \\
  \end{array}
  \]
  </div>
@@ -459,13 +490,13 @@ Just as before We ran the test for two cases:
  We convert this number to Frames per second:
    <div>
  \[
-\frac{1}{0.135} = 7.4 \text{fps}
+\frac{1}{0.113} = 8.85 \text{ fps}
  \]
  </div>
  
  <br><br>
  
- This shows that under these conditions we can successfully process our 640x480 images at 7fps on the RoboRio.
+ This shows that under these conditions we can successfully process our 640x480 images at about 9fps on the RoboRio under the worst case assumptions. Our nominal case, (as in actual performance should be much better). In section 5.3.2 we look at actual performance of this code on the RoboRio. 
  
 
 ## 5.3.2 Live Performance
