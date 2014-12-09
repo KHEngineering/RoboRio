@@ -42,7 +42,7 @@ For example:
 
 To truely get an accurate account of performance, these overhead processing times will need to be accounted for as well. All of the above will increase your effective processing time and reduce acutal FPS your device can process.
 
-Lag
+1.1.1 Processing Lag
 
 When processing a streaming video, you must read every frame to get to the next. Lag occurs when you are no longer processing the latest image, but instead an intermediate frame. This occurs when your processing time takes longer then the time delta between frames. 
 
