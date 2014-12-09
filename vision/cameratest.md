@@ -408,7 +408,51 @@ Just as before We ran the test for two cases:
  We can see that our processing time per frame on the Tegra took about 10.3ms nominally, and was under 10.4ms in the worst case. We also notice that when X11 is activated, our nominal processing time increases to about 20ms and peaks around 22ms in the worst case.
  
 
- NEED TO ADD FFMPEG BASELINE
+When then disable the processing thread, and enable the FFMPEG image capture thread. This test captures live images from the Axis camera as quickly as possible. The framerate on the camera is set to unlimited, which means it will serve pictures at 30 fps. This test will show how long it takes our software to download and store into memory a single frame.
+ Again we run the tests with X11 (blue) and without X11 (red) forwarding on.
+ 
+ The same conditions as above applies with regards to the camera framerate. It take roughly 33ms seconds for the camera to serve a new picture, and because the thread waits for the new picture we can safely disregard any time under 33ms counting toward processing time.
+
+ 
+  <img style="margin:0px auto;display:block" img src="../Images/640x480 Tegra Baseline FFMPEG Frame Capture(no X11).png">
+ <img style="margin:0px auto;display:block" img src="../Images/640x480 Tegra Baseline FFMPEG Frame Capture Speed (with X11).png">
+ 
+ 
+ We can see from the plot, that it takes a nominal time of about 34ms, and worst case of 45ms to download a frame, and load it into memory. This means that for the case where the capture time is around 34ms, downloading the frame and storing it into memory is of little contribution to processing time, all of the time is spent waiting on the next frame. In the case where we hit the peak numbers, that means in the worst case it took about 10-12ms to decode and store the image. Based on this data we can conclude that downloading and storing an image only contributes anywhere between 0-12ms to our processing time. When comparing the charts it doesn't appear that X11 forwarding affect the outcome. This makes sense because X11 forwarding should only be active when the process thread is running (serving our output image). So this is what we should expect.
+ 
+ Just based on these numbers, we can calculate a target FPS we can successfully process with the system we have set up, without experiencing lag. In addition, these logs were captured individually and don't account for any overhead processing time. So we want to be conservative. The next section shows total execution time for the complete application. 
+ 
+ For the Worst Processing Case:
+  <div>
+ \[
+ \begin{array}{ll}
+   & 3ms \text{(time to capture frame from camera)} \\
+ + & 12ms \text{(time to process frame)} \\
+ \hline
+   & 15ms \text{Total Processing time per frame} \\
+ \end{array}
+ \]
+ </div>
+ 
+ <br><br>
+ We convert this number to Frames per second:
+   <div>
+ \[
+\frac{1}{0.015} = 66.67 \text{ fps}
+ \]
+ </div>
+ 
+ <br><br>
+ 
+ This shows that under these conditions we can successfully process our 320x240 images at 66fps on the Tegra, under the worst case scenarios. Our nominal case (as in actual performance should be much better). In section 5.2.2 we look at actual performance of this code on the RoboRio. This quick study shows is that we can at least guarantee the ability to run this vision code at 66 frames per second without lag on the RoboRio in the worst case.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  
  
  ## 5.2.2 Tegra Live Performance
