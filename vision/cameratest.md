@@ -646,4 +646,65 @@ The same conditions as above applies with regards to the camera framerate. It ta
 
 ## 5.3.2 Live Performance
 
+## 5.2.2 Tegra Live Performance
+ 
+ In this section, we run the vision code, with all threads active and time the entire process each iteration. This gives us a true understanding of the actual performance of the code under real FRC match conditions. This test was ran for 160s exactly. 
+ 
+## 5.2.2.1 320x240 Live performance 30 fps
+  
+ We run the algorithm for 160s with the camera set to unlimited frames per second. The max output of the camera used is 30 fps.
+ 
+ Just as before We ran the test for two cases:
+ - With X11 forwarding enabled
+ - Without X11 forwarding enabled
+ 
+ Below is a plot of how long each processing loop took to execute without X11 (blue) and with X11 (red).
+ 
+ <img style="margin:0px auto;display:block" img src="../Images/320x240 RoboRio unlimited FPS Processing Speed (no X11).png">
+ <img style="margin:0px auto;display:block" img src="../Images/320x240 RoboRio unlimited FPS Processing Speed (with X11).png">
+ 
+ Note: the above timing chart takes into account the time it take to wait for a frame, download it, convert, it and process it.
+ 
+ We can see from the chart that a majority of the time, the tegra is waiting for new frames. When it does get a frame it processes it within about 1-5ms. We also observe that this processing is done in real-time and at no point does the process image lag the real time image.
+ 
+ Based on the above data, we can conclude that under the conditions of this test, the Tegra TK1 is fully capable of real-time processing using the Axis camera with max FPS set (30 fps) at 320x240 using the CPU alone, and has a lot of compute power left to do more. 
+ 
+## 5.2.2.2 320x240 Live performance 20 fps
+ 
+ Because we have shown above that the Tegra can perform at 30+ fps, we chose to ignore testing it at an less fps.
+ 
+## 5.2.2.3 320x240 Live performance 10 fps  
+ 
+ Because we have shown above that the Tegra can perform at 30+ fps, we chose to ignore testing it at an less fps.
 
+
+## 5.2.2.4 640x480 Live performance 30 fps
+  
+ We run the algorithm for 160s with the camera set to unlimited frames per second. The max output of the camera used is 30 fps.
+ 
+ Just as before We ran the test for two cases:
+ - With X11 forwarding enabled
+ - Without X11 forwarding enabled
+ 
+ Below is a plot of how long each processing loop took to execute without X11 (blue) and with X11 (red).
+ 
+ <img style="margin:0px auto;display:block" img src="../Images/640x480 RoboRio unlimited FPS Processing Speed (no X11).png">
+ <img style="margin:0px auto;display:block" img src="../Images/640x480 RoboRio unlimited FPS Processing Speed (with X11).png">
+ 
+ Note: the above timing chart takes into account the time it take to wait for a frame, download it, convert, it and process it.
+ 
+ We can see from the chart that a majority of the time, the tegra is waiting for new frames and processing stays around 11ms. A couple of times the processing peaked to about 40ms, but since it didn't peak over 2x time frame rate (66ms), we never saw any lag. We also notice that immediately after the peak, When it does get a frame it processes it within about 1-5ms typically. We also observe that this processing is done in real-time and at no point does the process image lag the real time image.
+
+We are still trying to detrermine exactly why the processing time was so low (around 1ms vs around 33ms). We believe this was because the FFMPEG thread started at a point right before the camera was ready to produce new images, thus instead of waiting the full 33ms every loop iteration, less time was required to wait for the next frame. 
+ 
+ Based on the above data, we can conclude that under the conditions of this test, the Tegra TK1 is fully capable of real-time processing using the Axis camera with max FPS set (30 fps) at 640x480 using the CPU alone, and has a lot of compute power left to do more. 
+ 
+## 5.2.2.5 640x480 Live performance 20 fps
+ 
+ Because we have shown above that the Tegra can perform at 30+ fps, we chose to ignore testing it at a lower fps.
+ 
+## 5.2.2.6 640x480 Live performance 10 fps  
+ 
+ Because we have shown above that the Tegra can perform at 30+ fps, we chose to ignore testing it at a lower fps.
+
+ 
