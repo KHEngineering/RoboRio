@@ -426,10 +426,10 @@ When then disable the processing thread, and enable the FFMPEG image capture thr
   <div>
  \[
  \begin{array}{ll}
-   & 3ms \text{(time to capture frame from camera)} \\
+   & 10ms \text{(time to capture frame from camera)} \\
  + & 12ms \text{(time to process frame)} \\
  \hline
-   & 15ms \text{Total Processing time per frame} \\
+   & 22ms \text{Total Processing time per frame} \\
  \end{array}
  \]
  </div>
@@ -438,21 +438,13 @@ When then disable the processing thread, and enable the FFMPEG image capture thr
  We convert this number to Frames per second:
    <div>
  \[
-\frac{1}{0.015} = 66.67 \text{ fps}
+\frac{1}{0.022} = 45.45 \text{ fps}
  \]
  </div>
  
  <br><br>
  
- This shows that under these conditions we can successfully process our 320x240 images at 66fps on the Tegra, under the worst case scenarios. Our nominal case (as in actual performance should be much better). In section 5.2.2 we look at actual performance of this code on the RoboRio. This quick study shows is that we can at least guarantee the ability to run this vision code at 66 frames per second without lag on the RoboRio in the worst case.
- 
- 
- 
- 
- 
- 
- 
- 
+ This shows that under these conditions we can successfully process our 640x480 images at 45fps on the Tegra, under the worst case scenarios. Our nominal case (as in actual performance should be much better). In section 5.2.2 we look at actual performance of this code on the RoboRio. This quick study shows is that we can at least guarantee the ability to run this vision code at 66 frames per second without lag on the RoboRio in the worst case.
  
  
  ## 5.2.2 Tegra Live Performance
