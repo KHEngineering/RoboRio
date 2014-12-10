@@ -825,7 +825,7 @@ We run the algorithm for 160s with the camera set to 10 frames per second.
 
 Final conclusions and remarks will be posted once the BeagleBone data is posted.
 
-Additional testing on the live performance of the RoboRio needs to be performaned and documented. However, we can conclude at the moment that the RoboRio is not capable of processing 640x480 images at 10fps or greater under our test conditions without experiencing lag. We are in the process of cunducting additional test to determine what is the opimal framerate the RoboRio can process. Our baseline worst case was around 8.85fps. So that is our target. 
+Additional testing on the live performance of the RoboRio needs to be performed and documented. However, we can conclude at the moment that the RoboRio is not capable of processing 640x480 images at 10fps or greater under our test conditions without experiencing lag. We are in the process of cunducting additional test to determine what is the opimal framerate the RoboRio can process. Our baseline worst case was around 8.85fps. So that is our target. 
 
 Due to inconsistancies with the 320x240 data results, we are going back over that data to ensure accuracy and provide additional details for the RoboRio's capabilities at processing 320x240 images. 
 
