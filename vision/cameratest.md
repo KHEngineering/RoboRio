@@ -474,11 +474,11 @@ We then disable the processing thread, and enable the FFMPEG image capture threa
  
 ## 5.2.2.2 320x240 Live Tegra performance 20 fps
  
- Because we have shown above that the Tegra can perform at 30+ fps, we chose to ignore testing it a lower FPS camera seetting.
+ Because we have shown above that the Tegra can perform at 30+ fps, we chose to ignore testing it a lower FPS camera setting.
  
 ## 5.2.2.3 320x240 Live Tegra performance 10 fps  
  
- Because we have shown above that the Tegra can perform at 30+ fps, we chose to ignore testing it a lower FPS camera seetting.
+ Because we have shown above that the Tegra can perform at 30+ fps, we chose to ignore testing it a lower FPS camera setting.
 
 
 ## 5.2.2.4 640x480 Live Tegra performance 30 fps
@@ -504,11 +504,11 @@ We are still trying to detrermine exactly why the processing time was so low (ar
  
 ## 5.2.2.5 640x480 Live Tegra performance 20 fps
  
- Because we have shown above that the Tegra can perform at 30+ fps, we chose to ignore testing it a lower FPS camera seetting.
+ Because we have shown above that the Tegra can perform at 30+ fps, we chose to ignore testing it a lower FPS camera setting.
  
 ## 5.2.2.6 640x480 Live Tegra performance 10 fps  
  
- Because we have shown above that the Tegra can perform at 30+ fps, we chose to ignore testing it a lower FPS camera seetting.
+ Because we have shown above that the Tegra can perform at 30+ fps, we chose to ignore testing it a lower FPS camera setting.
 
  
 
