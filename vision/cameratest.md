@@ -311,7 +311,7 @@ Also X11 forwarding has been enabled and a view window outputting the processed 
  
 ## 5.2 Scenario B Tests (Jetson TK1):
 
-## 5.2.1 Baseline Tests
+## 5.2.1 Tegra Baseline Tests
 
 ## 5.2.1.1 320x240 Baseline Processing
 
@@ -655,13 +655,12 @@ The same conditions as above applies with regards to the camera framerate. It ta
  This shows that under these conditions we can successfully process our 640x480 images at about 9fps on the RoboRio under the worst case assumptions. Our nominal case, (as in actual performance should be much better). In section 5.3.2 we look at actual performance of this code on the RoboRio. 
  
 
-## 5.3.2 Live Performance
+## 5.3.2 RoboRio Live Performance
 
-## 5.2.2 RoboRio Live Performance
  
  In this section, we run the vision code, with all threads active and time the entire process each iteration. This gives us a true understanding of the actual performance of the code under real FRC match conditions. This test was ran for 160s exactly. 
  
-## 5.2.2.1 320x240 RoboRio Live performance 30 fps
+## 5.3.2.1 320x240 RoboRio Live performance 30 fps
   
  We run the algorithm for 160s with the camera set to unlimited frames per second. The max output of the camera used is 30 fps.
  
@@ -680,7 +679,7 @@ The same conditions as above applies with regards to the camera framerate. It ta
  
  Based on the above data, we can conclude that under the conditions of this test, the RoboRio is fully capable of real-time processing using the Axis camera with max FPS set (30 fps) at 320x240 using the CPU alone, but only has marginal computational power left. 
  
-## 5.2.2.2 320x240 RoboRio Live performance 20 fps
+## 5.3.2.2 320x240 RoboRio Live performance 20 fps
 
 We run the algorithm for 160s with the camera set to 20 frames per second. 
  
@@ -711,7 +710,7 @@ It is unclear why this test indicates lag, but the previous test at 30FPS does n
  
  
  
-## 5.2.2.3 320x240 RoboRio Live performance 10 fps  
+## 5.3.2.3 320x240 RoboRio Live performance 10 fps  
 We run the algorithm for 160s with the camera set to 10 frames per second. 
  
  Just as before We ran the test for two cases:
@@ -740,7 +739,7 @@ We run the algorithm for 160s with the camera set to 10 frames per second.
  Based on the above data, we can conclude that under the conditions of this test, the RoboRio is fully capable of near real-time processing using the Axis camera with max FPS set (10 fps) at 320x240 using the CPU alone, but only has marginal computational power left. 
  
 
-## 5.2.2.4 640x480 RoboRio Live performance 30 fps
+## 5.3.2.4 640x480 RoboRio Live performance 30 fps
   
  We run the algorithm for 160s with the camera set to unlimited frames per second. The max output of the camera used is 30 fps.
  
@@ -759,7 +758,7 @@ We run the algorithm for 160s with the camera set to 10 frames per second.
  
  Based on the above data, we can conclude that under the conditions of this test, the RoboRio is not capable of processing 640x480 images at 30fps without experiencing lag.
  
-## 5.2.2.5 640x480 RoboRio Live performance 20 fps
+## 5.3.2.5 640x480 RoboRio Live performance 20 fps
  
 We run the algorithm for 160s with the camera set to 20 frames per second. 
  
@@ -790,7 +789,7 @@ We run the algorithm for 160s with the camera set to 20 frames per second.
  
  
  
-## 5.2.2.6 640x480 RoboRio Live performance 10 fps
+## 5.3.2.6 640x480 RoboRio Live performance 10 fps
   
 We run the algorithm for 160s with the camera set to 10 frames per second. 
  
