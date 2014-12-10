@@ -283,6 +283,7 @@ After which the processing of the image is done, and a few global thread safe va
 This cycle continues forever as long as communication with the IP camera and RoboRio are maintained, all while FFMPEG continues to grab the latest frame from the camera in parallel.
 
 The processing thread and FFMPEG thread each have a 1ms sleep before the next iteration starts. This allows the CPU to service any other waiting threads.
+
 ## 4.1 Generic Code Optimizations:
 
 - The code is compiled with GCC 4.6.3 with -o3 optimizations enabled
