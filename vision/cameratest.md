@@ -247,7 +247,7 @@ double diffClock(timespec start, timespec end)
 
 The vision code used is the exact source code we ran throughout 5 competition in the 2014 season on a Beaglebone white. The source has undergone no changes for these test other than adding/modifying code to time the areas of interest.
 
-The code has 5 threads:
+The code has 4 threads:
 
   - 1st: Outgoing TCP Messages to RoboRio
   - 2nd: Incoming TCP Messages to RoboRio
