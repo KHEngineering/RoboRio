@@ -32,9 +32,7 @@ The new RoboRio will not be damaged. It will sense any voltage over 16V and safe
 ##Can I program over USB, Ethernet, and WIFI?
 For all languages deploying code using previous cRIO methods still work. That is, programming via Ethernet Tether or wireless using a (D-link in AP mode) are all supported.
 
-The RoboRio offers the addition to program over the USB device port. The drivers for the RoboRio emulate a Ethernet Controller when plugged in via USB. This USB Ethernet port is always static, and can be used to program or modify the roborio. It puts the Rio on the network 172.22.11.2. Since the Rio uses mDNS, you can use your driverstation via USB, Ethernet, or WIFI without changing any Ethernet settings as you switch between interfaces. If you would like to learn more about mDNS and how it is used on FRC please check out the [FMS FAQ](/RoboRio/faq/fms).
-
-On Team 2168 we still set manually set all devices on our Robot to a static IP. IP to a static IP on the RoboRio and Driverstation.
+The RoboRio offers the addition to program over the USB device port. The USB drivers for the RoboRio emulate a Ethernet Controller when plugged in via USB. When connected via USB the Rio can be located at the IP address 172.22.11.2. Since the Rio also uses mDNS, you can use your driverstation via USB, Ethernet, or WIFI without changing any Ethernet settings as you switch between interfaces. If you would like to learn more about mDNS and how it is used on FRC please check out the [FMS FAQ](/RoboRio/faq/fms).
 
 The USB drivers are installed on the computer when the FRC Utilities are installed which is provided in the official software released by NI.
 
@@ -48,19 +46,20 @@ Your team number will be assigned to the RoboRio when you image the Rio for the 
 
 So if your team 359 for example, after imaging your RoboRio you can access it via Ethernet, Wifi, or USB using the single address Roborio-359.local, which will resolve to the IP address of the RoboRio using mDNS. (Using roborio-0359.local will result in error).
 
-For those teams wishing to assign their own static IP to the RoboRio you can still do this through the web interface. Once the RoboRio has been successfully images, navigate to http://RoboRio-2168.local, and check your network settings. You can login as admin and change the ethernet port from dhcp to static and assign your own 10.TE.AM.2 address. The mDNS address will still work correctly even when the ethernet port is set to static.
+For those teams wishing to assign their own static IP to the RoboRio you can still do this through the web interface. Once the RoboRio has been successfully imaged, navigate to http://RoboRio-2168.local, and check your network settings. You can login as admin and change the ethernet port from dhcp to static and assign your own 10.TE.AM.2 address. The mDNS address will still work correctly even when the ethernet port is set to static.
 
+On Team 2168 we still set manually set all network devices our Robot (including the RoboRio) to a static IP.
+ 
 You can always check all of your network interface settings, and modify them through the web interface of the Rio. You must be logged in as `admin` to make any changes. 
 
 ---
 
 ##How do I access the RoboRio WebServer?
 
-Simply navigate to any of the RoboRios IP address from any computer on the same network. 
+Simply navigate to any of the RoboRio's IP address from any computer on the same network. 
 i.e http://RoboRio-2168.local (replace 2168 with your team number) will work on any interface using mDNS, http://10.TE.AM.2 if you assigned a static IP or http://172.22.11.2 when using the USB cable.
 
-If this is your first time starting up the RoboRio, the Ethernet port is set to DHCP, and the USB
-port is configured to static IP 172.22.11.2 address when connected to a computer that has the USB Driver installed (supplied when FRC Utilities are installed).
+If this is your first time starting up the RoboRio, the Ethernet port is set to DHCP, and the USB port is configured to IP 172.22.11.2 address when connected to a computer that has the USB Driver installed (supplied when FRC Utilities are installed).
 
 Once you determine the IP address of the RoboRio, make sure your network interface card is also on the same network as the RoboRio, and you can navigate to the RoboRio in any browser which supports the Microsoft silverlight plugin to view the RoboRio webpage.
 
@@ -167,10 +166,15 @@ The user can upgrade the firmware over Ethernet Tether/WIFI or USB. USB method i
 
 The Image and Firmware will be provided via an FRC Tools Software installation by FIRST/NI which can only be installed on a Windows 7/8 computer running 32 or 64 bits. While it is possible to flash the firmware from another non-windows computer using the website, the RoboRio Image tool is a windows only software and so windows must be used to image the RoboRio at the very minimum.
 
+Please see official instructions for firmware and imaging here: 
+
+[ScreenSteps Flash RoboRio](https://wpilib.screenstepslive.com/s/4485/m/13503/l/273817-updating-your-roborio-firmware)
+[ScreenSteps Image RoboRio](https://wpilib.screenstepslive.com/s/4485/m/13503/l/144984-imaging-your-roborio)
+
 ###Firmware Upgrade: 
    1. Connect to the RoboRio via USB and Power on the RoboRio
    2. login to the RoboRio webpage using your internet browser (You will need to have silverlight plugin). (Labview teams can use webpage or NI Max, Java/C++ teams must use WebPage).
-   3. Navigate to http://roborio-TEAM.local (where TEAM rempresents your team number) or use http://172.22.11.2 when using USB. Login using "admin" as the user name and leave the password field empty. Click on the RoboRio icon and select upgrade firmware. 
+   3. Navigate to http://roborio-TEAM.local (where TEAM represents your team number) or use http://172.22.11.2 when using USB. Login using "admin" as the user name and leave the password field empty. Click on the RoboRio icon and select upgrade firmware. 
    4. Browse to the firmware you wish to use and apply (Typically in c:/program files(x86)/national instruments/shared/firmware/FXXX/
    5. The RoboRio will update the firmware, and if successful the new firmware version will be showed on the webpage. If not, just try again.
 
@@ -216,7 +220,7 @@ CAN is a 2 wire serial bus mostly used in cars. Its an interface with a specific
 
 When the RoboRio ships from the factory, the default settings for the RoboRio ethernet port is DHCP. So if you plug the roborio into a network switch which has internet access and a DHCP server (like a router), then the RoboRio will automatically connect to the internet.
 
-If you choose to set a static IP on the RoboRio and sssuming you are connected to a network that has an internet connection, you need to set the default gateway and DNS server on the RoboRio manually (in addition to the IP address). Use your browser to connect to the RoboRio webserver and click on login using `admin` as the user name, and leave the password blank. Select the Network interfaces Icon, and under eth0 modify the default gateway and provide a DNS server. Here is a pic of what our setting look like:
+If you choose to set a static IP on the RoboRio and sssuming you are connected to a network that has an internet connection, you need to set the default gateway and DNS server on the RoboRio manually (in addition to the IP address). To do this, use your browser to connect to the RoboRio webserver and click on login using `admin` as the user name, and leave the password blank. Select the Network interfaces Icon, and under eth0 modify the default gateway and provide a DNS server. Here is a pic of what our setting look like:
 
 <img src="../../Images/internetsettings.png">
 
@@ -295,11 +299,11 @@ Here is the breakdown of the logic we noticed during brownout testing:
     - Digital Input and Analong input signal pins are still active
 * input voltage Below 4.0V, Power LED is Off
     - RoboRio Processor died
-    - No longer able to read an DIO channel states
-    - Loss of Comms with Robot
+    - No longer able to read any DIO channel states
+    - Driverstation Loss of Comms with Robot
 
 
-From my understanding, the regualtor topology on the RoboRio is such that the 6V supply feeds the 5V supply, and the 5V supply feeds the 3,3V supply. So upon a brownout event, (VbattIn < 6.8 V) PWM output and 6V servo power are deactivated, but the 6V supply is still operational (so 5V and 3.3V rails are still operational). When the RoboRio drops below 6.3V, the 6V regulator can no longer be sustained so the 6V, 5V and 3.3V power are lost. 
+From my understanding, the regualtor topology on the RoboRio is such that the 6V supply feeds the 5V supply, and the 3.3V supply. So if the 6V source is lost, 5V and 3.3V power sources are lost as well. Currently, upon a brownout event, (VbattIn < 6.8 V) PWM output and 6V servo power are deactivated, but the 6V supply is still operational (so 5V and 3.3V rails are still operational). When the RoboRio drops below 6.3V, the 6V regulator can no longer be sustained so the 6V, 5V and 3.3V power are lost. 
 
 This means there is now ~ 0.6 V between when the motors are disabled and when the 5 V and 3.3 V supplies shut down instead of them happening at the same time.
 
@@ -335,17 +339,19 @@ The bus switch that adjusts the signals passed to the FPGA is powered by a suppl
 
 Yes. When the RoboRio browns out, the power indicator on the RoboRio will turn orange, and immediately motor controller outputs will be disabled.
 
-If you notice your robot is staggering all of a sudden, it is most likely because your battery is on the edge of the RoboRio brownout point, and when the motors are driven the roborio disables outputs, which causes your voltage to raise above the Brown out threshold, enables the motors, which then browns the rio out again...and you enter this loop.
+If you notice your robot is staggering/stuttering all of a sudden, it is most likely because your battery is on the edge of the RoboRio brownout point, and when the motors are driven the roborio disables outputs, which causes your voltage to raise above the Brown out threshold, enables the motors, which then browns the rio out again...and you enter this loop.
 
 To be sure you are not browning out at a quick glance, when driving your Robot, always ensure the Power light on the RoboRio is solid Green. If it is orange at any point, the roborio is browning out and you should check your power sources. 
+
+New Power API have been provided for all languages so teams can detect the brownout condition in software. Please see the respective programming FAQ for more details. 
 
 ---
 
 ##Everytime I deploy code, immediately after the Driverstation says no Robot Code. Whats Happening?
 
-Well the RobotRode indicator in the DS means, that your Robot application is actually executing. If the code crashes for any reason, such as a null pointer error, or other exception, the Application will stop running, and the Robot Code idicatior will go red.
+Well the "Robot Code" indicator in the DS means that your Robot application is actually executing. If the code crashes for any reason, such as a null pointer error, or other exception, the Application will stop running, and the Robot Code idicatior will go red.
 
-This most likely means your code is crashing upon start-up, so check for runtime errors using netconsole. 
+This most likely means your code is crashing upon start-up, so check for runtime errors using netconsole or your general labview debugging methods.
 
 When this happens, you will also notice the Comms light on the RoboRio go red. This means that Robot Code is not running.
 
@@ -404,7 +410,15 @@ On Linux:
 	7. Exit Minicom, the modem should initialize, hit enter and the terminal should now show the RoboRio terminal (assuming the cable is correct) 
 
 On Windows:
-
+	1. You can use putty to establish a serial connection. [Install putty](http://www.putty.org/)
+	2. Install drivers for your serial-to-USB converter.
+	3. Identify which com port your serial device is connected to using device manager
+	4. Open the putty application, In the main navigation sidebar, select connection->serial
+	5. Configure the paramters for the serial connection as identified above.
+	6. Click on session in the main navigation sidebar (com port at baud rate should be set)
+	7. Select the "serial" radio button
+	8. click open to start the serial connection
+	
 ---
 
 ##What is the MXP port?
@@ -420,7 +434,14 @@ The MXP also has 5V and 3.3V sources. You can use this port to make your own cus
 
 ##What does a shared PIN on the MXP mean?
 
-A "shared" pin means that the pin can be in a multitude of ways, and you can choose which way to use that pin in your robot program.
+A "shared" pin means that the pin can be used in a multitude of ways, and you can choose which way to use that pin in your robot program.
 
 For example shared PWM pins on the MXP means you can either use that pin to provide a PWM signal (for a motor controller) or you can use it as a Digital Input Signal, or as a Digital Output Signal.
- 
+
+---
+
+##What is Safe Mode?
+
+Safe mode is a separate partition on the RoboRio that is installed when you load the Firmware. Safe mode loads a clean default Linux File System in a Ram Disk. Any modification to the file system will be lost upon reboot. Safe-mode can be used to re-image the boot filesystem or to recover for other system crashes.
+
+If there is no OS installed on the RoboRio, it will boot up in safemode by default. This is the behavior you should expect to see when you first unbox your RoboRio from the factory. It will ship with a default firmware, but no image.

@@ -77,7 +77,7 @@ This is a question for FIRST, and the official 2015 rules.
 Beta teams have been connecting additional VRM's and PCM's directly to 1 of the 16 motor channels and allow more than one 
 to be connected to any given channel. They both take in unregulated 12V.
 
-We have also connected 2 devices on a single 30amp channel without problems, however defer to FIRST and the official 2015 rules for correct wireing.
+We have also connected 2 devices on a single 30amp channel without problems, however defer to FIRST and the official 2015 rules for correct wiring.
 
 ---
 

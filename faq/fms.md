@@ -13,7 +13,9 @@ There is also a new 2015 protocol which uses less bandwidth for DS to Robot comm
 ---
 
 ##What is mDNS?
-Multicast Domain Name System (mDNS) is a system which allows for resolution of host names to IP addresses on small networks with no dedicated name server. To resolve a host name a device sends out a multicast message to the network querying for the device. The device then responds with a multicast message containing it's IP. Devices on the network can store this information in a cache so subsequent requests for this address can be resolved from the cache without repeating the network query.
+Multicast Domain Name System (mDNS) is a system which allows for resolution of host names to IP addresses on small networks with no dedicated name (DNS) server. To resolve a host name a device sends out a multicast message to the network querying for the device. The device then responds with a multicast message containing it's IP. Devices on the network can store this information in a cache so subsequent requests for this address can be resolved from the cache without repeating the network query.
+
+Basically, instead of having to know the IP address of every device on your network, you can communicate with them using their mDNS name (something like "ping roborio-2168.local" instead of "ping 10.21.68.2"
 
 The FRC Driver Station, LabVIEW, and the Eclipse plugins for C++ and Java are all programmed to discover your roboRIO using the mDNS protocol. This means that the roboRIO can be detected regardless of the interface or IP being used.
 
@@ -63,7 +65,7 @@ IPs for system components:
 
 - roboRIO USB: 172.22.11.2
 - roboRIO mDNS: roboRIO-####.local (where #### is your team number with no leading zeroes) You should be able to use this address to communicate with the roboRIO over either interface through ping, browser, etc.
-- Robot Radio: 10.TE.AM.1 (where TE.AM is your 4 digit team number with leading zeroes if required)
+- Robot Radio: 10.TE.AM.1 (where TE.AM is your 4 digit team number with leading zeroes if required) (This is the address set by the FRC Bride Configuration Tool)
 - roboRIO Ethernet: DHCP, assigned by the Robot Radio
 - Driver Station PC: DHCP, assigned by the Robot Radio
 - Additional Programming computers: DHCP, assigned by the Robot Radio (DHCP range: 10.TE.AM.20 to 10.TE.AM.199)
@@ -81,21 +83,44 @@ FIRST also released a FMS light program so teams can practice at home, with a si
 
 ---
 
-##When practicing at Home, how can I run multiple Robots with RoboRio installed?
+##When practicing at Home, how can I run multiple Robots with RoboRio's installed?
 
-Simply flash one RoboRio with your actual team number, and additional RoboRios with different team numbers that are not yours. 
+You can do this in one of many ways. Two popular methods are below:
 
-For example we would flash Robot A with 2168, and Robot B with 2169 (or any other team numer that is not yours). This allows us to drive both robots simultaneoulsy once the DS for each robot is set to the proper team number.
+##Method 1
+
+1. Use the RoboRio Image tool, to image each RoboRio with a different Team number. (For example we would flash Robot A with 2168, and Robot B with 2169 (or any other team number that is not yours). This allows us to drive both robots simultaneously once the DS for each robot is set to the proper team number.)
+2. Use the FRC Bridge Configuration Tool to configure Each D-link to the respective team number of the RoboRio it is connected too.
+3. Connect Each Driverstation to the appropriate Robot and set the team number accordingly.
+
+
+##Method 2
+
+1. Flash all RoboRio's with your Team Number. (All Robot's will be flashed with the same Team Number)
+2. Manually Configure the D-Link AP on each Robot to broadcast a different SSID. i.e Robot2168-practice1, Robot2168-practice2
+3. Connect Each driver station to the corresponding Access Point for your Robot.
+4. Set the Team number in the DS to your team number in Each DS.
 
 ---
 
 ##How do I configure my D-link for home use?
 
+As in Previous Years you can configure it automatically using the FIRST provided Bridge configuration Tool, or you can manually configure it on your own.
+
+###Automatic Configuration
+
+See Official Documentation [ScreenSteps Live Bridge Configuration](
 You can use the FIRST provided bridge configuration tool installed on your Windows machine when you install the official FIRST utilities software.
 
 Afterwhich place the D-Link in AP mode and connect your DS to it wirelessly.
 
-Over the years we have adpoted a practice from more experienced teams. We always leave our D-link in bridged mode, and connect it to a secondary Wireless Access point which acts as a medium between our DS and the Robot Radio. This more realistically mimicks the Field setup. We also enable encrption on the D-link so to ensure all packets are encrypted just like they are on the field.
+Over the years we have adopted a practice from more experienced teams. We always leave our D-link in bridged mode, and connect it to a secondary Wireless Access point which acts as a medium between our DS and the Robot Radio. This more realistically mimicks the Field setup. We also enable encrption on the D-link so to ensure all packets are encrypted just like they are on the field.
 
 ---
+
+##Which Mode do I set my D-Link Radio (AP 2.4GHz, AP5GHz, Bridge)
+
+At FRC Competitions, your D-Link must be in bridge mode, you can communication with the Robot Using the USB Tether, or Ethernet Tether
+
+At home, you can use AP2.4 GHZ, or AP5GHz, which ever suits your preference to use the robot wirelessly. 
 

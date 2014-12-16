@@ -17,11 +17,16 @@ This diagram still shows the early thought of using a USB Bridge directly plugge
 ---
 
 ##What wire should I use for the new wieldmuler connectors?
-We have had a lot of success using 18 awg  "outdoor security wire". These typically come with thin walled jackets and you can find them in shielded or non-shielded varients. The wire we used during beta testing we bought at home depot [18 awg security wire]().
+Refer to the official FRC rules for specific wiring requirements, however with that said
+
+We have had a lot of success using 18 awg  "outdoor security wire". These typically come with thin walled jackets and you can find them in shielded or non-shielded varients. The wire we used during beta testing we bought at home depot [18 awg security wire](http://www.homedepot.com/p/Southwire-18-2-Shield-Security-Cable-By-the-Foot-57573199/204725192?N=5yc1vZc7d4).
 <br><br>
-However, we will probably use this wire purchased from monoprice for the upcoming season, as we have used it in the past: 
 
+* We use 18-2 wire for all control system interconnects (power and CAN) 
+* We use 6 awg Battery Cables
+* We use 22-2 cable for PWM cables (no center wire needed), solenoid wires, and 5V sensors 
 
+We buy our wires in singles and spin our own lengths from this site: http://www.mcmelectronics.com/content/en-us/landing_pages/hook-up-wire
 
 
 ---

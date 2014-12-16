@@ -4,11 +4,14 @@ title: Vision Processing Device Test (Work In Progress)
 permalink: /vision/cameratest/
 ---
 
+
+
 # THIS IS A DRAFT VERSION, NO SECTION IS FINAL
+Last Updated: Dec. 11 2014
 
 ## 1.0 Introduction:
 
-   In this article Team 2168 compares the performance of 3 popular embedded processors used in Vision Processing for it is applicability to the First Robotics Competition.
+   In this article Team 2168 compares the performance of 3 popular embedded processors used in Vision Processing for their use in the First Robotics Competition (FRC).
 
    The purpose of this test is to help determine which device is best suitable to a team depending on their needs.
 
@@ -69,13 +72,15 @@ The tests herein will be conducted using the same source code, library versions,
 For each scenario there will be two subsets of test:
 
 * Baseline performance test
-  - Used to capture the worst-case scenario processing time and image downloading time acheivable on the target.
+  - Used to capture the worst-case scenario processing time and image downloading time achievable on the target.
   - Goal is to isolate the processing thread and frame capture thread to calculate times individually.
 * Live performance test
   - The images to be processes will be captured live from a connected IP camera so as to mimic a real FRC match. At no point will previously saved images or local files be used (we want image download time to be factored in as well).
-  - Goal is to observe algorithm time and achivable FPS under similar conditions of a real FRC match.
+  - Goal is to observe algorithm time and achievable FPS under similar conditions of a real FRC match.
 
-Each test will be using the Axis M1011 Ethernet Camera. We will vary the camera settings and apply those settings to each target so as to find the optimal and maximum FPS, and image quality settings which maximize performance on each embedded device.
+Each test will be using the Axis M1011 Ethernet Camera. Most of the camera settings will remain fixed through each test, however certain parameters we will vary and apply those settings to each target so as to find the optimal and maximum FPS, and image quality settings which maximize performance on each embedded device. The camera settings used in these tests are outlined in section 2.4.
+
+These tests are CPU based only. GPUs are not used on any device for any processing capabilities. Additional tests will be performed at a later time to test GPU capability. At the time of this writing only the GPU in the Tegra is supported by OpenCV, so that is the only embedded device which would benefit from GPU accelerated vision processing. 
 
 ---
 ---
@@ -134,7 +139,7 @@ Each test will be using the Axis M1011 Ethernet Camera. We will vary the camera 
          <ul>
             <li>Dual-Core Arm Cortex A9 Processor @ 667 MHz</li>
             <li>256MB Random Access Memory (RAM)</li>
-            <li>512MB Non-volitile Memory (Flash)</li>
+            <li>512MB Non-volatile Memory (Flash)</li>
             <li>Supports USB 2.0 Devices</li>
             <li>NI RT Linux with preemt RT patch</li>
             <li>7-16V DC Unregulated input voltage required</li>
@@ -157,7 +162,7 @@ WhiteBalance: Fixed Indoor
 Exposure: 23 out of 100
 Exposure control: Hold Current
 
-The only items we varied was:
+The only items we varied are:
 
 * Frame Size: 
 	- 320 x 240
@@ -268,7 +273,7 @@ The memory location where the frame is stored is global shared memory. Write acc
 
 A mutually exclusive (mutex) pthread lock is used to ensure that at no time does a read and write operation occur simultaneously. However, this means that either processing thread or FFMPEG thread can cause the other thread to wait momentarily for the read or write operation to finish.
 
-Because of this mutex lock, processing time per frame is dependant upon the couling between these two threads.
+Because of this mutex lock, processing time per frame is dependent upon the coupling between these two threads.
 
 Each processing loop, the processing thread will grab the latest FFMPEG frame and perform the following OPENCV operations:
 
@@ -307,7 +312,7 @@ Also X11 forwarding has been enabled and a view window outputting the processed 
 ## 5.1 Scenario A Tests (BeagleBone):
  
  
- 
+ ### IN PROGRESS
  
  
 ## 5.2 Scenario B Tests (Jetson TK1):
@@ -423,6 +428,8 @@ We then disable the processing thread, and enable the FFMPEG image capture threa
  
  We can see from the plot, that it takes a nominal time of about 34ms, and worst case of 45ms to download a frame, and load it into memory. This means that for the case where the capture time is around 34ms, downloading the frame and storing it into memory is of little contribution to processing time, all of the time is spent waiting on the next frame. In the case where we hit the peak numbers, that means in the worst case it took about 10-12ms to decode and store the image. Based on this data we can conclude that downloading and storing an image only contributes anywhere between 0-12ms to our processing time. When comparing the charts it doesn't appear that X11 forwarding affect the outcome. This makes sense because X11 forwarding should only be active when the process thread is running (serving our output image). So this is what we should expect.
  
+ The 640x480 has 4 times the pixel density of the 320x240 image. So it makes sense that the processing time is roughly 4 times larger for the 640x480 when compared to the 320x240 baseline test.
+
  Just based on these numbers, we can calculate a target FPS we can successfully process with the system we have set up, without experiencing lag. In addition, these logs were captured individually and don't account for any overhead processing time. So we want to be conservative. The next section shows total execution time for the complete application. 
  
  For the Worst Processing Case:
@@ -447,7 +454,7 @@ We then disable the processing thread, and enable the FFMPEG image capture threa
  
  <br><br>
  
- This shows that under these conditions we can successfully process our 640x480 images at 45fps on the Tegra, under the worst case scenarios. Our nominal case (as in actual performance should be much better). In section 5.2.2 we look at actual performance of this code on the Tegra. This quick study shows we can at least guarantee the ability to run this vision code at 45 frames per second without lag on the RoboRio in the worst case.
+ This shows that under these conditions we can successfully process our 640x480 images at 45fps on the Tegra, under the worst case scenarios. Our nominal case (as in actual performance should be much better). In section 5.2.2 we look at actual performance of this code on the Tegra. This quick study shows we can at least guarantee the ability to run this vision code at 45 frames per second without lag on the Tegra in the worst case.
  
  
 ## 5.2.2 Tegra Live Performance
@@ -511,6 +518,9 @@ We are still trying to detrermine exactly why the processing time was so low (ar
  
  Because we have shown above that the Tegra can perform at 30+ fps, we chose to ignore testing it a lower FPS camera setting.
 
+ 
+ ## 5.3.3 Tegra Performance Summary
+ 
  
 
  
@@ -616,8 +626,8 @@ Just as before We ran the test for two cases:
  
  We can see that our processing time per frame on the Roborio took about 89ms nominally, and was under 111ms in the worst case. We also notice that when X11 is activated, our nominal processing time increases to about 140ms and peaks around 170ms in the worst case.
  
- The 640x480 has 4 times the pixel density of the 320x240 image. So it makes sense that the processing time is roughly 3 times larger for the 640x480. (It is not 4 times larger because the the time spent on the first 320x240 pixels are shared between both test cases, thus increasing the processing of the 640x480 case by only a factor of 3).
-
+ The 640x480 has 4 times the pixel density of the 320x240 image. So it makes sense that the processing time is roughly 4 times larger for the 640x480 when compared to the 320x240 baseline test.
+  
  We then disable the processing thread, and enable the FFMPEG image capture thread. This test captures live images from the Axis camera as quickly as possible. The framerate on the camera is set to unlimited, which means it will serve pictures at 30 fps. This test will show how long it takes our software to download and store into memory a single frame.
 
 The same conditions as above applies with regards to the camera framerate. It take roughly 33ms seconds for the camera to serve a new picture, and because the thread waits for the new picture we can safely disregard any time under 33ms counting toward processing time.

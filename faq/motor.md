@@ -8,7 +8,7 @@ permalink: /faq/motor/
 
 
 ##Can I still use the Black and Tan Jaguars?
-The system should support either jag with the latest firmware (v107 for black, v101 for grey).
+The system should support either jag with the latest firmware.
 
 ---
 
@@ -50,10 +50,10 @@ Fear not. This is an artifact of the back-drive protection on this supply. The c
 
 ##Can I use the Talon SRX in PWM or CAN mode?
 
-Yes, the talon SRX will automatically detect whether it is connected to a PWM source or a CAN source.
+Yes, the Talon SRX will automatically detect whether it is connected to a PWM source or a CAN source.
 
-PWM Signal = CANH
-PWM Ground = CANL
+PWM Signal = CANH (Yellow Wire)
+PWM Ground = CANL (Green Wire)
 
 On our team we wire the CAN wires to the outside pins of 3 pin female headers (center pin empty). This allows us to use the Talon SRX in PWM mode or CAN mode. In PWM mode we simply plug it into the PWM port on the RoboRio (since the center pin is not used for any motor controller)
 
@@ -66,7 +66,7 @@ In CAN mode we use male header pin couplers to join two Talons together to form 
 A single button is used to calibrate and set the brake/coast on both new motor controllers.
 
 To switch between Brake or coast mode, press the B/C CAL button.
-The button is illiminated red when the Victor SP or Talon SRX is in brade mode and off when in coast mode. This is a persistant setting, and is retained between power cycles of the motor controller.
+The button is illuminated red when the Victor SP or Talon SRX is in brake mode and off when in coast mode. This is a persistent setting, and is retained between power cycles of the motor controller.
 
 To calibrate, hold the button until the status LEDS (LEDs on either side) begin to flash between red and green. While holding this button down, move the joysticks between full forward and full reverse multiple times. Release the joystick and allow it to center, then release the CAL button. If the calibration is successful, you should see the status LED blink green, if the calibration failed the status LED will blink red.
 

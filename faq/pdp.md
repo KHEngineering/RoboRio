@@ -21,7 +21,7 @@ CAN Bus for Sensor Monitoring
 
    - Current
    - Voltage
-   - Temperture
+   - Temperature
  
 ---
 
@@ -80,7 +80,7 @@ Here are some work-arounds to measure the PCM, VRM, RoboRio:
 ##I have nothing connected to a channel, but the current reading is XXA?
 
 
-If the current is small this is probably OK (small being 1.2A or less). The current is larger this can indicate something wrong with the current sensor reading chip. The PDP has 4 current sensors chips
+If the current is small this is probably OK (small being 1.2A or less) although the default should be 0A. If the current is larger this can indicate something wrong with the current sensor reading chip. The PDP has 4 current sensors chips
 
 [0-3] share a a current sensing chip
 [4-7] share a a current sensing chip
@@ -89,6 +89,7 @@ If the current is small this is probably OK (small being 1.2A or less). The curr
 
 If there is damage to the current sensing device itself, expect to see erroneous readings on the other channels sharing the sensor.
 
+Use the RoboRio web page an run a self-test on the PDP board. Remember this website does not self-refresh.
 
 ---
 
@@ -125,11 +126,11 @@ Note:
 
 3. If there is a conflict of multiple devices with the same ID on the CAN network, the webpage will notify you. A "blink" LED feature on the CAN page will help you physically identify which CAN device you are working on by flashing its LED repeatedly.
 
-4. From the website standpoing, having multiple dissimilar CAN node with the same ID is harmless. I.E having a PCM, PDP, and Jaguar with ID of 1 is acceptable. If this happens the website will not indicate any error.
+4. From the website's standpoint, having multiple dissimilar CAN node with the same ID is harmless. I.E having a PCM, PDP, and Jaguar with ID of 1 is acceptable. If this happens the website will not indicate any error.
 
-5. Having two or more CAN node of the same type and device ID will prevent your robot application from identifying one can device from another. This can happen when you have multiple PCMs or Multiple CAN Talons. The Website will indicate an error. By defailt all CTRE devices ship with an ID of 0. The website handles this gracefully, so you can see all the devices still, and change their ID accordingly. Use the "Blink LED" feature to physically identify which device you are working on. 
+5. Having two or more CAN node of the same type and device ID will prevent your robot application from identifying one can device from another. This can happen when you have multiple PCMs or Multiple CAN Talons. The Website will indicate an error. By default all CTRE devices ship with an ID of 0. The website handles this gracefully, so you can see all the devices still, and change their ID accordingly. Use the "Blink LED" feature to physically identify which device you are working on. 
 
-5. You will need to give each and every device on your CAN bus a unique ID (whether they are similar or dissimilar) so that you can use them successuly in your code. The above points were just to highlight the limitations and relaxations imposed by the RoboRio webpage when dealing with CAN devices.
+5. You will need to give each and every device on your CAN bus a unique ID (whether they are similar or dissimilar) so that you can use them successfully in your code. The above points were just to highlight the limitations and relaxations imposed by the RoboRio webpage when dealing with CAN devices.
 
 
 ---
