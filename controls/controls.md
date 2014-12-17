@@ -509,8 +509,8 @@ We will be maintaining it throughout the rest of the off-season, and through the
   - are in the process of Beta testing these
   - prevent control loop windups!!!
   
-* RoboRio Input pins still read inputs down to 4V, so if your sensors are powered from an external source you will not lose sensor readings 
-  
+* RoboRio Input pins still read inputs down to 4V, so if your sensors are powered from an external source you will not lose sensor readings
+
 --
 
 ##Pneumatics Control Module
