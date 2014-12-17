@@ -503,7 +503,7 @@ We will be maintaining it throughout the rest of the off-season, and through the
   - At 6.2V all 5V and 3.3V sources are lost
   - Full list of events on team website
   
-* New Power AP allows user to query state of hardware
+* New Power API in Labview/Java/C++ allows user to query state of hardware
   - boolean results if pins are disabled due to brownout
   - the user can also query each user rail supply for its voltage and its status (bad input, ok, over current, etc)
   - are in the process of Beta testing these
