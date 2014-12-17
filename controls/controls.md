@@ -135,6 +135,7 @@ We don't know everything you will be getting, but we know each team will be rece
           <li>Supports 12V or 24V output</li>
           <li>Built in fault monitoring</li>
           <li>add more PCM's as needed via CAN bus</li>
+          <li>absents of Voltage jumper defaults to 24V (typo in image will fix soon)</li>
         </ul> 
      </td>
   </tr>
