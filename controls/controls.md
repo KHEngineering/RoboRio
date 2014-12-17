@@ -414,7 +414,7 @@ C++/Java teams need to download and install 3-rd party tools not provided by fir
 
 ##Eclipse Plugins
 
-Official Pre-KickOff Directions here [link](http://www.usfirst.org/sites.default/files/uploadedFiles/Robotics_Programs/FRC/Game_and_Season_Info/2015/Installing_Eclipse_C_Java_for_FRC_2015.pdf)
+Official Pre-KickOff Directions here [link](http://www.usfirst.org/sites/default/files/uploadedFiles/Robotics_Programs/FRC/Game_and_Season_Info/2015/Installing_Eclipse_C_Java_for_FRC_2015.pdf)
 
 --
 
