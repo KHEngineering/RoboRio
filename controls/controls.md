@@ -533,7 +533,7 @@ We will be maintaining it throughout the rest of the off-season, and through the
   - We have not blown the fuse through normal use, however it is possible to blow the fuse through shorting VRM wires, etc.
   - If the rules allow, we recommend powering the D-link from a VRM not installed in the VRM power port (i.e. One of the 30A channels)
   - Do not power any other device from the 5V rail the D-link power is connected too.
-  
+
 --
 
 ##Internet and Packages
