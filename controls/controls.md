@@ -193,6 +193,21 @@ So now you have your Control System, how do you set it up?
 
 --
 
+##Wireing Diagram Correction
+
+> Note on previous slide the Bridge device is wired incorrectly. It is showsn being wired into the USB port of the Roborio. This is a representation of the Alpha Control System not the 2015 System you Will be running.
+
+<br><br>
+For 2015: 
+<br>
+The bridge will receive its power from the VRM 5V 2A channel, and will connect to the RoboRio via an Ethernet Cable.
+
+<br><br>
+
+All other wireing is correct.
+
+--
+
 ##Wiring the New 2015 System
 
 * Much easier (Wieldmuler connectors remove the need for terminals)
