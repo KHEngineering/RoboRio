@@ -70,9 +70,10 @@ We don't know everything you will be getting, but we know each team will be rece
           <li>Runs on a dual-core ARM Cortex A9 Processor @ 667 MHz</li>
           <li>256 MB Random Access Memory (RAM)</li><li>512 MB Non-Volatile Memory (Flash)</li>
           <li>Supports USB 2.0 Devices</li>
-          <li>Supports High Speed USB Camera in 
+          <li>Supports USB3.0 (at USB 2.0 Data rates)</li>
           <li>Runs the Linux Operating System, but has no monitors</li>
           <li>Incorporated previous cRIO, Analog module, digital module, and Digital Side car in one unit</li>
+          <li>Supports C++, Java 8, and Labview 2015</li>
        </ul>
     </td>
   </tr>
@@ -80,14 +81,13 @@ We don't know everything you will be getting, but we know each team will be rece
 
 <br><br>
 
-> This is known as an embedded device, it has the JVM running on it, and executes the Java program we write
 
 
 --
 
 ##RoboRio
 
-<img src="Images/roborio.jpg">
+<img src="Images/roborio.jpg" height ="700" width="1000">
 
 --
 
@@ -96,13 +96,13 @@ We don't know everything you will be getting, but we know each team will be rece
 
 <table>
   <tr>
-    <td><img src="Images/pdpinfo.jpg"></td>
+    <td><img src="Images/pdpinfo.png" width="480" height="320"></td>
     <td>
        <ul>
           <li>Called Power Distribution Panel (as opposed to Power Distribution Board)</li>
           <li>All Output ports are unregulated (outputs direct battery voltage)</li>
           <li>Supports CAN interface monitoring of Voltage/Current/Temperature</li>
-          <li></li>
+          <li>Built-in CAN terminal resistor jumper</li>
         </ul> 
      </td>
   </tr>
@@ -117,7 +117,7 @@ We don't know everything you will be getting, but we know each team will be rece
 
 ##Power Distribution Panel
 
-<img src ="Images/pdpinfo.png">
+<img src ="Images/pdpinfo.png" width="1000" height="700">
 
 
 --
@@ -126,14 +126,15 @@ We don't know everything you will be getting, but we know each team will be rece
 
 <table>
   <tr>
-    <td><img src="Images/pcminfo.png"></td>
+    <td><img src="Images/pcminfo.png" width="480" height="320"></td>
     <td>
        <ul>
           <li>Connected to Robot via CAN Bus</li>
           <li>Automatically turns on and off compressor</li>
           <li>Drives up to 8 solenoids</li>
           <li>Supports 12V or 24V output</li>
-          <li>add more PCM's as needed</li>
+          <li>Built in fault monitoring</li>
+          <li>add more PCM's as needed via CAN bus</li>
         </ul> 
      </td>
   </tr>
@@ -143,7 +144,7 @@ We don't know everything you will be getting, but we know each team will be rece
 
 ##Pneumatic Control Module
 
-<img src="Images/pcminfo.png">
+<img src="Images/pcminfo.png" width"1000" height="700">
 
 --
 
@@ -151,7 +152,7 @@ We don't know everything you will be getting, but we know each team will be rece
 ## 1 - Voltage Regulator Module
 
 
-<img src="Images/vrminfo.png">
+<img src="Images/vrminfo.png" height="700" width="1000">
 
 
 --
@@ -203,20 +204,24 @@ So now you have your Control System, how do you set it up?
 
 ##SoftWare OverView
 
-The FRC Software is required to be installed on a Windows 7 or 8 machine. All other platforms are unsupported.
+The FRC Software Suite is required to be installed on a Windows 7 or 8 machine. All other platforms are unsupported.
 
 The Software Provides the Following Items:
 
 * Labview (For Labview Teams Only)
 * NI Max (For Labview Teams Only)
-* Driverstation (For all Teams)
+* 2015 Driverstation (For all Teams)
 * RoboRio USB Drivers (For all Teams)
 * RoboRio Imaging Tool (For all Teams)
 * Bridge Configuration Utility (For All Teams)
 * Latest Firmware and Image for RoboRio (For All Teams)
-* Installs mDNS resolver
+* Installs mDNS resolver (For All Teams)
 
 > Before Installing the software I recommend installing the full .net 4.0 from Microsoft directly, then running the FRC installation
+
+<br><br>
+
+> This does not include the development software for C++/Java teams, we will cover that next.
 
 --
 
@@ -239,8 +244,11 @@ The RoboRio software is provided in 2 parts:
 4. http://172.22.11.2
 5. Login to the Roborio using `admin` user name, leave password blank
 6. Select upgrade firmware on the RoboRio and browse to the latest firmware
-7. Typically in c:/program files(x86)/national instruments/shared/firmware/FXXX/
+7. Typically in c:/program files(x86)/national instruments/shared/firmware/FXXX/ (remove (x86) if on 32-bit windows)
 8. The RoboRio will update the firmware, and if successful the new firmware version will be showed on the webpage. If not, just try again.
+
+> The RoboRio will ship with a default firmware, but no Operating system from the Factory. You will need to flash and image it before you can use it in any capacity. 
+
 
 --
 
@@ -253,7 +261,7 @@ The RoboRio software is provided in 2 parts:
 ##Image Upgrade
 
 1. To image the RoboRio you must use the RoboRio imaging tool installed with the FRC tools
-2. C:\Program Files (x86)\National Instruments\LabVIEW 2014\project\roboRIO 
+2. C:\Program Files (x86)\National Instruments\LabVIEW 2014\project\roboRIO (remove (x86) if on 32-bit windows)
 3. Launch the RoboRio.exe file
 4. Enter your team number, select format controller, and select the image you wish to use. click on Format
 5. Formatting will take a few minutes, and once complete the program will notify you.
@@ -280,7 +288,7 @@ The RoboRio software is provided in 2 parts:
 
 --
 
-<img src = "Images/bridgeconfigure.png>
+<img src = "Images/bridgeconfigure.png">
 
 ---
 
@@ -290,8 +298,8 @@ New for 2015 you no longer need to set static IPs for any FRC device. All device
 <br><br>
 After imaging the RoboRio with your team number you can use the mDNS address to locate the roborio
 <br><br>
-i.e. roborio-2168.local, replace 2168 with your team number. (3 digit teams DO NOT pad with zero)
-i.e roborio-359.local, if you are team 359.
+i.e. http://roborio-2168.local, replace 2168 with your team number. (3 digit teams DO NOT pad with zero)
+i.e http://roborio-359.local, if you are team 359.
 
 <br><br>
 
@@ -301,11 +309,14 @@ i.e roborio-359.local, if you are team 359.
 
 ##Establishing Comms to the RoboRio
 
-When you get the RoboRio from the factory, the ethernet port is configured for dhcp. You can leave it in this setting, infact it is recommened by first to do so. 
+When you get the RoboRio from the factory, the ethernet port is configured for dhcp. You can leave it in this setting, infact it is recommened by FIRST to do so. 
 
 <br><br>
 
-The D-link will assign the RoboRio it's IP address, and you should use the mDNS name of the RoboRio to locate it.
+The D-link (after configuring with the Bridge Configuration Utility) will assign the RoboRio it's IP address, and you should use the mDNS name of the RoboRio to locate it.
+
+<br><br>
+
 Also leave your Driverstation network interface in DHCP mode as well.
 
 <br><br>
@@ -317,7 +328,7 @@ The 2015 FMS field will also be set up this way (to use DHCP).
 ##Establishing Comms to the RoboRio
 
 
-1. Set your DS computer to DHCP and connect to the D-link via Ethernet or Wifi (You can also connect to the RoboRio via USB)
+1. Set your DS computer to DHCP and connect to the D-link via Ethernet if the D-link is in Bridge Mode or Wifi if the D-link is in AP mode (FYI You can also connect to the RoboRio via USB)
 2. Start the new DS application (installed with FRC tools)
 3. Enter your team number in the DS application
 4. Once connected, the Roborio should have Power light Green and Comm light Red
@@ -339,7 +350,9 @@ The 2015 FMS field will also be set up this way (to use DHCP).
   - Solid Yellow = Robot in Auto Mode
   - Solid Red = Robot in Test Mode
   - Off = Robot in Disabled Mode
-    
+
+--
+
 * Status
   - 2 Blinks Repeatedly = Error Detected in Software, RoboRio is put into Safe Mode Automatically, Re-image RoboRio using Imaging Tool
   - 3 Blinks Repeatedly = User Directed RoboRio to start in Safemode, Recycle Power to exit safemode and boot normally
@@ -347,11 +360,11 @@ The 2015 FMS field will also be set up this way (to use DHCP).
   - Continuous Blinking  = Catastrophic Unrecoverable Error, FileSystem is corrupt, use Seial to Debug and Contact NI
   - Off - RoboRio booted up correctly, no errors
             
-* COMM = green means robot code.  Red means comms with DS, but no robot code.
+* COMM = green means robot code is running.  Red means comms with DS, but no robot code, or robot code crashed.
 
 * RSL = solid means powered, but disabled.  Blinking means enabled.
 
-* Radio = Inactive for FRC
+* Radio = Inactive for FRC 2015
 
 ---
 
@@ -368,20 +381,24 @@ Java - Eclipse Luna IDE with Java 8 SE Embedded Support
 
 ##C++/Java Programming Set Up
 
-1. Install Java JDK 8 for your development computer (needed to run eclipse*)
-2. Install Eclipse Luna**
-3. Install WPILib Eclipse plugin using Eclipse software installer
+C++/Java teams need to download and install 3-rd party tools not provided by first to set up their programming environment
+
+<br><br>
+
+1. Install Java JDK 8 for your development computer (From Oracles Website)(needed to run eclipse*)
+2. Install Eclipse Luna** (From Eclipse Website)
+3. Install WPILib Eclipse plugin using Eclipse software installer official instructions on ScreenSteps Live
 
 *C++ Teams only need the JRE, Java teams need JDK, but it doesn't hurt to install the JDK in all instances
 **C++ Teams need to install Eclipse for C++ Development, and Java Teams need Eclipse for Java SE development. If you already have Eclipse for Java, you can just install the CDT plugin.
 
-> It shouldn't matter whether you use 32-bit or 64-bit as long as the bitness of the JDK and Eclipse match in all cases
+> It shouldn't matter whether you use 32-bit or 64-bit as long as the bitness of the JDK and Eclipse match in all cases, we use 32-bit in all cases (even on 64-but host machines)
 
 --
 
 ##Eclipse Plugins
 
-<INSERT PICTURE>
+Official Pre-KickOff Directions here [link](http://www.usfirst.org/sites.default/files/uploadedFiles/Robotics_Programs/FRC/Game_and_Season_Info/2015/Installing_Eclipse_C_Java_for_FRC_2015.pdf)
 
 --
 
@@ -396,6 +413,8 @@ FIRST has created an easy to follow process that does all of the configurations 
 ###Official FIRST Procedure
 Ensure RoboRio is flashed and Imaged to latest versions then continue with [Offical screensteps directions](https://wpilib.screenstepslive.com/s/4485/m/13809/l/243933-installing-java-8-on-the-roborio-java-only)
 
+> Note: You will need to create an account on Oracles Website to complete this step.
+
 --
 
 ##Initial Set Up Complete
@@ -404,26 +423,9 @@ All teams can program the Robot at this point
 
 ---
 
-##Tips/Tricks and PitFalls
-
-* Webpage
-  - You can use the webpage to confirm all interface devices
-  - You can use the webpage to read all can devices status and faults
-  - You can use the webpage to explore the filesystem and cpu/memory usage
-  
-* SafeMode
-  - Hold reset button until status light is enabled, then release
-  - System will load a clean/default file system
-  - You can re-image the RoboRio from safemode to fix any problem with the normal filesystem
-  
-* LED Lights
-  - Use LED lights on RoboRio to determine system status
-
---
-
 ##Tips/Tricks and Pitfalls
 
-We released out Beta Testing Website
+We released our Beta Testing Website
 
 <br><br>
 
@@ -431,10 +433,28 @@ http://controls.team2168.org
 
 <br><br>
 
-It contains almost everything we have learned, and advice when using this system, plus our own useful device. It is setup as a FAQ style website to help you find the answers you need quickly.
+It contains almost everything we have learned, and advice when using this system, plus our own useful advice. It is setup as a FAQ style website to help you find the answers you need quickly.
 <br><br>
 
 We will be maintaining it throughout the rest of the off-season, and through the build season, so check it frequently.
+
+--
+
+##Tips/Tricks and PitFalls
+
+* RoboRio Webpage
+  - You can use the webpage to confirm all interface devices
+  - You can use the webpage to read all can devices status and faults
+  - You can use the webpage to explore the filesystem and cpu/memory usage
+  
+* RoboRio SafeMode
+  - Hold reset button until status light is enabled, then release
+  - System will load a clean/default Linux file system in RAM to help debug any issues
+  - You can re-image the RoboRio from safemode to fix any problem with the normal filesystem
+  
+* LED Lights
+  - Use LED lights on RoboRio to determine system status
+
 
 --
 
@@ -446,20 +466,20 @@ We will be maintaining it throughout the rest of the off-season, and through the
   - SSH (allows full shell access to the linux filesystem)
   - FTP (it is possible, but avoid using, because anonymous FTP permissions)
 
-> Note: Be careful when transferring windows text files to the RoboRio. Windows line endings are not the same as Linux line endings and will cause the file to be interpreted incorrectly. Eclipse can convert between line endings.
+> Note: Be careful when transferring windows text files to the RoboRio. Windows line endings are not the same as Linux line endings and will cause the file to be interpreted incorrectly. Eclipse can convert between line endings. So can Notepad++ don't use MS Notepad!
 
 --
 
 ##Tips/Tricks and Pitfalls
 
-* Viewing Live Program Output while running
+* Viewing Live Program Output while running Java/C++
    - Use RioLog view in Eclipse to see netconsole output
    - Uses UDP (just like cRIO) to send data to any connected device
    - All output is also stored locally in a log file for later viewing (file is overwritten each time the RoboRio is started or Deployed??)
 
 --
 
-##BownOut Condition
+##BownOut Condition of Robot
 
 * When the Battery dips below 6.8 Volts the RoboRio enters into a brownout state
   - Rio systematically starts to shut down system
@@ -490,6 +510,7 @@ We will be maintaining it throughout the rest of the off-season, and through the
 ##Voltage Regulator Module
 
 * 5V and 12V 2Amp source
+* 5V and 12V 500mA Sources
 * Through testing we have learned (as well as others) to not exceed 1.5 amps continuous draw on any of the rails
 * Shared Fuse with PCM
 * D-link power
@@ -504,7 +525,7 @@ We will be maintaining it throughout the rest of the off-season, and through the
 * You can connect the RoboRio to the internet, and even install additional software on it
 * First/NI does not limit the filesystem at all, so you are the admin
 * Ships with OPKG package manager and a default repo from NI with packages configured for NI RT Linux
-* Directions to install the Angstrom Repo on the RoboRio will give access to over 5000 packages compatible with the Rio
+* Directions to install the Angstrom Repo on the RoboRio are on our beta website. This will give access to over 5000 packages compatible with the Rio
 
 --
 
@@ -522,7 +543,7 @@ We will be maintaining it throughout the rest of the off-season, and through the
   - CAN
   - PWM - 2 wire
   - Onboard PID and Sensor Integration (Like Jags)
-  
+
 * All previous motor controllers Victors, Talons, Jag are still supported.
 
 ---
