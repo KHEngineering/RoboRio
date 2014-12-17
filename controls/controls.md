@@ -404,11 +404,11 @@ C++/Java teams need to download and install 3-rd party tools not provided by fir
 1. Install Java JDK 8 for your development computer (From Oracles Website)(needed to run eclipse*)
 2. Install Eclipse Luna** (From Eclipse Website)
 3. Install WPILib Eclipse plugin using Eclipse software installer official instructions on ScreenSteps Live
-
+<br><br>
 *C++ Teams only need the JRE, Java teams need JDK, but it doesn't hurt to install the JDK in all instances
 **C++ Teams need to install Eclipse for C++ Development, and Java Teams need Eclipse for Java SE development. If you already have Eclipse for Java, you can just install the CDT plugin.
 
-> It shouldn't matter whether you use 32-bit or 64-bit as long as the bitness of the JDK and Eclipse match in all cases, we use 32-bit in all cases (even on 64-but host machines)
+> It shouldn't matter whether you use 32-bit or 64-bit as long as the bitness of the JDK and Eclipse match in all cases, we use 32-bit in all cases (even on 64-bit host machines)
 
 --
 
