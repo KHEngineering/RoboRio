@@ -521,7 +521,7 @@ We will be maintaining it throughout the rest of the off-season, and through the
 * If you need to use 12 and 24V solenoids 2 PCMs will be required
 * Refer to official rules for how to wire 2nd PCM
 
---  
+--
 
 ##Voltage Regulator Module
 
