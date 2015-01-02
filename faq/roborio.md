@@ -445,3 +445,35 @@ For example shared PWM pins on the MXP means you can either use that pin to prov
 Safe mode is a separate partition on the RoboRio that is installed when you load the Firmware. Safe mode loads a clean default Linux File System in a Ram Disk. Any modification to the file system will be lost upon reboot. Safe-mode can be used to re-image the boot filesystem or to recover for other system crashes.
 
 If there is no OS installed on the RoboRio, it will boot up in safemode by default. This is the behavior you should expect to see when you first unbox your RoboRio from the factory. It will ship with a default firmware, but no image.
+
+---
+
+##How do I run gui applications on RoboRio using X11?
+
+To exable X11 forwarding:
+
+1. make sure to add the angstrom repo to opkg
+2. install xauth `opkg install xauth`
+3. modify the sshd config file `vi /etc/ssh/sshd_config
+4. hit `i` on the keyboard to enter insert mode
+5. add the following 2 lines to the end of the file:
+
+```
+X11Forwarding yes
+X11UseLocalhost yes
+```
+
+6. hit `esc` on the keyboard
+7. type `:wq` and hit enter to save and exit
+8. You should now be back at the prompt
+10. type `export DISPLAY=localhost:10.0`
+9. restart the sshd server `/etc/init.d/sshd reload`
+10. kill the connection by typing `exit`
+12. SSH into it again with X11 forwarding
+`ssh -Y admin@roborio-2168.local`
+13. If done correctly, there will be no X11 error once logged in
+You may see /usr/bin/xauth:  file /home/admin/.Xauthority does not exist
+Thats a good thing, it means the rio created a ssh for your computer
+
+14. You can now run a gui application, and it will use x11 forwarding to show up on your development computer. 
+Assuming you have X11 installed on your computer
