@@ -456,7 +456,7 @@ To exable X11 forwarding:
 
 1. make sure to add the angstrom repo to opkg (follow directions under 3rd party applications above)
 2. install xauth `opkg install xauth`
-3. modify the sshd config file `vi /etc/ssh/sshd_config
+3. modify the sshd config file `vi /etc/ssh/sshd_config`
 4. hit `i` on the keyboard to enter insert mode
 5. add the following 2 lines to the end of the file:
 
