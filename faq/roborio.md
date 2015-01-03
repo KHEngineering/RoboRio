@@ -472,7 +472,7 @@ X11UseLocalhost yes
 9. restart the sshd server `/etc/init.d/sshd reload`
 10. kill the connection by typing `exit`
 12. SSH into it again with X11 forwarding
-`ssh -Y admin@roborio-2168.local`
+`ssh -Y admin@roborio-2168.local` (on linux/mac) or by enabling X11 forawding on putty under connection->ssh->X11
 13. If done correctly, there will be no X11 error once logged in
 You may see /usr/bin/xauth:  file /home/admin/.Xauthority does not exist
 Thats a good thing, it means the rio created a ssh for your computer
