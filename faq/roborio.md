@@ -236,10 +236,12 @@ If you see a file downloaded, your RoboRio is connected to the internet, and DNS
 Yes, the roboRio uses OPKG package manager. You can run OPKG from the terminal and install packages that way. There is a public repository for the RoboRio released by NI that already has many useful applications and comes loaded by deafult.
 
 simply run the following commands in the Rio terminal while the rio is connected to the internet to see wwhat packages are available in the NI repo for installation:
+
 `opkg update`
+
 `opkg list`
 
-use `opkg install <package` to install your package.
+use `opkg install <package>` to install your package.
 
 The RoboRio is an ARM processor based on soft VFP registers with NEON instruction support. You can use any binary that has been compiled for ArmV7 with softFP on the RoboRio.
 
@@ -247,13 +249,13 @@ If the NI repo doesn't have what you are looking for, luckily, you can make use 
 
 1. SSH into the RoboRio using putty on windows or terminal on any Mac or other linux based computer
 2. Login using `admin` as the username and leave the password blank (just hit enter)
-3. Use VI to create a new feed source for opkg `vi /etc/opkg/armstrong-base-feed.conf`
+3. Use VI to create a new feed source for opkg `vi /etc/opkg/angstrom-base-feed.conf`
 4. Hit the `i` button on your keyboard to enter insert mode in vi
 5. Paste this line into the file `src/gz angstrom-base http://feeds.angstrom-distribution.org/feeds/next/ipk/eglibc/armv7a/base/`
 6. Hit the `esc` button on your keyboard to exit insert mode in vi
 7. Type `:wq` and hit enter to save the file and exit VI
-8. You should now be back at the terminal prompt $, type `reboot` to restart the roborio (You will loose SSH connection). If your terminal freeses, just close it and open a new one.
-9. Once the RoboRio restarts reconnect to it via SSH (same procedure as above) and once at the prompt type `opkg update`
+8. You should now be back at the terminal prompt $
+9. type `opkg update`
 10. If connected to the internet, your RoboRio will now download the list of angstrom packages you can safely install on your RoboRio.
 11. use `opkg install <package>` to install new software on the RoboRio
 12. use `opkg updgrade <package>` to upgrade packages
@@ -452,7 +454,7 @@ If there is no OS installed on the RoboRio, it will boot up in safemode by defau
 
 To exable X11 forwarding:
 
-1. make sure to add the angstrom repo to opkg
+1. make sure to add the angstrom repo to opkg (follow directions under 3rd party applications above)
 2. install xauth `opkg install xauth`
 3. modify the sshd config file `vi /etc/ssh/sshd_config
 4. hit `i` on the keyboard to enter insert mode
