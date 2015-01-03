@@ -126,7 +126,7 @@ Well, in all honesty I don't know. But I would speculate it is to make it a lot 
 
 The pins are spaced by 2 0.1" headers. A 4 pin header can be used to bridge the gap, if a team desires to use two signal pins on 1 connector (for a quadrature encoder for example)
 
-<img src="../../Images/dualpin.png">
+<img src="../../Images/controlpics/20141201_204603.jpg">
 
 
 ---
