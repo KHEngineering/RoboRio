@@ -14,11 +14,11 @@ Dual-Core Arm Cortex A9 @ 667 MHz
 Runs Linux Kernel patched with pre_emtRT
 Input Power: 6.8 to 16V (brownout from 4.5 to 6.8VDC)
 
-PWM:20 (10 dedicated on PWM Rail, 10 shared on MXP)
-DIO:26 (10 dedicated on DIO Rail, 16 shared on MXP)
-Relay:4 Dual-output channels (FWD/REV)
+PWM: 20 (10 dedicated on PWM Rail, 10 shared on MXP)
+DIO: 26 (10 dedicated on DIO Rail, 16 shared on MXP)
+Relay: 4 Dual-output channels (FWD/REV)
 Analog: 8 Analog Inputs, 0v-5V, 12-bit 500 thousand samples per second
-Analog: 2 Analog Outputs, 0v-5V, 12-bit 340 thousand samples per seconds  
+Analog: 2 Analog Outputs, 0v-5V, 12-bit 340 thousand samples per second 
 Serial: i2c, RS-232, TTL, SPI
 USB 2.0
 
@@ -30,9 +30,9 @@ The new RoboRio will not be damaged. It will sense any voltage over 16V and safe
 ---
 
 ##Can I program over USB, Ethernet, and WIFI?
-For all languages deploying code using previous cRIO methods still work. That is, programming via Ethernet Tether or wireless using a (D-link in AP mode) are all supported.
+For all languages, deploying code using previous cRIO methods still work. That is, programming via Ethernet tether or wireless using a (D-link in AP mode) are all supported.
 
-The RoboRio offers the addition to program over the USB device port. The USB drivers for the RoboRio emulate a Ethernet Controller when plugged in via USB. When connected via USB the Rio can be located at the IP address 172.22.11.2. Since the Rio also uses mDNS, you can use your driverstation via USB, Ethernet, or WIFI without changing any Ethernet settings as you switch between interfaces. If you would like to learn more about mDNS and how it is used on FRC please check out the [FMS FAQ](/RoboRio/faq/fms).
+The RoboRio offers the added ability to program over the USB device port. The USB drivers for the RoboRio emulate an Ethernet controller when plugged in via USB. When connected via USB the Rio can be located at the IP address 172.22.11.2. Since the Rio also uses mDNS, you can use your driverstation via USB, Ethernet, or WIFI without changing any Ethernet settings as you switch between interfaces. If you would like to learn more about mDNS and how it is used on FRC please check out the [FMS FAQ](/RoboRio/faq/fms).
 
 The USB drivers are installed on the computer when the FRC Utilities are installed which is provided in the official software released by NI.
 
@@ -40,15 +40,15 @@ The USB drivers are installed on the computer when the FRC Utilities are install
 
 ##How do I set my team number and IP?
 
-You no longer need to set the IP address for the RoboRio. The new 2015 System uses mDNS and dynamic addressing to find all devices. Static IP addresses are no longer needed. To learn more about mDNS as it applies to FRC see the [FMS FAQ](/RoboRio/faq/fms/)
+You no longer need to set the IP address for the RoboRio. The new 2015 system uses mDNS and dynamic addressing to find all devices. Static IP addresses are no longer needed. To learn more about mDNS as it applies to FRC see the [FMS FAQ](/RoboRio/faq/fms/)
 
 Your team number will be assigned to the RoboRio when you image the Rio for the first time. After which you can access the RoboRio using RoboRio-2168.local (replacing 2168 with your own team number, DO NOT prefix 0 for 3 digit teams). 
 
-So if your team 359 for example, after imaging your RoboRio you can access it via Ethernet, Wifi, or USB using the single address Roborio-359.local, which will resolve to the IP address of the RoboRio using mDNS. (Using roborio-0359.local will result in error).
+So, if your team 359 for example, after imaging your RoboRio you can access it via Ethernet, Wifi, or USB using the single address Roborio-359.local, which will resolve to the IP address of the RoboRio using mDNS. (Using roborio-0359.local will result in error).
 
-For those teams wishing to assign their own static IP to the RoboRio you can still do this through the web interface. Once the RoboRio has been successfully imaged, navigate to http://RoboRio-2168.local, and check your network settings. You can login as admin and change the ethernet port from dhcp to static and assign your own 10.TE.AM.2 address. The mDNS address will still work correctly even when the ethernet port is set to static.
+For those teams wishing to assign their own static IP to the RoboRio you can still do this through the web interface. Once the RoboRio has been successfully imaged, navigate to http://RoboRio-2168.local, and check your network settings. You can login as admin and change the Ethernet port from dhcp to static and assign your own 10.TE.AM.2 address. The mDNS address will still work correctly even when the Ethernet port is set to static.
 
-On Team 2168 we still set manually set all network devices our Robot (including the RoboRio) to a static IP.
+On Team 2168, we still manually set all network devices on our robot (including the RoboRio) to a static IP.
  
 You can always check all of your network interface settings, and modify them through the web interface of the Rio. You must be logged in as `admin` to make any changes. 
 
@@ -59,9 +59,9 @@ You can always check all of your network interface settings, and modify them thr
 Simply navigate to any of the RoboRio's IP address from any computer on the same network. 
 i.e http://RoboRio-2168.local (replace 2168 with your team number) will work on any interface using mDNS, http://10.TE.AM.2 if you assigned a static IP or http://172.22.11.2 when using the USB cable.
 
-If this is your first time starting up the RoboRio, the Ethernet port is set to DHCP, and the USB port is configured to IP 172.22.11.2 address when connected to a computer that has the USB Driver installed (supplied when FRC Utilities are installed).
+If this is your first time starting up the RoboRio, the Ethernet port is set to DHCP, and the USB port is configured to IP 172.22.11.2 address when connected to a computer that has the USB driver installed (supplied when FRC Utilities are installed).
 
-Once you determine the IP address of the RoboRio, make sure your network interface card is also on the same network as the RoboRio, and you can navigate to the RoboRio in any browser which supports the Microsoft silverlight plugin to view the RoboRio webpage.
+Once you determine the IP address of the RoboRio, make sure your network interface card is also on the same subnet as the RoboRio, and you can navigate to the RoboRio in any browser which supports the Microsoft silverlight plugin to view the RoboRio webpage.
 
 > Note: Fellow linux users, silverlight doesn't mesh well with *nix system. If you are on a linux machine you can try to install moonlight (which is a port of silverlight, unfortunately NI has no alternatives to access the WEB site other than through the silverlight plug-in at this time)
 
@@ -82,17 +82,17 @@ You can access the linux operating system in any of 3 ways:
 
 The method you choose is largely based on what operation you are trying to berform.
 
-Using another computer you can use the secure shell protocol to access the RoboRio. You will need to connect to the RoboRio via ethernet tether, WIFI, or USB and either know the IP address of the RoboRio, use mDNS to resolve the address, or use RS-232 with Console out enabled (for shell terminal only).
+Using another computer you can use the secure shell protocol to access the RoboRio. You will need to connect to the RoboRio via Ethernet tether, WIFI, or USB and either know the IP address of the RoboRio, use mDNS to resolve the address, or use RS-232 with console out enabled (for shell terminal only).
 
 
 ###Shell Terminal
 
-From Linux or Mac: Open Terminal and type `ssh -l admin <IP of RoboRio>`
-From Windows install [putty](http://www.putty.org) and configure it to SSH to the roborio ip address.
+From Linux or Mac: Open 'Terminal' and type `ssh -l admin <IP of RoboRio>`
+From Windows install [putty](http://www.putty.org) and configure it to SSH to the RoboRio IP address.
 
 When asked for a password leave it blank and hit `enter`
 
-Using SSH, you will have terminal access to the RoboRio Linux filesystem and can run linux based commands, create/delete files or folders etc and execute and stop programs and services on the RoboRio.
+Using SSH, you will have terminal access to the RoboRio  filesystem and can run linux based commands, create/delete files or folders etc and execute and stop programs and services on the RoboRio.
 
 ###SFTP
 1. Add a SFTP client to your web browswer. [Filezilla client](https://filezilla-project.org/) is freeware
@@ -100,15 +100,15 @@ Using SSH, you will have terminal access to the RoboRio Linux filesystem and can
 3. Login using the 'admin' user
 4. You will see a folder structure of the RoboRio which will allow you to navigate its file system
 
-You can use this method to browse the file system on the Rio, transfer files to/from RoboRio, read files, create/delete  files or folders
+You can use this method to browse the file system on the Rio, transfer files to/from RoboRio, read files, create/delete files or folders
 
 
 ###FTP
-It is possible to use the FTP protocol on the Rio, however only anonymous login is supported by default. The problem with that is when transfering or creating files via FTP, the file permissions are not set properly so use shell or SFTP and avoid using FTP on the Rio.
+It is possible to use the FTP protocol on the Rio, however only anonymous login is supported by default. The problem with that is when transfering or creating files via FTP, the file permissions are not set properly, so it is recommended that you use SSH or SFTP and avoid using FTP on the Rio.
 
 ---
 
-##What user name should I use to have root access to the file system?
+##What user name should I use to have 'root' access to the file system?
 
 The Login information for the RoboRio from the factory is:
 
@@ -117,12 +117,12 @@ username: admin
 password: <leave blank> there is no password
 ```
 
-You can use this login via ssh or on the RoboRio webserver page to make configuration changes.
+You can use this login via SSH or on the RoboRio webserver page to make configuration changes.
 
 ---
 
 ##Why are the IO pins spaced so far apart, I like the way it was on the old DSC?
-Well, in all honesty I don't know. But I would speculate it is to make it a lot easier for teams to plug/un-plug 3-pin header connectors. Especially rookies. With the old DSC you could plug in a connector in pin 10, but acutally think you were plugged in pin 9 because of how close the pins were, and causing a debugging mess. The space avoids this debackle.
+Well, in all honesty I don't know. I would speculate it is to make it a lot easier for teams (rookies in particular) to plug/un-plug 3-pin header connectors. With the old DSC you could plug in a connector in pin 10, but acutally think you were plugged in pin 9 because of how close the pins were, and causing a debugging mess. The space avoids this debackle.
 
 The pins are spaced by 2 0.1" headers. A 4 pin header can be used to bridge the gap, if a team desires to use two signal pins on 1 connector (for a quadrature encoder for example)
 
@@ -160,11 +160,11 @@ The pins are spaced by 2 0.1" headers. A 4 pin header can be used to bridge the 
 ---
 
 ##How do I upgrade the Image or Install new Firmware?
-So far for Beta testing the RoboRio software has been delivered in two parts, a Firmware, and an Image. The Firmware provides the bootlader, safemode, and firmware for the RoboRio. The Image is to load the FPGA, operating system, linux file system and default settings.
+So far for Beta testing the RoboRio software has been delivered in two parts, a firmware, and an image. The firmware provides the bootloader, safemode, and firmware for the RoboRio. The image is to load the FPGA, operating system, linux file system and default settings.
 
-The user can upgrade the firmware over Ethernet Tether/WIFI or USB. USB method is preferred and you should use that when ever possible, although we have had no problems updating the system over Ethernet/Wifi. 
+The user can upgrade the firmware over Ethernet tether, WiFi or USB. USB method is preferred and you should use that when ever possible, although we have had no problems updating the system over Ethernet/Wifi. 
 
-The Image and Firmware will be provided via an FRC Tools Software installation by FIRST/NI which can only be installed on a Windows 7/8 computer running 32 or 64 bits. While it is possible to flash the firmware from another non-windows computer using the website, the RoboRio Image tool is a windows only software and so windows must be used to image the RoboRio at the very minimum.
+The image and firmware will be provided via an FRC Tools Software installation by FIRST/NI which can only be installed on a Windows 7/8 computer running 32 or 64 bits. While it is possible to flash the firmware from another Non-Windows computer using the website, the RoboRio Image Tool is a Windows only software and so Windows must be used to image the RoboRio at the very minimum.
 
 Please see official instructions for firmware and imaging here: 
 
@@ -196,7 +196,7 @@ No. Its nearly impossible to brick this thing. Follow these steps to regain comm
 
 When we tried to image the RoboRio prior to installing a compatible firmware we noticed this caused a state where we lost complete communication with the Rio. Upon start up, the power light was green and the status led was solid for the first 3 seconds and then flashed about 2 times a second for the remainder of the time. Power cycling or hitting the reset button alone during this time, did not change the outcome. The Rio would start up and the status led would start to blink at this constant rate.
 
-During this time, all power to the peripherals seems to have been off. The USB port and Ethernet ports didn't seem to be powered anymore so the Imaging tool could not find the device and the ethernet link was down. We were unable to establish any link or comms to the RoboRio.
+During this time, all power to the peripherals seems to have been off. The USB port and Ethernet ports didn't seem to be powered anymore so the Imaging tool could not find the device and the Ethernet link was down. We were unable to establish any link or comms to the RoboRio.
 
 If you experience the above symptoms, hold down the reset button for 5 seconds and after release the RoboRio should start back up. This puts the RoboRio in safemode and loads a default/clean filesystem from the factory.  The Status LED should change. We noticed it started to pulse, about 3 blinks then pause, then 3 blinks and pause, and continue this way. Follow the below general debugging guideline to get the RoboRio back up and running.
 
@@ -205,7 +205,7 @@ If you experience the above symptoms, hold down the reset button for 5 seconds a
 4. Hold down the User Button on the RoboRio for 5 seconds then release, this puts the RoboRio in Safe Mode
 5. Attempt to Flash the RoboRio using the steps provided above, and then try to reimage the RoboRio using the imaging tool. Ensure that you are using the latest firmware and image versions provided by FIRST/NI. 
 
-After putting the Rio in safemode, I notice all the peripheral ports were back up and we were able to http back into the RIO using the initial static IP setup. 10.TE.AM.2., the mDNS worked as well (http://roborio-2168.local) The status of the RIO was SafeMode, no software, as shown by the webserver. If you did not have a static IP set, you can use the USB port to have ethernet access to the RoboRio.
+After putting the Rio in safemode, I notice all the peripheral ports were back up and we were able to http back into the RIO using the initial static IP setup. 10.TE.AM.2., the mDNS worked as well (http://roborio-2168.local) The status of the RIO was SafeMode, no software, as shown by the webserver. If you did not have a static IP set, you can use the USB port to have Ethernet access to the RoboRio.
 
 You can now login to the RoboRio webpage, and update the firmware and re-image the Rio, the Rio should now ensue normal operations. 
  
@@ -218,7 +218,7 @@ CAN is a 2 wire serial bus mostly used in cars. Its an interface with a specific
 
 ##How do I connect to the Internet using the RoboRio
 
-When the RoboRio ships from the factory, the default settings for the RoboRio ethernet port is DHCP. So if you plug the roborio into a network switch which has internet access and a DHCP server (like a router), then the RoboRio will automatically connect to the internet.
+When the RoboRio ships from the factory, the default settings for the RoboRio Ethernet port is DHCP. So if you plug the roborio into a network switch which has internet access and a DHCP server (like a router), then the RoboRio will automatically connect to the internet.
 
 If you choose to set a static IP on the RoboRio and sssuming you are connected to a network that has an internet connection, you need to set the default gateway and DNS server on the RoboRio manually (in addition to the IP address). To do this, use your browser to connect to the RoboRio webserver and click on login using `admin` as the user name, and leave the password blank. Select the Network interfaces Icon, and under eth0 modify the default gateway and provide a DNS server. Here is a pic of what our setting look like:
 
