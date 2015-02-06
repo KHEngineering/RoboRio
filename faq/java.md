@@ -64,7 +64,7 @@ We recommend using Eclipse Luna where ever possible, with JDK v8, but if you mus
 
 ---
 
-##When I deploy code, where is it saved on the RoboRio?
+##When I deploy code, where is it saved on the roboRIO?
 
 User programs are downloaded to /home/lvuser directory
 
