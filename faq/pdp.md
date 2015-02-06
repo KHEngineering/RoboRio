@@ -9,11 +9,11 @@ permalink: /faq//pdp/
 ##Specs
 12V Battery input (M6x1 Threaded Terminals)
 8 - 12V 40A Unregulated Breaker Channels (accept up to XX awg wire)
-8 - 12V 30A Unregulated Breaker Channels (accept up to XX awg wire
+8 - 12V 30A Unregulated Breaker Channels (accept up to XX awg wire)
 
-3 Dedicated 12V Unregulated Channels for VRM, PCM, and RoboRio
+3 Dedicated 12V Unregulated Channels for VRM, PCM, and roboRIO
 
-   - RoboRio on Dedicated 15A ATX Fuse
+   - roboRIO on Dedicated 15A ATX Fuse
    - VRM and PCM on Shared 20A ATX Fuse
 
 
@@ -26,7 +26,7 @@ CAN Bus for Sensor Monitoring
 ---
 
 ##Can I Use the old PDP Board with the new control system?
-Refer to legal FRC rules for the official answer to this question. I don't imagine this will be legal for competition. The RoboRio requires a 6.8-16VDC input voltage for normal operation while the old PDP board provides regulated 24VDC out of the dedicated cRIO terminal (This is because the old cRIO was a 24V device while the new roboRIO is a 12V nominal device).
+Refer to legal FRC rules for the official answer to this question. I don't imagine this will be legal for competition. The roboRIO requires a 6.8-16VDC input voltage for normal operation while the old PDP board provides regulated 24VDC out of the dedicated cRIO terminal (This is because the old cRIO was a 24V device while the new roboRIO is a 12V nominal device).
 
 Now if you want to run some tests, or use this on a practice bot, you can safely power the roboRIO from one of the unregulated 30A wago power channels on the old PDB. The roboRIO takes in unregulated 12V battery voltage, so plugging it directly into a 12V channel on the old PDB will work and will not damage the roboRIO. BUT this should only be done for testing/practicing purposes and only if you do not have a new 2015 CTRE Power Distribution Board Available. 
 
@@ -111,7 +111,7 @@ If the PDP is connected to the roboRIO via CAN, you can use the roboRIO webpage 
 
 ##How can I access the PDP via the web interface?
 
-If the PDP is plugged into the roboRIO via CAN, you can view the status of the PDP through the RoboRio's web interface.
+If the PDP is plugged into the roboRIO via CAN, you can view the status of the PDP through the roboRIO's web interface.
 
 Simply use any browser with the Silverlight plugin to navigate to the roboRIO's IP address. From there you can see all CAN devices connected to the roboRIO, and view their available data.
 
