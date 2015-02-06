@@ -25,12 +25,12 @@ CAN Bus for Sensor Monitoring
  
 ---
 
-##Can I Use the old PDP Board with the new Control System?
-Refer to legal FRC rules for the official answer to this question. I don't imagine this will be legal for competition. The RoboRio requires a 6.8-16VDC input voltage for normal operation while the old PDP board provides regulated 24VDC out of the dedicated cRIO terminal (This is because the old cRIO was a 24V device while the new RoboRio is a 12V nominal device).
+##Can I Use the old PDP Board with the new control system?
+Refer to legal FRC rules for the official answer to this question. I don't imagine this will be legal for competition. The RoboRio requires a 6.8-16VDC input voltage for normal operation while the old PDP board provides regulated 24VDC out of the dedicated cRIO terminal (This is because the old cRIO was a 24V device while the new roboRIO is a 12V nominal device).
 
-Now if you want to run some tests, or use this on a practice bot, you can safely power the RoboRio from one of the unregulated 30A wago power channels on the old PDB. The RoboRio takes in unregulated 12V battery voltage, so plugging it directly into a 12V channel on the old PDB will work and will not damage the RoboRio. BUT this should only be done for testing/practicing purposes and only if you do not have a new 2015 CTRE Power Distribution Board Available. 
+Now if you want to run some tests, or use this on a practice bot, you can safely power the roboRIO from one of the unregulated 30A wago power channels on the old PDB. The roboRIO takes in unregulated 12V battery voltage, so plugging it directly into a 12V channel on the old PDB will work and will not damage the roboRIO. BUT this should only be done for testing/practicing purposes and only if you do not have a new 2015 CTRE Power Distribution Board Available. 
 
-Do not plug the RoboRio into the old PDB cRIO power port. See the [RoboRio Faq](/RoboRio/faq/roborio/) for more info.
+Do not plug the roboRIO into the old PDB cRIO power port. See the [roboRIO Faq](/RoboRio/faq/roborio/) for more info.
 
 ---
 
@@ -47,13 +47,13 @@ The PDP provides instantaneous current on each individual channel, voltage on ea
 ##Do I need to plug in the CAN connection for the PDP to work?
 No. Using the CAN bus is not required for the PDP board to distribute power. It is only required if you wish to access the current/voltage sensor readings on each channel of the PDP. In order to access the can information two things must happen:
 
-1. You properly connect the PDP to the RoboRio via CAN
-2. You use the appropriate Labview or WPILib PDP CAN libraries to read the sensor values in your robot code.
+1. You properly connect the PDP to the roboRIO via CAN
+2. You use the appropriate LabView or WPILib PDP CAN libraries to read the sensor values in your robot code.
 
 ---
 
 ##When we remove a 40A circuit breaker from the Power Distribution Board, we are having some difficulty. 
-These are the exact same 30A and 40A fuse holders used on the old PDB.  I noticed that the first time the breaker is inserted it is a bit more difficult than subsequent insertions.  Allow for some break-in time. Insertions/Removals should get easier over time. 
+These are the exact same 30A and 40A fuse holders used on the old PDB.  I noticed that the first time the breaker is inserted it is a bit more difficult than subsequent insertions.  Allow for some break-in time. Insertions/Removals should get easier over time.
 
 ---
 
@@ -67,12 +67,12 @@ The PDP only monitors the current outputs of each (16) of the high power channel
 * The internal PDP temperature
 * Any over-temperature fault
  
-There is no current/voltage monitoring of the PCM, VRM, or RoboRio dedicated ports.
+There is no current/voltage monitoring of the PCM, VRM, or roboRIO dedicated ports.
 
-Here are some work-arounds to measure the PCM, VRM, RoboRio:
+Here are some work-arounds to measure the PCM, VRM, roboRIO:
 
 * The PCM monitors compressor current, and faults for shorts and compressor over-current and can be accessed over can
-* The DriveStation Battery Voltage Reading is directly from the RoboRio input voltage.
+* The DriveStation Battery Voltage Reading is directly from the roboRIO input voltage.
 * There is no way to read any information from the VRM unless external voltage/current sensors are added by the team
 
 ---
@@ -89,7 +89,7 @@ If the current is small this is probably OK (small being 1.2A or less) although 
 
 If there is damage to the current sensing device itself, expect to see erroneous readings on the other channels sharing the sensor.
 
-Use the RoboRio web page an run a self-test on the PDP board. Remember this website does not self-refresh.
+Use the roboRIO web page an run a self-test on the PDP board. Remember this website does not self-refresh.
 
 ---
 
@@ -98,9 +98,9 @@ Use the RoboRio web page an run a self-test on the PDP board. Remember this webs
 
 Refer to the official documentation on the PDP []().
 
-If the PDP is connected to the RoboRio via CAN, you can use the RoboRio webpage to view the status of any PDP faults. 
+If the PDP is connected to the roboRIO via CAN, you can use the roboRIO webpage to view the status of any PDP faults. 
 
-1. Log in to the RoboRio webpage (see [RoboRio FAQ](/RoboRio/faq/roborio))
+1. Log in to the roboRIO webpage (see [roboRIO FAQ](/RoboRio/faq/roborio))
 2. Click on the CAN interface from the side menu
 3. Select the PDP to view more information on the hardware
 4. Use the Self-Test button to provide detailed information of all sensors on the PDP, including any faults
@@ -111,9 +111,9 @@ If the PDP is connected to the RoboRio via CAN, you can use the RoboRio webpage 
 
 ##How can I access the PDP via the web interface?
 
-If the PDP is plugged into the RoboRio via CAN, you can view the status of the PDP through the RoboRio's web interface.
+If the PDP is plugged into the roboRIO via CAN, you can view the status of the PDP through the RoboRio's web interface.
 
-Simply use any browser with the silverlight plugin to navigate to the RoboRio's IP address. From there you can see all CAN devices connected to the RoboRio, and view their available data.
+Simply use any browser with the Silverlight plugin to navigate to the roboRIO's IP address. From there you can see all CAN devices connected to the roboRIO, and view their available data.
 
 You can use this web interface to read the current sensor readings of the PDP, review any faults, change its CAN ID number, and even upgrade it's firmware.
 
@@ -128,24 +128,24 @@ Note:
 
 4. From the website's standpoint, having multiple dissimilar CAN node with the same ID is harmless. I.E having a PCM, PDP, and Jaguar with ID of 1 is acceptable. If this happens the website will not indicate any error.
 
-5. Having two or more CAN node of the same type and device ID will prevent your robot application from identifying one can device from another. This can happen when you have multiple PCMs or Multiple CAN Talons. The Website will indicate an error. By default all CTRE devices ship with an ID of 0. The website handles this gracefully, so you can see all the devices still, and change their ID accordingly. Use the "Blink LED" feature to physically identify which device you are working on. 
+5. Having two or more CAN node of the same type and device ID will prevent your robot application from identifying one can device from another. This can happen when you have multiple PCMs or multiple CAN Talons. The website will indicate an error. By default all CTRE devices ship with an ID of 0. The website handles this gracefully, so you can see all the devices still, and change their ID accordingly. Use the "Blink LED" feature to physically identify which device you are working on. 
 
-5. You will need to give each and every device on your CAN bus a unique ID (whether they are similar or dissimilar) so that you can use them successfully in your code. The above points were just to highlight the limitations and relaxations imposed by the RoboRio webpage when dealing with CAN devices.
+5. You will need to give each and every device on your CAN bus a unique ID (whether they are similar or dissimilar) so that you can use them successfully in your code. The above points were just to highlight the limitations and relaxations imposed by the roboRIO webpage when dealing with CAN devices.
 
 
 ---
 
 ##How can I upgrade the Firmware on the PDP
 
-For Beta testing the Firmware for the PDP was provided by CTRE. To flash the PDP is very similar to flashing the RoboRio.
+For Beta testing the Firmware for the PDP was provided by CTRE. To flash the PDP is very similar to flashing the roboRIO.
 
-1. Connect the RoboRio to the PDP using CAN.
-2. Power the System and launch the RoboRio website
+1. Connect the roboRIO to the PDP using CAN.
+2. Power the system and launch the roboRIO website
 3. Login as `admin`
-4. If you have trouble with any of the above steps see the [RoboRio FAQ](/RoboRio/faq/roborio)
+4. If you have trouble with any of the above steps see the [roboRIO FAQ](/RoboRio/faq/roborio)
 5. Select the CAN device icon
 6. Select the PDP and click on Upgrade Firmware
-7. Navigate to the PDP Firmware you would like to use and select being update.
+7. Navigate to the PDP Firmware you would like to use and select begin update.
  
 
 
