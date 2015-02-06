@@ -57,7 +57,7 @@ However, with that said, anything is possible, and teams have found ways to blow
 Well this signals a fault. All of the faults are specified here: [XXXXXXXXXX]()
 
 I would first check your wiring and make sure you have green to green pins connected everywhere, and yellow to yellow pins connected everywhere. 
-Then make sure the PDP board is the last item in the bus physically, and the RoboRio is the first item in the bus physically based on wiring and that the terminal resistor is set to "on" on the PDP board
+Then make sure the PDP board is the last item in the bus physically, and the roboRIO is the first item in the bus physically based on wiring and that the terminal resistor is set to "on" on the PDP board
 Finally ensure the roboRIO, PDP, PCM and any other CAN devices all have adequate power
 Lastly, ensure the roboRIO, and All CAN devices are flashed with the latest approved firmware, and the roboRio has code deployed.
 
