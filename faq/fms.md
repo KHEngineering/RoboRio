@@ -49,7 +49,7 @@ If using the USB interface, no setup is required. The roboRIO driver will automa
 * Ethernet/Wireless
 The 2015 Bridge Configuration Utility has been modified to enable the DHCP server on the DAP1522 radio in the home use case (AP mode), if you are putting the DAP1522 in bridge mode and using a router you can enable DHCP addressing on the router. The bridge is set to the same team based IP address as before (10.TE.AM.1) and will hand out DHCP address from 10.TE.AM.20 to 10.TE.AM.199
 
-* RoboRIO Ethernet Configuration
+* roboRIO Ethernet Configuration
 The roboRIO Ethernet interface should be set to DHCP. When connected to the DAP1522 bridge, the roboRIO will receive an IP from the bridge. When tethered directly to a PC, both devices will self-assign IPs.
 
 * PC  Configuration
@@ -65,10 +65,10 @@ IPs for system components:
 
 - roboRIO USB: 172.22.11.2
 - roboRIO mDNS: roboRIO-####.local (where #### is your team number with no leading zeroes) You should be able to use this address to communicate with the roboRIO over either interface through ping, browser, etc.
-- Robot Radio: 10.TE.AM.1 (where TE.AM is your 4 digit team number with leading zeroes if required) (This is the address set by the FRC Bride Configuration Tool)
-- roboRIO Ethernet: DHCP, assigned by the Robot Radio
-- Driver Station PC: DHCP, assigned by the Robot Radio
-- Additional programming computers: DHCP, assigned by the Robot Radio (DHCP range: 10.TE.AM.20 to 10.TE.AM.199)
+- Robot radio: 10.TE.AM.1 (where TE.AM is your 4 digit team number with leading zeroes if required) (This is the address set by the FRC Bride Configuration Tool)
+- roboRIO Ethernet: DHCP, assigned by the robot radio
+- Driver Station PC: DHCP, assigned by the robot radio
+- Additional programming computers: DHCP, assigned by the robot radio (DHCP range: 10.TE.AM.20 to 10.TE.AM.199)
 
 Note: You can still assign static IPs to any device on the robot. However, do so between 10.TE.AM.2 and 10.TE.AM.19 so as to not interfere with the DHCP addressing on the of the field.
 
@@ -83,14 +83,14 @@ FIRST also released a FMS light program so teams can practice at home, with a si
 
 ---
 
-##When practicing at home, how can I run multiple robots with roboRio's installed?
+##When practicing at home, how can I run multiple robots with roboRIO's installed?
 
 You can do this in one of many ways. Two popular methods are below:
 
 ##Method 1
 
 1. Use the roboRio Image tool, to image each roboRio with a different team number. (For example we would flash Robot A with 2168, and Robot B with 2169 (or any other team number that is not yours). This allows us to drive both robots simultaneously once the DS for each robot is set to the proper team number.)
-2. Use the FRC Bridge Configuration Tool to configure each D-link to the respective team number of the RoboRio it is connected too.
+2. Use the FRC Bridge Configuration Tool to configure each D-link to the respective team number of the roboRIO it is connected too.
 3. Connect each Driverstation to the appropriate robot and set the team number accordingly.
 
 
