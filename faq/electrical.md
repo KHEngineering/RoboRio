@@ -8,9 +8,9 @@ permalink: /faq/electrical/
 ##How do I wire up the control system?
 FIRST provided a great picture in one of their blogs, showing a typical wire diagram for the new 2015 control system, reposted below:
 
-The one thing that is missing is the D-link, which would plug into the VRM for power, and connect to the RoboRio via Ethernet cable.
+The one thing that is missing is the D-link, which would plug into the VRM for power, and connect to the roboRIO via Ethernet cable.
 
-This diagram still shows the early thought of using a USB Bridge directly plugged into the RoboRio (which was scraped after alpha testing and replaced by using the trusted D-link)
+This diagram still shows the early thought of using a USB Bridge directly plugged into the roboRIO (which was scraped after alpha testing and replaced by using the trusted D-link)
 
 <img src="../../Images/2015_CS_Layout.jpg">
 
