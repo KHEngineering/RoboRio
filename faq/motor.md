@@ -35,7 +35,7 @@ The roboRIO has a resolution of 1 us between updates to the PWM signals.  The on
 
 ---
 
-##Do I need to set the internal jumper on the RoboRio to drive Servos?
+##Do I need to set the internal jumper on the roboRIO to drive Servos?
 No. The 3.3V/5V internal jumper only affects the DIO channel power output.
 The PWM signals are always 5V max. The PWM power is always 6v output. The motor controllers have this line disconnected, so power on it doesn't affect them. This means you can use the same PWM pins to power 6V servos, or FRC legal motor controllers without changing any hardware settings.
 
@@ -55,7 +55,7 @@ Yes, the Talon SRX will automatically detect whether it is connected to a PWM so
 PWM Signal = CANH (Yellow Wire)
 PWM Ground = CANL (Green Wire)
 
-On our team we wire the CAN wires to the outside pins of 3 pin female headers (center pin empty). This allows us to use the Talon SRX in PWM mode or CAN mode. In PWM mode we simply plug it into the PWM port on the RoboRio (since the center pin is not used for any motor controller)
+On our team we wire the CAN wires to the outside pins of 3 pin female headers (center pin empty). This allows us to use the Talon SRX in PWM mode or CAN mode. In PWM mode we simply plug it into the PWM port on the roboRIO (since the center pin is not used for any motor controller)
 
 In CAN mode we use male header pin couplers to join two Talons together to form the CAN bus.
 
