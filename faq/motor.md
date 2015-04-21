@@ -35,9 +35,9 @@ The roboRIO has a resolution of 1 us between updates to the PWM signals.  The on
 
 ---
 
-##Do I need to set the internal jumper on the RoboRio to drive Servos?
-No. The 3.3v/5v internal jumper only affects the DIO channel power output.
-The PWM signals are always 5v max. The PWM power is always 6v output. The motor controllers have this line disconnected, so power on it doesn't affect them. This means you can use the same PWM pins to power 6V servos, or FRC legal motor controllers without changing any hardware settings.
+##Do I need to set the internal jumper on the roboRIO to drive Servos?
+No. The 3.3V/5V internal jumper only affects the DIO channel power output.
+The PWM signals are always 5V max. The PWM power is always 6v output. The motor controllers have this line disconnected, so power on it doesn't affect them. This means you can use the same PWM pins to power 6V servos, or FRC legal motor controllers without changing any hardware settings.
 
 ---
 
@@ -55,7 +55,7 @@ Yes, the Talon SRX will automatically detect whether it is connected to a PWM so
 PWM Signal = CANH (Yellow Wire)
 PWM Ground = CANL (Green Wire)
 
-On our team we wire the CAN wires to the outside pins of 3 pin female headers (center pin empty). This allows us to use the Talon SRX in PWM mode or CAN mode. In PWM mode we simply plug it into the PWM port on the RoboRio (since the center pin is not used for any motor controller)
+On our team we wire the CAN wires to the outside pins of 3 pin female headers (center pin empty). This allows us to use the Talon SRX in PWM mode or CAN mode. In PWM mode we simply plug it into the PWM port on the roboRIO (since the center pin is not used for any motor controller)
 
 In CAN mode we use male header pin couplers to join two Talons together to form the CAN bus.
 
@@ -65,7 +65,7 @@ In CAN mode we use male header pin couplers to join two Talons together to form 
 
 A single button is used to calibrate and set the brake/coast on both new motor controllers.
 
-To switch between Brake or coast mode, press the B/C CAL button.
+To switch between brake or coast mode, press the B/C CAL button.
 The button is illuminated red when the Victor SP or Talon SRX is in brake mode and off when in coast mode. This is a persistent setting, and is retained between power cycles of the motor controller.
 
 To calibrate, hold the button until the status LEDS (LEDs on either side) begin to flash between red and green. While holding this button down, move the joysticks between full forward and full reverse multiple times. Release the joystick and allow it to center, then release the CAL button. If the calibration is successful, you should see the status LED blink green, if the calibration failed the status LED will blink red.
@@ -89,5 +89,5 @@ The Talon SRX does support "on the fly" selection of brake/coast when using CAN.
 ---
 
 ##Can I power my sensor directly from the Talon SRX interface port?
-Yes. The Talon SRX provides both 5V and 3.3 sources to power any encoder or limit switch you make wish to add to it.
+Yes. The Talon SRX provides both 5V and 3.3V sources to power any encoder or limit switch you make wish to add to it.
 

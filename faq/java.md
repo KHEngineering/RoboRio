@@ -6,7 +6,7 @@ permalink: /faq/java/
 
 
 Major Changes:
-RoboRio has a Java 8 SE Embedded JVM
+roboRIO has a Java 8 SE Embedded JVM
 Official Support for the Eclipse IDE
 0 based port numbers
 
@@ -14,29 +14,29 @@ Official Support for the Eclipse IDE
 
 ##Getting Started With Java Quick Guide
 
-1. Wire Control System to approved wire diagram. See the [Electrical FAQ](/RoboRio/faq/electrical/) for more info.
-2. Flash and Image RoboRio to Latest versions. See the [RoboRio FAQ](/RoboRio/faq/roborio/) for more info.
-3. Install JVM on RoboRio. See question below.
+1. Wire control system according to official wire diagram. See the [Electrical FAQ](/RoboRio/faq/electrical/) for more info.
+2. Flash and image roboRIO to Latest versions. See the [roboRIO FAQ](/RoboRio/faq/roborio/) for more info.
+3. Install JVM on roboRIO. See question below.
 4. Install 32-bit Java 8 Development Kit on Development Computer (http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 
 Note: Mac Users must install 64-bit JDK 
 5. Download 32-bit Eclipse IDE for Java Development on Development Computer (install 32-bit even if you are on 64-bit OS)  [Luna](https://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/lunasr1)
 6. Extract eclipse to your desired location.
-7. Open Eclipse and Install Official FRC plugins [plugin URL Released at KickOff] ()
-8. Create New WPI LIb Java Project File->New->Other->WPI Robot Project
-9. Enter Team Number and Name project, Select Either Command Based or Iterative Robot frameworks
-10. Manually Add JDK to build Path to your Robot Project (Right Click Project ->
-11. Deploy Code to Robot.
+7. Open Eclipse and install Official FRC Plugins [plugin URL Released at KickOff] ()
+8. Create New WPI lib Java Project File->New->Other->WPI Robot Project
+9. Enter team number and project name, Select either "Command Based" or "Iterative Robot" frameworks
+10. Manually add JDK to "Build Path" for your Robot Project (Right Click Project -> Build Path -> etc..)
+11. Deploy code to robot.
 
 ---
 
-##How do I install the Java Virtual Machine on the RoboRio
+##How do I install the Java Virtual Machine on the roboRIO
 
-Installing the JVM for Embedded Devices, is not the same as installing the JVM on a desktop. Oracle, the developers of the Java Virtual Machine for Embedded devices decided to release the JVM with a special installation procedure. The user must download the JVM to a host computer and run a program which builds an embedded JVM for your target with all of the configurations you desire. Then, you transfer the built JVM to your target (embedded device).
+Installing the JVM for Embedded Devices, is not the same as installing the JVM on a desktop. Oracle, the developers of the Java Virtual Machine for Embedded Devices decided to release the JVM with a special installation procedure. The user must download the JVM to a host computer and run a program which builds an embedded JVM for your target with all of the configurations you desire. Then, you transfer the built JVM to your target (embedded device).
 
-FIRST has created an easy to follow process that does all of the configurations for you, and runs the commands to build the JVM for you so that you do not need to be concerned with the details. Follow their directions below. If you wish to do it on your own, I am working on posting the manual steps required.
+FIRST has created an easy-to-follow process that does all of the configurations for you, and runs the commands to build the JVM for you so that you do not need to be concerned with the details. Follow their directions below. If you wish to do it on your own, I am working on posting the manual steps required.
 
 ###Official FIRST Procedure
-Ensure RoboRio is flashed and Imaged to latest versions then continue with [Offical screensteps directions](https://wpilib.screenstepslive.com/s/4485/m/13809/l/243933-installing-java-8-on-the-roborio-java-only)
+Ensure roboRIO is flashed and imaged to latest versions then continue with [Offical screensteps directions](https://wpilib.screenstepslive.com/s/4485/m/13809/l/243933-installing-java-8-on-the-roborio-java-only)
 
 ###Manual Procedure
 1. Create an account on Oracles Website [oracle](https://login.oracle.com/mysso/signon.jsp)
@@ -49,7 +49,7 @@ TO BE CONTINUED
 
 ##Can I see live Program Output in Eclipse?
 
-Yes. Use the RioLog Viewer. Official steps here [Screensteps Live](https://wpilib.screenstepslive.com/s/4485/m/13810/l/284333-using-riolog-to-view-console-output)
+Yes. Use the RIOLog Viewer. Official steps here [Screensteps Live](https://wpilib.screenstepslive.com/s/4485/m/13810/l/284333-using-riolog-to-view-console-output)
 
 To find the RIOLog window, in eclipse, go to Window, Show View, Other and search for RIOlog and you'll see it. Once you add it, it will stay around between eclipse restarts.
 
@@ -64,7 +64,7 @@ We recommend using Eclipse Luna where ever possible, with JDK v8, but if you mus
 
 ---
 
-##When I deploy code, where is it saved on the RoboRio?
+##When I deploy code, where is it saved on the roboRIO?
 
 User programs are downloaded to /home/lvuser directory
 
@@ -96,18 +96,18 @@ If you get an error similar to this after line `cmd : test -d /usr/local/frc/JRE
 
 <img src = "../../Images/eclipseerror/jvmmissingerror.png">
 
-The most likely cause is your RoboRio does not have the Java JVM installed. Please be sure to follow the steps exactly above to install the JVM on the Roborio. 
+The most likely cause is your roboRIO does not have the Java JVM installed. Please be sure to follow the steps exactly above to install the JVM on the roboRIO. 
 
 If you believe you installed the JVM but are still receiving this error, please ensure that the JVM is in the right location and that that the bin file has the executable attribute set. 
 
-1. Use "find" to determine where the JVM is located. Run `find / -name *jar*` in the Roborio terminal. The `jar` application must be in the location `/usr/local/frc/JRE/bin`
+1. Use "find" to determine where the JVM is located. Run `find / -name *jar*` in the roboRIO terminal. The `jar` application must be in the location `/usr/local/frc/JRE/bin`
 2. Once the JVM is in the right folder location ensure the execute attribute is set `chmod +x /usr/local/frc/JRE/bin/*`
 
 ---
 
 ##After I deploy code from eclipse, the DS still shows no Robot Code.
 
-This most likely means your code is crashing upon startup. Check for any runtime errors, like null pointers, or other exceptions. See the [RoboRio FAQ](/RoboRio/faq/roborio) for more details on what this status light means.
+This most likely means your code is crashing upon startup. Check for any runtime errors, like null pointers, or other exceptions. See the [roboRIO FAQ](/RoboRio/faq/roborio) for more details on what this status light means.
 
 ---
 
