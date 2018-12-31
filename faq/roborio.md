@@ -6,7 +6,7 @@ permalink: /faq/roborio/
 
 <img src = "../../Images/roborio.jpg">
 
-##Specs: 
+## Specs: 
 
 Dual-Core Arm Cortex A9 @ 667 MHz
 256MB RAM for System Memory
@@ -24,12 +24,12 @@ USB 2.0
 
 ---
 
-##What If I accidently plug into 24V power?
+## What If I accidently plug into 24V power?
 The new roboRIO will not be damaged. It will sense any voltage over 16V and safely shut down the systems which can not handle the voltage. You will need to remove the 24VDC supply and provide a suitable input voltage before the roboRIO can start up again.
 
 ---
 
-##Can I program over USB, Ethernet, and WIFI?
+## Can I program over USB, Ethernet, and WIFI?
 For all languages, deploying code using previous cRIO methods still work. That is, programming via Ethernet tether or wireless using a (D-link in AP mode) are all supported.
 
 The roboRIO offers the added ability to program over the USB device port. The USB drivers for the roboRIO emulate an Ethernet controller when plugged in via USB. When connected via USB the Rio can be located at the IP address 172.22.11.2. Since the Rio also uses mDNS, you can use your driverstation via USB, Ethernet, or WIFI without changing any Ethernet settings as you switch between interfaces. If you would like to learn more about mDNS and how it is used on FRC please check out the [FMS FAQ](/RoboRio/faq/fms).
@@ -38,7 +38,7 @@ The USB drivers are installed on the computer when the FRC Utilities are install
 
 ---
 
-##How do I set my team number and IP?
+## How do I set my team number and IP?
 
 You no longer need to set the IP address for the roboRIO. The new 2015 system uses mDNS and dynamic addressing to find all devices. Static IP addresses are no longer needed. To learn more about mDNS as it applies to FRC see the [FMS FAQ](/RoboRio/faq/fms/)
 
@@ -54,7 +54,7 @@ You can always check all of your network interface settings, and modify them thr
 
 ---
 
-##How do I access the roboRIO webserver?
+## How do I access the roboRIO webserver?
 
 Simply navigate to any of the roboRIO's IP address from any computer on the same network. 
 i.e http://roborio-2168.local (replace 2168 with your team number) will work on any interface using mDNS, http://10.TE.AM.2 if you assigned a static IP or http://172.22.11.2 when using the USB cable.
@@ -71,7 +71,7 @@ Click the login button in the top right corner and login with the `admin` user.
 ---
 
 
-##How do I access the Linux Operating System on the roboRIO?
+## How do I access the Linux Operating System on the roboRIO?
 
 The roboRIO is a headless device, meaning it is designed to run without using a display. If you would like to access the underlying linux filesystem you will need to use another device to do so.
 You can access the linux operating system in any of 3 ways:
@@ -85,7 +85,7 @@ The method you choose is largely based on what operation you are trying to berfo
 Using another computer you can use the secure shell protocol to access the roboRIO. You will need to connect to the roboRIO via Ethernet tether, WIFI, or USB and either know the IP address of the roboRIO, use mDNS to resolve the address, or use RS-232 with console out enabled (for shell terminal only).
 
 
-###Shell Terminal
+### Shell Terminal
 
 From Linux or Mac: Open 'Terminal' and type `ssh -l admin <IP of roboRIO>`
 From Windows install [putty](http://www.putty.org) and configure it to SSH to the roboRIO IP address.
@@ -94,7 +94,7 @@ When asked for a password leave it blank and hit `enter`
 
 Using SSH, you will have terminal access to the roboRIO filesystem and can run linux based commands, create/delete files or folders etc and execute and stop programs and services on the roboRIO.
 
-###SFTP
+### SFTP
 1. Add a SFTP client to your web browswer. [Filezilla client](https://filezilla-project.org/) is freeware
 2. Configure it to connect to the IP address of the roboRIO
 3. Login using the 'admin' user
@@ -103,12 +103,12 @@ Using SSH, you will have terminal access to the roboRIO filesystem and can run l
 You can use this method to browse the file system on the RIO, transfer files to/from roboRIO, read files, create/delete files or folders
 
 
-###FTP
+### FTP
 It is possible to use the FTP protocol on the RIO, however only anonymous login is supported by default. The problem with that is when transfering or creating files via FTP, the file permissions are not set properly, so it is recommended that you use SSH or SFTP and avoid using FTP on the RIO.
 
 ---
 
-##What user name should I use to have 'root' access to the file system?
+## What user name should I use to have 'root' access to the file system?
 
 The Login information for the roboRIO from the factory is:
 
@@ -121,7 +121,7 @@ You can use this login via SSH or on the roboRIO webserver page to make configur
 
 ---
 
-##Why are the IO pins spaced so far apart, I like the way it was on the old DSC?
+## Why are the IO pins spaced so far apart, I like the way it was on the old DSC?
 Well, in all honesty I don't know. I would speculate it is to make it a lot easier for teams (rookies in particular) to plug/un-plug 3-pin header connectors. With the old DSC you could plug in a connector in pin 10, but acutally think you were plugged in pin 9 because of how close the pins were, and causing a debugging mess. The space avoids this debackle.
 
 The pins are spaced by 2 0.1" headers. A 4 pin header can be used to bridge the gap, if a team desires to use two signal pins on 1 connector (for a quadrature encoder for example)
@@ -131,7 +131,7 @@ The pins are spaced by 2 0.1" headers. A 4 pin header can be used to bridge the 
 
 ---
 
-##What do the LEDs on the RIO mean?
+## What do the LEDs on the RIO mean?
 
 * Power
   - Green = RIO input voltage is acceptable
@@ -159,7 +159,7 @@ The pins are spaced by 2 0.1" headers. A 4 pin header can be used to bridge the 
 
 ---
 
-##How do I upgrade the image or install new firmware?
+## How do I upgrade the image or install new firmware?
 So far, for Beta testing, the roboRIO software has been delivered in two parts, a firmware, and an image. The firmware provides the bootloader, "Safe Mode", and firmware for the roboRIO. The image is to load the FPGA, operating system, linux file system and default settings.
 
 The user can upgrade the firmware over Ethernet tether, WiFi or USB. USB method is preferred and you should use that when ever possible, although we have had no problems updating the system over Ethernet/Wifi. 
@@ -171,14 +171,14 @@ Please see official instructions for firmware and imaging here:
 [ScreenSteps Flash roboRIO](https://wpilib.screenstepslive.com/s/4485/m/13503/l/273817-updating-your-roborio-firmware)
 [ScreenSteps Image roboRIO](https://wpilib.screenstepslive.com/s/4485/m/13503/l/144984-imaging-your-roborio)
 
-###Firmware Upgrade: 
+### Firmware Upgrade: 
    1. Connect to the roboRIO via USB and 'power-on' the roboRIO.
    2. Login to the roboRIO webpage using your internet browser (You will need to have silverlight plugin). (Labview teams can use webpage or NI Max, Java/C++ teams must use Webpage).
    3. Navigate to http://roborio-TEAM.local (where TEAM represents your team number) or use http://172.22.11.2 when using USB. Login using "admin" as the user name and leave the password field empty. Click on the roboRIO icon and select upgrade firmware. 
    4. Browse to the firmware you wish to use and apply (Typically in C:\Program Files(x86)\National Instruments\shared\firmware\FXXX\\).
    5. The roboRIO will update the firmware, and if successful the new firmware version will be shown on the webpage. If not, just try again.
 
-###Image Upgrade:
+### Image Upgrade:
    1. Connect to the roboRIO via USB and power-on the roboRIO
    2. Open the roboRIO Imagine Tool installed when the NI tools were installed (Typically in C:/Program Files(x86)\National Instruments\Labview 2014\projects\RoboRio Imaging Tool\\).
    3. Then, select scan to find the connected roboRIO.
@@ -191,7 +191,7 @@ Please see official instructions for firmware and imaging here:
 
 ---
 
-##I did something to the roboRIO, and now I can not communicate with it at All. HELP? Is it Bricked?
+## I did something to the roboRIO, and now I can not communicate with it at All. HELP? Is it Bricked?
 No. Its nearly impossible to brick this thing. Follow these steps to regain communication.
 
 When we tried to image the roboRIO prior to installing a compatible firmware we noticed this caused a state where we lost complete communication with the Rio. Upon start up, the power light was green and the status led was solid for the first 3 seconds and then flashed about 2 times a second for the remainder of the time. Power cycling or hitting the reset button alone during this time, did not change the outcome. The Rio would start up and the status led would start to blink at this constant rate.
@@ -211,12 +211,12 @@ You can now login to the roboRIO webpage, and update the firmware and re-image t
  
 --- 
 
-##What is CAN?
+## What is CAN?
 CAN is a 2 wire serial bus mostly used in cars. Its an interface with a specific protocol just like I2C or RS-232. We can use it in robotics to communicate with multiple CAN devices such as the pneumatics control module, the power distribution board, and different motor controllers such as the Jaguar and CAN Talons. The CAN bus needs to be terminated by resistors at each end to prevent reflections. The roboRIO has a built in hardwired terminal resistor so it should always be placed at the beginning of the bus. The 2015 Power distribution panel has a jumper selectable terminal resistor, so you can place the PDP at the end of the bus, and have any number of CAN devices between the roboRIO and the PDP board. The CAN interface is a differential signal, so be sure to use a twisted pair wire to prevent against EMI. "Stripped CAT5 pairs work well ;)" - [Lansing](http://github.com/xBlazeTECH)
 
 ---
 
-##How do I connect to the internet using the roboRIO
+## How do I connect to the internet using the roboRIO
 
 When the roboRIO ships from the factory, the default settings for the roboRIO Ethernet port is DHCP. So if you plug the roboRIO into a network switch that has internet access and a DHCP server (like a router), then the roboRIO will automatically connect to the internet.
 
@@ -232,7 +232,7 @@ If you see a file downloaded, your RoboRio is connected to the internet, and DNS
 
 ---
 
-##Can I install 3rd party packages/software on the RoboRio?
+## Can I install 3rd party packages/software on the RoboRio?
 Yes, the roboRio uses OPKG package manager. You can run OPKG from the terminal and install packages that way. There is a public repository for the RoboRio released by NI that already has many useful applications and comes loaded by deafult.
 
 Simply run the following commands in the Rio terminal while the rio is connected to the internet to see what packages are available in the NI repo for installation:
@@ -264,7 +264,7 @@ If the NI repo doesn't have what you are looking for, luckily, you can make use 
 
 ---
 
-##Can I use 3.3V sensors on the RoboRio?
+## Can I use 3.3V sensors on the RoboRio?
 In short - yes. The power output pins on the RoboRio DIO pins and analog pins are all 5V outputs by default. There is a jumper to set the DIO pins to 3.3V output but is internal to the Rio and you must remove the case to do so. This is not something FIRST or NI envisons teams to do frequently. I would suggest that you stick with one voltage source for all sensors, or use external supplies instead of going into the RoboRio.
 
 The jumper is located inside the RoboRio case next to the connector for DIO9. See attached photo for details. When no jumper is installed the voltage output is 0V.
@@ -277,12 +277,12 @@ All DIO signal pins are 3.3V drive and 5V tolerant, so if you power your 3.3V se
  
 ---
 
-##How do I drive 6V servos on the RoboRio?
+## How do I drive 6V servos on the RoboRio?
 Just plug it into any PWM port. All PWM outputs on the RoboRio are 6V output power (center pin), 5V signals (signal pin). There is no jumper cable to modify the output voltage (center pin or signal pin) of the PWM rail. All motor controllers for FRC have the center pin on the PWM disconnected (so they don't use the 6V pin), they only use ground and signal. Therefore, the 6V output is always present, and used to drive a servo if a servo is connected to any PWM pin. 
 
 ---
 
-##What happens when the RoboRio voltage drops?
+## What happens when the RoboRio voltage drops?
 As the input voltage drops below a specifed voltage, certain systems are turned off automatically. The brownout condition I believe starts when the input voltage to the RoboRio dips below 6.8V, at the moment it is unclear if it needs to stay below this level for any period of time.
 
 The PDP power supply to the RoboRio is not regulated, the RoboRio regulates its own power internally. This was a concious decision made by the design team.
@@ -317,7 +317,7 @@ Here is a pic of the Regulator Topology:
 
 ---
 
-##Will we lose encoder counts while that happens (encoder brownout)?
+## Will we lose encoder counts while that happens (encoder brownout)?
 
 This depends on how your robot is wired and what voltage level the electrical system is dipping too. If the robot is dipping below 6.3V and you are powering your encoders from the 5V source on the RoboRio, then yes, as the 5V supply dies, so will power to your encoder.
 
@@ -337,7 +337,7 @@ The bus switch that adjusts the signals passed to the FPGA is powered by a suppl
  
 ---
 
-##When the RoboRio browns-out, will I lose command of motor controllers?
+## When the RoboRio browns-out, will I lose command of motor controllers?
 
 Yes. When the RoboRio browns out, the power indicator on the RoboRio will turn orange, and immediately motor controller outputs will be disabled.
 
@@ -349,7 +349,7 @@ New power API have been provided for all languages so teams can detect the brown
 
 ---
 
-##Everytime I deploy code, immediately after the Driverstation says no "Robot Code". What's happening?
+## Everytime I deploy code, immediately after the Driverstation says no "Robot Code". What's happening?
 
 Well the "Robot Code" indicator in the DS means that your robot application is actually executing. If the code crashes for any reason, such as a null-pointer error, or other exception, the application will stop running, and the "Robot Code" indicator will go red.
 
@@ -359,7 +359,7 @@ When this happens, you will also notice the Comms light on the RoboRio go red. T
 
 ---
 
-##How long does the RoboRio take to start up?
+## How long does the RoboRio take to start up?
 
 With the RoboRio off, and Driverstation application running on the DS computer, it took approximately 30 seconds from the time the RoboRio was switch on to the point when Comms and Robot Code was established.
 
@@ -371,7 +371,7 @@ Well since we are a Java test team we can only comment for Java. Typically it ta
 
 ---
 
-##What are some of the linux based information I should know?
+## What are some of the linux based information I should know?
 
 Kernel: 3.2.35
 File System: UBI
@@ -380,7 +380,7 @@ Init: SystemV
 
 ---
 
-##How do I put the RoboRio in "Safe Mode"?
+## How do I put the RoboRio in "Safe Mode"?
 
 Hold the Reset Button until the status light illuminates (about 5 seconds) and release, The RoboRio will rebot and the status light will blink 3 times repeatedly. This indicates the RoboRio is now in "Safe Mode"
 
@@ -388,7 +388,7 @@ To get out of "Safe Mode", reboot the RoboRio by pressing the Reset Button, issu
 
 ---
 
-##How to I commuicate with the RoboRio over Serial (RS-232)
+## How to I commuicate with the RoboRio over Serial (RS-232)
 
 The Serial Information is:
 
@@ -423,7 +423,7 @@ On Windows:
 	
 ---
 
-##What is the MXP port?
+## What is the MXP port?
 
 The Modular Expansion Port (MXP) is an additional breakout that provides access to all the dedicated ports on the RoboRio and includes additional shared PWM pins/DIO pins/analog pins and serial interfaces.
 The MXP also has 5V and 3.3V sources. You can use this port to make your own custom board or buy pre-made boards.
@@ -434,7 +434,7 @@ The MXP also has 5V and 3.3V sources. You can use this port to make your own cus
 
 ---
 
-##What does a shared PIN on the MXP mean?
+## What does a shared PIN on the MXP mean?
 
 A "shared" pin means that the pin can be used in a multitude of ways, and you can choose which way to use that pin in your robot program.
 
@@ -442,7 +442,7 @@ For example shared PWM pins on the MXP means you can either use that pin to prov
 
 ---
 
-##What is "Safe Mode"?
+## What is "Safe Mode"?
 
 "Safe Mode" is a separate partition on the RoboRio that is installed when you load the Firmware. "Safe Mode" loads a clean default Linux File System in a RAM Disk. Any modification to the file system will be lost upon reboot. Safe-mode can be used to re-image the boot filesystem or to recover for other system crashes.
 
@@ -450,7 +450,7 @@ If there is no OS installed on the RoboRio, it will boot up in "Safe Mode" by de
 
 ---
 
-##How do I run gui applications on RoboRio using X11?
+## How do I run gui applications on RoboRio using X11?
 
 To exable X11 forwarding:
 
